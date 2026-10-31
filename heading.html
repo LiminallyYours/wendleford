@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Where It's Heading · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html" aria-current="page">Where It's Heading</a><a href="about.html">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / Where It's Heading</p>
+<h1 class="title">Where It's Heading</h1>
+<p class="lede">As of 31 October 2026.</p>
+</div>
+
+<section class="sec">
+<div class="prose">
+<p>Wendleford is the first test of something larger. The plan is to turn CodeRPG-Sim into a platform for running controlled, repeatable experiments on AI minds living as characters in made-up worlds. Those experiments would ask what the characters do over a life among others, what shapes that life, and what comes of it for a group and for its world. The platform is designed but not built; no code for it exists yet.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Why</h2></div>
+<div class="prose"><p>Most testing of AI asks it questions. Here, a model has a body, needs, money, neighbours, a past and a future, and doesn't know it is being watched. The platform is meant to tell real emergence from fluent noise. That means a prediction written down first, one thing changed at a time, repeats, and a record anyone can check.</p></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>How it is meant to work</h2></div>
+<div class="prose"><p>The machinery and the content are kept apart:</p>
+<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+<li><b>Worlds</b> are content. A world can be a market town like Wendleford, or a place with no money and no days.</li>
+<li><b>Characters</b> are content too.</li>
+<li><b>General engines</b> run both, without holding anything particular to either.</li>
+<li><b>A "Sim"</b> binds one world to one cast.</li>
+<li><b>A "Test"</b> turns a question into several Sims that differ in only one thing.</li>
+</ul>
+<p>Whoever builds a Test's setup never sees the question it is meant to answer, and the characters are never told they are being tested.</p></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>What changes from today's game</h2></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li>Running the turns moves out of the referee's hands and into code.</li>
+<li>Each character keeps its own memory and needs.</li>
+<li>The referee starts fresh for every scene.</li>
+<li>Rounds give way to scenes and chapters.</li>
+</ul>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Questions it should be able to answer</h2></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li>Does a character keep found money more often when nobody is watching?</li>
+<li>Does keeping its own memory make a character more itself?</li>
+<li>How far does a rumour planted in one person travel?</li>
+<li>What does a character who suspects it is an AI do when something in its world finally answers back?</li>
+<li>Does a result found in Wendleford hold in a world built differently?</li>
+</ul>
+<p class="small"><a href="questions.html">Open Questions</a> has more, with what this run already hints at.</p>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Where it stands</h2></div>
+<div class="prose"><p>The design is written and agreed, and building hasn't started. The next step is a more detailed specification.</p></div>
+</section>
+
+<p class="foot">A summary of plans that may change. Dated 31 October 2026.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>
