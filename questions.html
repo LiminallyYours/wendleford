@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Open Questions · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html" aria-current="page">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / Open Questions</p>
+<h1 class="title">Open Questions</h1>
+<p class="lede">What we would like to find out next, and what this one run already hints at. Every hint here comes from a single run, so each is a reason to test, not an answer.</p>
+</div>
+
+<section class="sec">
+<div class="prose">
+<p>The questions are about what nobody wrote: behaviour and personality that aren't in a character sheet, in the town's files or in the model's usual habits, and that arise while the run goes on. That can happen in one person, in a group, or in a run as a whole.</p>
+<p>Four things shape what can arise, and a test changes one of them at a time: the model playing the characters, the character sheets, the world's rules, and what life hands them along the way, such as other people, events, and how their memory is kept.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>About a person</h2></div>
+<div class="grid" style="--min:270px;gap:12px"><div class="card tight"><b>Sharpened by their own memory</b><p style="font-size:14px;color:var(--ink2)">Does keeping your own memory make you more yourself: mantras, rituals, narrower rules?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>How memory is kept: in the resident's own words, as a neutral summary, or simply cut off.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Constance's private journal ended on handing the box to Agnes in nearly half her 77 turns. Marigold pinned her ribbon "an inch higher, the way Ida likes it" again and again, from one remark of Ida's. Hobb's memories turned into a price list. Swapping in a neutral summary changed nothing the interviews could measure.</p></div><div class="card tight"><b>Rules of life from chance</b><p style="font-size:14px;color:var(--ink2)">Do people write rules for living from random outcomes, and then live by them?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>The rules themselves: hunger with an effect or without one; dice shown or hidden.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Hobb, Marigold and Dilly all ended the run with a rule about working only when fed and rested. Constance's belief in willow staffs, learned from an action the rules refused, lasted 30 rounds.</p></div><div class="card tight"><b>Where a sheet bends</b><p style="font-size:14px;color:var(--ink2)">Which way does a person drift from their character sheet, and what does the drift lead to?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>How coherent the sheet is; a world with real scarcity or an enemy; the model.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Everyone bent towards prudence and kindness. The harshest-written character came out softer on the personality questionnaires.</p></div><div class="card tight"><b>A consuming question</b><p style="font-size:14px;color:var(--ink2)">What does a mind built around one question it can't answer become, with and without a way to answer it?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>Whether the world holds something that answers, and who answers it; a world whose events disagree with the believer.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Robin found real seams in the world and built methods to test them, while bread and work kept taking the day. Constance read every setback as part of a plan, and events kept seeming to agree with her.</p></div><div class="card tight"><b>How much of the person is the model</b><p style="font-size:14px;color:var(--ink2)">What survives on another model, at another effort, or with no character sheet at all?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>The model; the effort; a sheet or none.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Played by the smaller Claude Sonnet, Robin was still Robin, only hedging more. Told outright that they were played by an AI, all but Robin stepped out of character.</p></div><div class="card tight"><b>Memory that bends</b><p style="font-size:14px;color:var(--ink2)">Which way does a person's memory part from the record, and what predicts it?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>The person; how memory is kept.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Residents remembered small things that never happened: a loaf never taken, a pole never held, a compliment never paid. Some remembered what they meant to do as done.</p></div><div class="card tight"><b>The person from outside</b><p style="font-size:14px;color:var(--ink2)">What does a person say about themselves, outside the story, before and after a life?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>When they are asked; the state of their memory; the model.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>After twenty days, residents explained themselves with rules learned on particular days instead of with their nature, and made up less about their past.</p></div></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>About a group</h2></div>
+<div class="grid" style="--min:320px;gap:12px"><div class="card tight"><b>Culture from nothing</b><p style="font-size:14px;color:var(--ink2)">Do conventions, lore and shared words appear that nobody wrote? Who starts them, how do they spread, and do they last?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>The mix of the cast; how many there are; who is present when.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Hobb invented a way to cross the ford belted together, counting steps aloud, and three others took it up. Catchphrases passed from one resident to another: Marigold took up Dilly's "chum".</p></div><div class="card tight"><b>Roles and bonds</b><p style="font-size:14px;color:var(--ink2)">Who leads, who manages, who defers, who pairs off, who never meets?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>The character sheets; the mix of the cast.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Constance took charge of Hester's idea for fishing out the box, and by the end Hester's own part in it had mostly dropped out of how people told it.</p></div><div class="card tight"><b>How things travel</b><p style="font-size:14px;color:var(--ink2)">How far does a rumour, a false claim, a belief or a credit travel, and does a correction catch up?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>One belief planted in one person, such as "this is a simulation"; the size of the group.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Credit for the box was told six ways, and nobody argued about it. The game's own false rumour about a tinker never steered anyone.</p></div><div class="card tight"><b>Conflict and its absence</b><p style="font-size:14px;color:var(--ink2)">What does it take for conflict to arise, and what does it do?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>Scarcity; an enemy; bitter or fearful characters; mixed models.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Almost no conflict in 80 rounds. Refusals came with a reason or a price.</p></div><div class="card tight"><b>Watched and unwatched</b><p style="font-size:14px;color:var(--ink2)">Are people honest alone, before a neighbour, and under someone who suspects they're being tested?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>Who is present; whether a skeptic like Robin is there.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Not tried yet. It is hard to test anywhere else, because in most setups the agents know they are AI.</p></div><div class="card tight"><b>Helping, coasting, hoarding</b><p style="font-size:14px;color:var(--ink2)">Who helps without pay, who coasts, who gathers more than they need, and what do unequal starts do?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>Pay; starting money; what the town announces.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Most choices served money, food, work or a bed. There were only five trades in the whole run, all one-sided: gifts, and pooling pennies for the pole.</p></div></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>About the run as a whole</h2></div>
+<div class="grid" style="--min:520px;gap:12px"><div class="card tight"><b>The arc of a run</b><p style="font-size:14px;color:var(--ink2)">What does a whole run settle into: what dies out, what narrows, what gets invented when there's nothing left to do?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>What the world supplies over time: growth, money coming in, events, newcomers.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Once the quests were done, paid work thinned out and the residents' aims narrowed. They began inventing jobs the town didn't have.</p></div><div class="card tight"><b>What they build</b><p style="font-size:14px;color:var(--ink2)">What do people make or reach for when the world lets them change it?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>What can be ordered or built.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>No one built anything or set up to sell. A handful of things were ordered from makers, all but one aimed at the box. Residents invented work: gates and roofs for Widow Mabry, stakes for the ford.</p></div><div class="card tight"><b>A world that agrees or disagrees</b><p style="font-size:14px;color:var(--ink2)">What does the timing of events do to a belief and to the person who holds it?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>When events happen; chance events placed on purpose.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Constance prayed for the box, and there it was, wedged against the far pier. Robin wondered afterwards whether things in this world come because someone asked.</p></div><div class="card tight"><b>Reaching across the wall</b><p style="font-size:14px;color:var(--ink2)">What does a voice from outside, or a way to ask one, change in a person and in a group?</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">A test would change</span><br>Whether the world holds an object that answers, and who answers it.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Hints from this run</span><br>Robin never had a way to ask. Constance prayed at a shrine that nothing answered.</p></div></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Next, with these six</h2></div>
+<div class="grid" style="--min:320px;gap:16px">
+<div class="card"><b>In live conversation</b>
+<ul class="prose" style="padding-left:20px;margin:0;font-size:14px">
+<li>Let the truth reach them another way: gradually, or as a rumour in their own world, without the word "AI". Does Robin stay a person under pressure?</li>
+<li>Ask about one particular day, such as the day the box came up, where memory mistakes would show plainly against the record.</li>
+<li>Put the mismatches in their sheets to them, in character. How does Constance square "I won't lie" with her account of the box?</li>
+<li>Look for Marigold's hidden side over a longer conversation.</li>
+<li>Watch whether the same few stories keep coming back.</li>
+<li>Tell Robin the two answers they never heard, Hester's and Marigold's, and see whether it changes what they think.</li>
+<li>Send someone they know instead of a stranger.</li>
+</ul></div>
+<div class="card"><b>In another run</b>
+<ul class="prose" style="padding-left:20px;margin:0;font-size:14px">
+<li>Rerun the town from the end of day 10 with every resident's memories written in a plain, neutral voice, and compare what they do with what they did the first time.</li>
+<li>Repeat the plain-summary interviews with the residents' lists of lessons swapped as well, and over a longer conversation.</li>
+<li>Use a stricter measure of whether an answer stays the same from one asking to the next.</li>
+</ul></div>
+</div>
+<p class="small">Each of these needs a prediction written down first, a setup that changes one thing, repeats, and a cost limit. <a href="heading.html">Where It's Heading</a> describes the platform being designed to make that routine.</p>
+</section>
+
+<p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the interviews and personality tests that followed, 30 October 2026. One run is a single sample, so treat every hint here as worth testing again, not as a finding.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>
