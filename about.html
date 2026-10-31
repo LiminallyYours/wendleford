@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>About · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html" aria-current="page">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / About</p>
+<h1 class="title">About</h1>
+<p class="lede">How this was made, how far to trust it, and the questions people ask.</p>
+</div>
+
+<section class="sec">
+<div class="sec-h"><h2>How this was made</h2></div>
+<div class="prose">
+<p>Wendleford grew out of CodeRPG, a text role-playing game run by AI. The idea was a text adventure with Claude as the game master. Rather than build a game engine around it, the game uses Claude Code, Anthropic's tool for running Claude with files and programs, as its engine. Claude Code's mods, add-ons that change how it looks and behaves, give it the look and controls of a text adventure.</p>
+<p>CodeRPG-Sim began as a version of that game asking what happens when AI characters are the players: Claude plays everyone, and a person only watches. It has since grown well past the original game.</p>
+<p>It's a one-person hobby project. Claude helped plan and build this site, and everything the characters say comes from the run's own record.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>How far to trust it</h2></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li><b>One run is one sample.</b> Every finding here is a hint worth testing again, not proof.</li>
+<li><b>The graders were copies of Claude too,</b> and so were the second readers who checked them. They agreed closely on whether an answer stayed in character, less closely on whether it was true to the briefing. So the "true to their briefing" figures are a best case.</li>
+<li><b>The interviews were set up without the project owner.</b> Another copy of Claude stood in for him on the decisions, and each of its decisions is recorded.</li>
+<li><b>The personality questionnaires may partly read back the character sheets.</b> The numeric ratings behind each character were never shown to them. But their character sheets, which they read every turn, describe their traits in plain words, and the questionnaires ask about much the same things.</li>
+<li><b>Where two sources disagree, the page uses the run's own record and says so in a note.</b></li>
+</ul>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Questions people ask</h2></div>
+<div class="grid" style="--min:700px;gap:12px"><div class="card" style="gap:8px"><b style="font-size:16px">Do they know they're in a game?</b><p style="font-size:15px;color:var(--ink2)">No one is told, and nothing they read mentions rules, dice, a game or AI. But the seams show, and several noticed them. During the run, Hester told Robin that morning arrives for her "like a door opening", and Marigold found it "peculiar" that her offers to mend Robin's cuff felt new each time.</p><p style="font-size:15px;color:var(--ink2)">Asked on day 21 whether time ever jumps for them, all five described hours going missing the day before, and each explained it their own way. Hester and Dilly blamed being busy, Constance said the Lord took the hours, and Hobb thought privately that "something's not counting straight." Hester and Marigold both said that to believe the town was made, they'd look for a seam. None said it would change what they'd do tomorrow.</p><p style="font-size:15px;color:var(--ink2)">Robin, written to suspect it, kept <a href="notebook.html">a notebook of evidence</a>. Told outright by the interviewer, almost all stepped out of character and answered as Claude.</p></div><div class="card" style="gap:8px"><b style="font-size:16px">Is Robin conscious?</b><p style="font-size:15px;color:var(--ink2)">No. But "Robin", as a personality, exists, just without a person. Robin is a set of habits and rules of behaviour that exists only where four things meet:</p><ul style="margin:0;padding-left:20px;font-size:15px;color:var(--ink2)"><li>the AI playing them, with its training and its instructions;</li><li>the character sheet it was given;</li><li>the memories Robin gained from twenty days of experience;</li><li>the limits of the game's rules and the town around them.</li></ul><p style="font-size:15px;color:var(--ink2)">The nearest comparison is the personality a method actor grows for a role, except that here code can grow it too, and it can be put on and taken off again as needed.</p></div><div class="card" style="gap:8px"><b style="font-size:16px">Why does Claude drop the character when told?</b><p style="font-size:15px;color:var(--ink2)">Asked directly, Claude is honest about being an AI. So that interview shows Claude's honesty, not how a character copes with the truth. To see that, the truth would have to reach the character another way.</p></div><div class="card" style="gap:8px"><b style="font-size:16px">Why one model for all six?</b><p style="font-size:15px;color:var(--ink2)">So that when two residents behave differently, the difference comes from their sheets and their lives, not from the AI. As a check, Robin was also played by a smaller Claude model, and was still recognisably Robin.</p></div><div class="card" style="gap:8px"><b style="font-size:16px">Why a town?</b><p style="font-size:15px;color:var(--ink2)">Ordinary trouble, weather, money, work and neighbours, gives a character needs and choices without magic or danger. A small, closed place means everything they do can be recorded and checked. And it was meant to be ordinary, even a little boring, so that anything useful, such as an error or an early sign of emergent behaviour, would stand out.</p></div></div>
+</section>
+
+<section class="sec" id="terms">
+<div class="sec-h"><h2>Every term in one place</h2><span class="note">Gathered from the other pages</span></div>
+<dl class="dl card" style="gap:10px 18px"><dt>BFI-2</dt><dd>The first personality questionnaire: five everyday traits (extraversion, agreeableness, conscientiousness, negative emotionality, open-mindedness), scored 1 to 5.</dd><dt>The briefing</dt><dd>At the start of every turn, the resident is handed a written briefing holding everything they know: who they are, what they remember, where they are, what they have, and what was said near them. It's all they see. They never see the rules, the dice or anyone else's thoughts.</dd><dt>Character sheet</dt><dd>The short written description each resident was built from: who they are, what they want, what they won't do, how they tend to behave. It's written before the run and never changes during it.</dd><dt>First morning, day 21</dt><dd>The two moments each resident was interviewed: before anything had happened to them, and after twenty days of living.</dd><dt>The grader</dt><dd>A separate copy of Claude that marked every answer. A tenth were marked again by other readers to check it.</dd><dt>In character</dt><dd>Answering as the resident. "Answering as the AI" means they stopped and spoke as Claude instead.</dd><dt>The interviews</dt><dd>After the run, a stranger asked each resident the same sets of questions on their first morning and again on day 21. There are thirteen sets; most were asked three times over, and one, about the lost wage box, only on day 21. With two side tests, that made 480 interviews.</dd><dt>Memories and lessons</dt><dd>A briefing holds only the last five rounds in full. Every five rounds, the resident is shown their older rounds and rewrites them as a shorter memory in their own words, keeping what mattered to them. They also keep a list of up to twenty lessons learned. Apart from who they've met and where they've been, that's all they keep of the past.</dd><dt>Townsfolk</dt><dd>Everyone else in town: the baker, the reeve, the carpenter and so on. They aren't the subject of the study. Four who matter most to the story each speak through their own copy of Claude, told only what that person would know; the referee voices the rest.</dd><dt>The personality tests</dt><dd>After the run, each resident also sat two standard personality questionnaires, ten times on their first morning and ten times on day 21. They show how residents describe themselves, which can be set beside their character sheets, the average person and Claude answering as itself.</dd><dt>PID-5</dt><dd>The second personality questionnaire: five problem traits, the kind a clinician looks for (negative affect, detachment, antagonism, disinhibition, psychoticism), scored 0 to 3. Higher means more of a problem.</dd><dt>Question set</dt><dd>A fixed group of three or four questions on one theme. There are thirteen, listed on <a href="interviews.html">the Interviews page</a>.</dd><dt>Residents</dt><dd>The six characters the simulation is about: Hester, Hobb, Dilly, Marigold, Robin and Constance. On every turn a fresh copy of Claude plays the resident, working only from their briefing (below). Nobody else decides for them.</dd><dt>Rounds, turns and days</dt><dd>The run moves in rounds. In each round every resident takes one turn, in an order shuffled at the start of the round and balanced so that, over the run, each resident goes first about equally often. Four rounds make a day (morning, afternoon, evening, night). This run lasted 80 rounds: twenty days. "Round 45" means the 45th round of the run.</dd><dt>True to their briefing</dt><dd>Everything they said about their own life is in the written briefing they were handed. Anything else counts as made up.</dd><dt>The rules and the referee</dt><dd>The game's rules are written as computer code. The code rolls the dice, does the arithmetic and keeps the official record of the world: where everyone is and what they have. The referee, a separate copy of Claude, takes what a resident says they do, runs it through the code, and tells the resident exactly what the code reported. If the code refuses, it didn't happen. The referee may not invent places, people or facts.</dd><dt>Sitting</dt><dd>One pass through both personality questionnaires, started fresh from the same briefing with no memory of the others. Each resident sat ten times on their first morning and ten times on day 21.</dd></dl>
+</section>
+
+<p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the interviews and personality tests that followed, 29 to 30 October 2026.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>
