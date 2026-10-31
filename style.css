@@ -204,3 +204,14 @@ p.prose{display:block;max-width:760px;color:var(--ink2)}
 .toc .tocg ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:14.5px}
 .back{align-self:flex-end;font-size:13px;color:var(--accent)}
 section[id],nav[id]{scroll-margin-top:72px}
+
+/* menu: three groups open as dropdowns (hover, tap or keyboard focus) */
+.nav .dd{position:relative}
+.nav .ngh{font:inherit;font-size:14px;font-weight:500;color:var(--head-muted);background:transparent;border:0;padding:8px 10px;border-radius:4px;cursor:pointer}
+.nav .ngh::after{content:"\25BE";margin-left:6px;font-size:11px;opacity:.7}
+.nav .ngh:hover,.nav .dd:focus-within .ngh{color:var(--head-ink);background:rgba(255,255,255,.06)}
+.nav .dd.here .ngh{color:var(--head-ink);box-shadow:inset 0 -2px 0 var(--accent)}
+.nav .menu{display:none;position:absolute;top:100%;left:0;z-index:20;min-width:230px;flex-direction:column;gap:2px;padding:6px;background:var(--head);border:1px solid rgba(255,255,255,.14);border-radius:6px;box-shadow:0 10px 28px rgba(0,0,0,.3)}
+.nav .dd:hover .menu,.nav .dd:focus-within .menu{display:flex}
+.nav .menu a{display:block;padding:9px 12px}
+@media (max-width:760px){.top-in{position:relative}.nav .dd{position:static}.nav .menu{left:0;right:0;min-width:0}}
