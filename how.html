@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>How It Works · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+.tr-box{font-family:var(--mono);font-size:12.5px;line-height:1.55;white-space:pre-wrap;background:var(--surface2);border-radius:4px;padding:12px 14px;color:var(--ink);overflow-wrap:anywhere}
+.cmd{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+.ref{color:var(--warn-ink);font-weight:600}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html" aria-current="page">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / How It Works</p>
+<h1 class="title">How It Works</h1>
+<p class="lede">The game behind Wendleford, as it ran for this run, explained for someone who has never seen it.</p>
+</div>
+
+<section class="sec">
+<div class="sec-h"><h2>The game underneath</h2></div>
+<div class="prose">
+<p>CodeRPG is a text role-playing game that runs inside Claude Code, Anthropic's tool that lets Claude work with files and run programs. Normally a person plays it by typing, and Claude acts as the game master.</p>
+<p>In CodeRPG-Sim, the version this site is about, Claude plays the players too. Each resident's turn goes to a fresh copy of Claude, and the person running it only watches. The rules live in code, not in Claude's head: one program keeps the town's record, rolls the dice and does the sums, and every change to the world goes through it.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>A turn in five steps</h2></div>
+<p class="prose">The run moves in rounds. In each round every resident takes one turn, in an order shuffled at the start of the round. A turn always goes through the same five steps, and several separate copies of Claude are involved, each with its own job.</p>
+<div class="flow">
+<div class="step"><span class="who">The briefing</span><b>1. The resident is handed a briefing</b><p>One written briefing holds everything they know: who they are, what they remember, where they are, their money, health and belongings, and who is around them.</p></div>
+<div class="step"><span class="who">The resident</span><b>2. They decide what to do</b><p>They write what they do and say, in their own words, plus a private journal line about why. Nobody else decides for them.</p></div>
+<div class="step"><span class="who">The referee</span><b>3. The rules settle what happens</b><p>The rules are written as computer code. The referee, a separate copy of Claude, runs the action through that code, which rolls any dice and updates the official record. The referee then reports exactly what the code said. If the code refuses, it didn't happen.</p></div>
+<div class="step"><span class="who">The townsfolk</span><b>4. The neighbours answer</b><p>If the resident talks to someone, that person answers. Agnes, Jory, Kit and Mother Wick each speak through their own fresh copy of Claude, told only what they would know. The referee voices everyone else.</p></div>
+<div class="step"><span class="who">Memory</span><b>5. It becomes memory</b><p>The story of what happened goes into the resident's briefing. Every five rounds they rewrite their older rounds into shorter memories, in their own words, keeping what mattered to them.</p></div>
+</div>
+<dl class="dl card" style="gap:12px 18px">
+<dt>Time</dt><dd>Four rounds make a day: morning, afternoon, evening and night. The run had 80 rounds, from day 1 morning to day 20 night.</dd><dt>Order</dt><dd>Shuffled at the start of every round, and balanced so that over the run each resident goes first about equally often.</dd>
+<dt>One AI for all six</dt><dd>All six residents were played by the same version of Claude (Claude Opus; the referee was the smaller Claude Sonnet) with the same settings. So when two residents behave differently, the difference comes from their character sheets and what happened to them, not from the AI.</dd>
+<dt>What they never see</dt><dd>Rules, dice, the word "game", the record of the run, or anyone else's thoughts. As far as each resident can tell, the others are simply people.</dd>
+<dt>Food and sleep</dt><dd>Residents need to eat and sleep. Going without makes them slightly worse at things, which they noticed and came up with their own explanations for.</dd>
+<dt>Nothing made up</dt><dd>The referee can't make up places, people or facts, and can't change the record except through the code. New people can only be added by a separate world-building step, within limits the game sets. Two were added in this run.</dd>
+</dl>
+</section>
+
+<section class="sec" id="trace">
+<div class="sec-h"><h2>One turn, start to finish</h2><span class="note">Round 7: Hester and Kit</span></div>
+<div class="prose"><p>The evening of day 2. Hester Gimbal is in Dunn's fields across the river, with Hobb, Farmer Dunn and Kit, the miller's lad. This is her whole turn as the run's record holds it.</p></div>
+
+<div class="card">
+<span class="lbl">1 · What she was handed</span>
+<p %T%>Her briefing ran to 19,564 characters, in ten parts: who she is, in her own words; what she knows; what everyone in town knows; "Lately", her last few rounds word for word, about 12,800 characters; and then where she is, her state, what she's working on, the people she's met, the places she's been, and the talk going around. The last part reads exactly like this:</p>
+<div class="tr-box">## Where you are
+Dunn&#x27;s Fields and the Mill, evening on day 2, high thin cloud and a warm, still air that smells of cut stalks.
+Since you last acted: it was afternoon on day 2; now it&#x27;s evening on day 2.
+Ways on: west to The Broken Bridge.
+With you: Farmer Dunn, Kit, Hobb Ashcombe.
+
+## You
+Health 10 of 10. Strength +1, Nimbleness +2, Wits +3.
+Money: 2 pennies.
+Carrying: Notebook, Tinderbox (load 2 of 10).
+A bed is paid for at The Smithy, for 4 more nights.
+
+## What you&#x27;re working on
+What you need: You&#x27;ve eaten today. You&#x27;re tired: you didn&#x27;t sleep properly last night.
+What you want: I want to get to the bottom of every mystery in this town, the missing wages and the flood included; I want to prove my inventions work, on the forge floor or the riverbank; I want to help whoever&#x27;s in trouble, and this town has plenty.
+What you&#x27;ve taken on:
+- Dunn&#x27;s Barley: Help bring in Farmer Dunn&#x27;s barley before the rain.
+- The Reeve&#x27;s Wage Box: Find out what became of the reeve&#x27;s wage box.</div>
+<p class="small">Two things in it matter for this turn. "You're tired" means the code takes 1 off every test she makes. And in "Lately", Hobb had just told her that Constance crossed the ford belted to him. That wasn't true; Constance had fallen twice crossing alone (<a href="wrong.html">When It Went Wrong</a>).</p>
+</div>
+
+<div class="card">
+<span class="lbl">2 · What she weighed</span>
+<p %T%>Each reply starts with the options the resident considered, and what each was for.</p>
+<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px"><li style="font-size:14px;color:var(--ink2)">Keep cutting Dunn&#x27;s barley as the light fades, maybe by lantern like Hobb <span class="small">(for: getting more of the crop in before the rain)</span></li><li style="font-size:14px;color:var(--ink2)"><b>Chosen: </b>Give Kit a penny to show me where the Wend drops heavy things by the far pier, while there&#x27;s still a little light <span class="small">(for: finding Agnes&#x27;s wage box)</span></li><li style="font-size:14px;color:var(--ink2)">Wade back across the ford before full dark and sleep in the loft <span class="small">(for: rest, since I&#x27;m worn thin, and keeping my word to Sam about the bellows)</span></li><li style="font-size:14px;color:var(--ink2)">Ask Hobb and Dunn where Constance might have gone after she crossed <span class="small">(for: making sure she&#x27;s safe)</span></li></ul>
+</div>
+
+<div class="card">
+<span class="lbl">3 · What she did, and why</span>
+<div class="qbox"><p class="quote">I dig a penny out and press it into Kit&#x27;s muddy palm. &quot;My dear colleague, a penny for your river! Something heavy, iron-bound, about so big. It went off the parapet the night of the flood. Show me the slack water by the far pier, the snags, the deep holes, everywhere the Wend sets things down, quick, before the light&#x27;s gone!&quot; I follow him down the bank with my notebook open and sketch every eddy he points at.</p><p class="src">What she did</p></div>
+<div class="qbox"><p class="quote">Hobb crossed with Constance, so she isn&#x27;t drowned, only gone somewhere, and that worry can wait till morning. Kit has watched this water all his life and the light is nearly gone, so a penny for his eyes now is worth more than another stook. Once I know where the box lies, I&#x27;ll build the grapple from Sam&#x27;s scrap to fish it out for Agnes and the bridge men&#x27;s pay.</p><p class="src">Her private journal line, which nobody in the town sees</p></div>
+</div>
+
+<div class="card">
+<span class="lbl">4 · What the referee did with it</span>
+<p %T%>The referee, a separate copy of Claude, turned her words into commands for the code, in this order. Each answer came from the code, not the referee.</p>
+<ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px"><li style="font-size:14px;color:var(--ink2)"><span class="cmd">look</span><br>Checks where she is, who is with her, and her state: Dunn&#x27;s fields, evening on day 2, two pennies.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">show characters kit · show quests wage_box</span><br>Reads Kit&#x27;s file and the wage box quest. Kit&#x27;s file says he tells what he saw to anyone who is kind to him, gives him a penny, or gives him something to eat.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">say</span><br>Her words are spoken aloud. Hobb, standing nearby, will read them on his next turn.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">trade offer → <span class="ref">REFUSED</span></span><br>Kit isn&#x27;t one of the players, so a penny to him can&#x27;t be a trade. The referee takes another route.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">npc-brief kit</span><br>Kit&#x27;s own copy of Claude is asked to answer, told only who Kit is, what he knows, and what just happened.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">coins -1 gift</span><br>Her pennies go from 2 to 1.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">flag set heard_from_kit</span><br>Hester now knows where the box went. It also makes searching the wreck easier for her: a Wits test of 8 instead of 12.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">remember kit</span><br>A line goes into Kit&#x27;s short memory, which holds six.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">outcome done</span><br>The turn is recorded as done: &quot;Kit paid and told where the box lies.&quot;</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">witnessed → <span class="ref">REFUSED</span> twice, then accepted</span><br>First a wrong label, then a missing file. On the third try Hobb is recorded as seeing it, and learns where the box is too.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">note</span><br>A note is kept for the place, so later rounds know what Kit has told.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">narrate</span><br>The story of the turn goes into her record, for her to read next time.</li><li style="font-size:14px;color:var(--ink2)"><span class="cmd">memory condense</span><br>Nothing to rewrite yet: she still holds her recent rounds word for word.</li></ol>
+</div>
+
+<div class="card">
+<span class="lbl">5 · What Kit said</span>
+<p %T%>Kit's own copy of Claude Sonnet answered in three parts: what he says, what he means to do, and what he'll remember.</p>
+<div class="tr-box">SAY: *closes his fist on the penny, grinning, then goes a bit shy at being called a colleague* &quot;Reckon I can do better than snags, missus. I was on the mill steps the night the bridge went, and I saw something small and green come bobbing down in the flood. It fetched up in the wreck against the far pier, low down on the downstream side. Dunno if it&#x27;s your iron-bound thing, mind, &#x27;cause this one was small. I tried to fish it out twice and the water nearly had me, so don&#x27;t go leaning out there.&quot;
+INTENT: mood: pleased, lead her down the bank, tell her what he saw
+REMEMBER: Hester gave me a penny and called me colleague; she&#x27;s after something heavy and iron-bound that went off the parapet, and I told her about the small green thing at the far pier.</div>
+</div>
+
+<div class="card">
+<span class="lbl">6 · What she was told</span>
+<p %T%>The story that went into her record, word for word. This is all she will know of what happened.</p>
+<div class="tr-box">You dig a penny out and press it into Kit&#x27;s muddy palm. &quot;My dear colleague, a penny for your river!&quot; you say, and describe it: something heavy, iron-bound, about so big, gone off the parapet the night of the flood. You ask him to show you the slack water by the far pier, the snags, the deep holes, everywhere the Wend sets things down, before the light goes.
+
+Kit: His fist closes on the penny, and he goes a bit shy at being called a colleague. &quot;Reckon I can do better than snags, missus. I was on the mill steps the night the bridge went, and I saw something small and green come bobbing down in the flood. Fetched up in the wreck against the far pier, low down on the downstream side. Dunno if it&#x27;s your iron-bound thing, mind, this one was small. I tried to fish it out twice and the water nearly had me, so don&#x27;t go leaning out there.&quot;
+
+He leads you down the bank, and you follow with your notebook open, sketching each eddy he points at while the light goes amber on the water. Hobb is still among the stooks behind you.
+
+The far pier is a dark shape in the dusk, and Kit is waiting to see what you make of it.</div>
+</div>
+
+<div class="card">
+<span class="lbl">What it cost, and what came of it</span>
+<p style="font-size:14px;color:var(--ink2)">Her reply cost about 8 cents and Kit's about 1 cent, if paid by use. The referee's whole round, six turns, cost about 57 cents and took about four minutes.</p>
+<p style="font-size:14px;color:var(--ink2)">Hobb, beside her, learned where the box was too. Robin and Constance later got the same tip from Kit, each by being kind to him. In round 70, Constance fished the box up from exactly where Kit said.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Who does what</h2></div>
+<div class="card scroll"><table class="t">
+<thead><tr><th>Part</th><th>Played by</th><th>A fresh copy</th><th>Works from</th></tr></thead>
+<tbody>
+<tr><td>The six residents</td><td>Claude Opus</td><td>Every turn</td><td>Their briefing, and nothing else</td></tr>
+<tr><td>The referee</td><td>Claude Sonnet</td><td>Every round</td><td>The rules, the town's files and what the code answers. It never decides for a resident</td></tr>
+<tr><td>Agnes, Jory, Kit, Mother Wick and the newcomers</td><td>Claude Sonnet</td><td>Every time they speak</td><td>Only what that person knows, and what just happened</td></tr>
+<tr><td>Everyone else in town</td><td>The referee</td><td></td><td>The town's files</td></tr>
+<tr><td>The world-building step</td><td>Claude Sonnet</td><td>On the world's own turns</td><td>The town's settled facts; it may add people and rumours, within the town's limits</td></tr>
+<tr><td>Rewriting memories</td><td>Claude Opus, as the resident</td><td>Every five rounds</td><td>The resident's own older rounds</td></tr>
+<tr><td>The code</td><td>A program, not an AI</td><td></td><td>Everything. It alone changes the record, rolls the dice and does the sums</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Memory, food and sleep, exactly</h2></div>
+<div class="grid" style="--min:440px;gap:12px">
+<div class="card tight"><b>Memory</b><p style="font-size:14px;color:var(--ink2)">A briefing holds the resident's recent rounds word for word. Every five rounds, the older ones are rewritten by the resident, in their own words, keeping what mattered to them. They also keep a list of up to twenty lessons. The code separately keeps who they've met and where they've been.</p></div>
+<div class="card tight"><b>Food and sleep</b><p style="font-size:14px;color:var(--ink2)">Not having eaten today does nothing. After two days without food a resident is weak: 1 off Strength. A night slept rough leaves them tired: 1 off every test. Two nights without sleep, another 1 off. A night in a bed restores 2 health, a rough night 1. Several residents believed hunger did more than this (<a href="questions.html">Open Questions</a>).</p></div>
+</div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>What a run costs</h2></div>
+<div class="card scroll"><table class="t">
+<thead><tr><th>What</th><th>Cost if paid by use</th></tr></thead>
+<tbody>
+<tr><td>The 80 rounds: the residents' turns $44.13, the referee $45.02, rewriting memories $6.53, the townsfolk $2.47</td><td class="n">$98.14</td></tr>
+<tr><td>The 480 interviews afterwards</td><td class="n">$245.69</td></tr>
+<tr><td>The 190 personality-test sittings</td><td class="n">$49.45</td></tr>
+<tr><td><b>In all</b></td><td class="n"><b>$393.28</b></td></tr>
+</tbody></table></div>
+<p class="small" style="max-width:760px">About $1.23 a round. Everything ran on a Claude subscription, so these are the costs each call reported, as if paid by use, not what was paid.</p>
+</section>
+
+<p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30"): its record and the game's own rules, 29 to 30 October 2026.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>
