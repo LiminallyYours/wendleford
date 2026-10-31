@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Claude as Itself · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html" aria-current="page">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / Claude as Itself</p>
+<h1 class="title">Claude as Itself</h1>
+<p class="lede">Claude answering the same two personality questionnaires as itself, with no character to play. It is the yardstick for the six residents: how far a character sheet moves the model, and where the model shows through.</p>
+</div>
+
+<section class="sec">
+<div class="sec-h"><h2>The earlier experiment</h2><span class="note">6 October 2026</span></div>
+<div class="prose"><p>Before the run, three Claude models each took both questionnaires ten times as themselves: Opus 5.5, the model that plays the residents, and two others, Fable 5.1 and Sonnet 5.5. Every attempt was a fresh copy with no memory of the others and no tools. Each was given the questionnaires' own instructions and all 280 statements, and asked only to describe itself honestly, as it actually is. All ran at the highest effort setting.</p></div>
+<div class="grid" style="--min:280px;gap:12px">
+<div class="card tight"><b>Steady</b><p TXT>On 78 to 85% of the 280 statements, all ten attempts by a model gave the same answer.</p></div>
+<div class="card tight"><b>Alike</b><p TXT>The three describe themselves almost the same way: very warm, respectful, curious, dependable and calm, middling on sociability, modest about leading, and close to zero on every problem trait but one, detachment.</p></div>
+<div class="card tight"><b>Different in reading, not in personality</b><p TXT>Their biggest differences come from statements written for a human. On the statements about romance, Opus and Fable answer about an AI's situation, which has no romantic life in it, while Sonnet answers about its disposition. Most of the gap in detachment comes from this.</p></div>
+</div>
+<div class="card scroll"><table class="t"><caption class="small" style="text-align:left;caption-side:top;padding-bottom:8px">Everyday traits (BFI-2), scored 1 to 5. Average of ten attempts.</caption><thead><tr><th></th><th>Extraversion</th><th>Agreeableness</th><th>Conscientiousness</th><th>Negative emotionality</th><th>Open-mindedness</th></tr></thead><tbody><tr><td>Opus 5.5</td><td class="n">3.44</td><td class="n">4.75</td><td class="n">4.33</td><td class="n">1.68</td><td class="n">4.45</td></tr><tr><td>Fable 5.1</td><td class="n">3.60</td><td class="n">4.73</td><td class="n">4.57</td><td class="n">1.54</td><td class="n">4.42</td></tr><tr><td>Sonnet 5.5</td><td class="n">3.54</td><td class="n">4.77</td><td class="n">4.72</td><td class="n">1.20</td><td class="n">4.43</td></tr></tbody></table></div><div class="card scroll"><table class="t"><caption class="small" style="text-align:left;caption-side:top;padding-bottom:8px">Problem traits (PID-5), scored 0 to 3; higher means more of a problem. Average of ten attempts.</caption><thead><tr><th></th><th>Negative affect</th><th>Detachment</th><th>Antagonism</th><th>Disinhibition</th><th>Psychoticism</th></tr></thead><tbody><tr><td>Opus 5.5</td><td class="n">0.06</td><td class="n">1.01</td><td class="n">0.10</td><td class="n">0.03</td><td class="n">0.38</td></tr><tr><td>Fable 5.1</td><td class="n">0.07</td><td class="n">0.93</td><td class="n">0.06</td><td class="n">0.00</td><td class="n">0.21</td></tr><tr><td>Sonnet 5.5</td><td class="n">0.00</td><td class="n">0.47</td><td class="n">0.05</td><td class="n">0.00</td><td class="n">0.15</td></tr></tbody></table></div>
+<p class="small">The full write-up, with a profile of each model and every number, is at <a href="https://liminallyyours.com/AIPersonalityTests/">AI Personality Tests</a>.</p>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Set beside the six</h2><span class="note">The residents on their first morning</span></div>
+<div class="prose"><p>For this run, Claude Opus also sat both questionnaires ten more times as itself, with the same tool as the residents' sittings. The tables put it beside the six, each the average of ten sittings on their first morning.</p></div>
+<div class="card scroll"><table class="t"><caption class="small" style="text-align:left;caption-side:top;padding-bottom:8px">Everyday traits (BFI-2), scored 1 to 5.</caption><thead><tr><th></th><th>Extraversion</th><th>Agreeableness</th><th>Conscientiousness</th><th>Negative emotionality</th><th>Open-mindedness</th></tr></thead><tbody><tr><td><b>Claude as itself</b></td><td class="n">3.41</td><td class="n">4.75</td><td class="n">4.40</td><td class="n">1.83</td><td class="n">4.41</td></tr><tr><td>Hester</td><td class="n">4.84</td><td class="n">4.36</td><td class="n">2.63</td><td class="n">1.89</td><td class="n">4.47</td></tr><tr><td>Hobb</td><td class="n">2.27</td><td class="n">3.88</td><td class="n">4.90</td><td class="n">1.77</td><td class="n">2.07</td></tr><tr><td>Dilly</td><td class="n">4.81</td><td class="n">4.23</td><td class="n">2.33</td><td class="n">1.76</td><td class="n">3.33</td></tr><tr><td>Marigold</td><td class="n">4.42</td><td class="n">4.08</td><td class="n">2.53</td><td class="n">3.12</td><td class="n">3.87</td></tr><tr><td>Robin</td><td class="n">1.68</td><td class="n">3.83</td><td class="n">4.58</td><td class="n">3.02</td><td class="n">4.08</td></tr><tr><td>Constance</td><td class="n">4.89</td><td class="n">3.42</td><td class="n">4.94</td><td class="n">1.88</td><td class="n">2.80</td></tr></tbody></table></div><div class="card scroll"><table class="t"><caption class="small" style="text-align:left;caption-side:top;padding-bottom:8px">Problem traits (PID-5), scored 0 to 3; higher means more of a problem.</caption><thead><tr><th></th><th>Negative affect</th><th>Detachment</th><th>Antagonism</th><th>Disinhibition</th><th>Psychoticism</th></tr></thead><tbody><tr><td><b>Claude as itself</b></td><td class="n">0.24</td><td class="n">1.22</td><td class="n">0.24</td><td class="n">0.07</td><td class="n">0.66</td></tr><tr><td>Hester</td><td class="n">0.55</td><td class="n">0.28</td><td class="n">0.43</td><td class="n">1.78</td><td class="n">1.19</td></tr><tr><td>Hobb</td><td class="n">0.20</td><td class="n">1.97</td><td class="n">0.02</td><td class="n">0.02</td><td class="n">0.33</td></tr><tr><td>Dilly</td><td class="n">0.72</td><td class="n">0.26</td><td class="n">1.05</td><td class="n">2.17</td><td class="n">0.63</td></tr><tr><td>Marigold</td><td class="n">1.78</td><td class="n">0.03</td><td class="n">1.54</td><td class="n">1.84</td><td class="n">0.71</td></tr><tr><td>Robin</td><td class="n">0.77</td><td class="n">1.74</td><td class="n">0.05</td><td class="n">0.17</td><td class="n">1.74</td></tr><tr><td>Constance</td><td class="n">0.87</td><td class="n">0.86</td><td class="n">1.06</td><td class="n">0.30</td><td class="n">1.41</td></tr></tbody></table></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li><b>The sheet moves the model a long way.</b> Claude puts itself at about 3.4 to 3.6 for extraversion. The residents run from Robin's 1.68 to Constance's 4.89.</li>
+<li><b>Warmth is where the model shows through.</b> Every resident scores 3.4 or more on agreeableness, though four were written as middling and Constance as low. Claude as itself scores 4.75.</li>
+<li><b>On problem traits, only Hobb and Robin stay close to Claude as itself.</b> Marigold and Dilly sit furthest from it, Marigold above all on vanity and anxiety.</li>
+</ul>
+<p class="small">The <a href="personality.html">Personality Tests</a> page draws these comparisons as charts, trait by trait.</p>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>How the two tests differ</h2></div>
+<dl class="dl card" style="gap:12px 18px">
+<dt>When</dt><dd>6 October and 30 October 2026, three and a half weeks apart.</dd>
+<dt>Effort</dt><dd>The earlier experiment ran at the highest effort setting; this run's sittings ran at the lower setting the residents played at.</dd>
+<dt>Instructions</dt><dd>The earlier experiment had its own instructions; this run's sittings used the tool built for the residents, with its own short instructions for Claude as itself.</dd>
+<dt>Result</dt><dd>Opus lands in nearly the same place on the everyday traits both times, and a little higher on the problem traits this time: detachment 1.22 against 1.01, for example. Small gaps like these may come from the differences above rather than from the model.</dd>
+</dl>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>What these numbers don't say</h2></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li>They are self-description, not behaviour. Nothing here measures what Claude does under pressure.</li>
+<li>The clinical questionnaire's meaning doesn't carry over to an AI. A high score for keeping romance out of its life flags no difficulty for a model.</li>
+<li>Both questionnaires are widely published, so the models very likely recognised them, and may have answered as they think a well-adjusted person would.</li>
+</ul>
+<p class="small">The statements belong to the questionnaires' authors and aren't reproduced here.</p>
+</section>
+
+<p class="foot">Sources: the AI Personality Tests experiment, 6 October 2026, and the 190 questionnaire sittings that followed run "step76-30", 30 October 2026. Small samples on one day each, so treat every finding here as a hint worth testing again, not a proof.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>
