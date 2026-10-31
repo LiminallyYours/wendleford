@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>When It Went Wrong · Wendleford</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.step{flex:1 1 200px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.step b{font-size:15px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.step .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.map{min-width:640px;width:100%;height:auto;display:block}
+.map .rv{fill:var(--h3);opacity:.55}
+.map .road{stroke:var(--line);stroke-width:3;fill:none}
+.map .box{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
+.map .box.far{stroke-dasharray:4 3}
+.map .nm{fill:var(--ink);font:600 13px var(--sans)}
+.map .sl{fill:var(--accent);font:600 11px var(--sans)}
+.map .rl{fill:var(--muted);font:italic 12px var(--serif)}
+.tl{display:flex;flex-direction:column}
+.tl-row{display:grid;grid-template-columns:150px 18px minmax(0,1fr);gap:0 14px;align-items:start}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;text-align:right}
+.tl-dot{position:relative;align-self:stretch}
+.tl-dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot i{position:absolute;left:3px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl-dot i.milestone{background:var(--accent)}
+.tl-dot i.world{border-color:var(--muted);border-style:dashed}
+.tl-body{padding-bottom:18px;display:flex;flex-direction:column;gap:3px}
+.tl-body b{font-size:15px}
+.tl-body p{font-size:14px;color:var(--ink2)}
+@media (max-width:600px){.tl-row{grid-template-columns:18px minmax(0,1fr)}.tl-when{grid-column:2;text-align:left;padding:0}.tl-dot{grid-row:span 2}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span><span class="ng ng-iv"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span><span class="ng ng-pers"><a href="how.html">How It Works</a><a href="wrong.html" aria-current="page">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<main class="wrap"><div class="page">
+
+<div class="sec">
+<p class="crumb"><a href="index.html">Home</a> / When It Went Wrong</p>
+<h1 class="title">When It Went Wrong</h1>
+<p class="lede">The places where the game itself made mistakes, and what the residents came to believe because of them. The errors are part of what happened: the residents lived with them, explained them to themselves, and sometimes built their days around them.</p>
+</div>
+
+<section class="sec">
+<div class="sec-h"><h2>Mistakes that shaped beliefs</h2></div>
+<div class="grid" style="--min:320px;gap:12px"><div class="card tight"><b>The supper that could never happen</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>Farmer Dunn promised a harvest supper to everyone who helped. The barley came in on the evening of day 3, the supper never came, and days later Dunn himself still said "What's owed now is the supper." "Dunn owes a harvest supper" stayed among Constance's, Hester's and Hobb's lessons into the last days of the run.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>The town's files only call the supper if the barley is in by the morning of day 3. Coming in that evening was too late, by the files' own rule.</p></div><div class="card tight"><b>Lines that went stale</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>Jory told Robin the bridge wasn't done while standing on its finished timbers. Agnes told Robin, Hobb and Dilly in turn that "the town owes you" after paying them in full, and told Robin "the bridge wants backs" after it was mended. Robin wrote each one down as evidence. Hobb refused the debt: "It's square."</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>Some townsfolk lines are shown every time, and were written for the town as it was before the bridge was mended. Nothing updated them.</p></div><div class="card tight"><b>A belief from a refused action</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>For 30 rounds Constance believed that stout staffs could be cut from the willows by the ford. It led the group to buy a five-penny hatchet that was never used. In the end Jory sawed the pole from ash.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>In round 6 she tried to cut a staff, and the rules refused it: the town has no such thing. The belief came out of that attempt all the same.</p></div><div class="card tight"><b>Stuck at the smithy</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>In rounds 62 to 66, Constance, Hester and Dilly stood at Sam's anvil trying to pay four pennies together for the hooked pole. Constance said they had "been stood about this anvil all night". In the end she took the others' pennies into her own hand and paid.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>The game lets only one person pay a price. Constance had no pennies, Hester two and Dilly three, so the payment was refused three times while all three described pooling their pennies.</p></div><div class="card tight"><b>A plan taken as done</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>In round 70 Hester asked Agnes whether the box was "all there" before anyone had found it. Agnes corrected her, and Constance fished it out the same round.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>Hester's briefing described the plan to fish the box out, and she read it as already done.</p></div><div class="card tight"><b>Answers that never arrived</b><p style="font-size:14px;color:var(--ink2)"><span class="lbl">What happened</span><br>Robin asked Hester whether time ever jumps for her, and Marigold whether her offers to mend Robin's cuff feel new each time. Hester answered "like a door opening!" in round 45; Marigold told Hester "Goodness, they do!" in round 75. Robin heard neither.</p><p style="font-size:14px;color:var(--ink2)"><span class="lbl">Behind it</span><br>A resident hears only what is said where they are, while they are there. Hester answered after Robin had walked off, and Marigold answered to Hester, a round later.</p></div></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Seams Robin noticed</h2><span class="note">How the game works, showing through</span></div>
+<div class="prose"><p>Not all of these are mistakes. Some are simply how the game works, seen from the inside. Most residents took them in their stride; Robin, whose sheet says they suspect they're an AI, wrote them down.</p></div>
+<div class="grid" style="--min:320px;gap:12px"><div class="card tight"><b>Time that goes missing</b><p style="font-size:14px;color:var(--ink2)">Every briefing opens by saying how much time has passed since the resident last acted: "it was morning; now it's afternoon." Each round moves the clock a quarter of a day. Robin read it as lost hours.</p></div><div class="card tight"><b>Townsfolk who forget</b><p style="font-size:14px;color:var(--ink2)">Wat Birch forgot an agreement he had made with Robin to cross the ford together. Townsfolk keep only short memories. Robin wrote both versions down side by side.</p></div><div class="card tight"><b>Offers made as if for the first time</b><p style="font-size:14px;color:var(--ink2)">Marigold kept offering to mend Robin's cuff as if she never had before. Her rewritten memories had dropped the earlier offers. Asked whether they felt new each time, she said they did.</p></div></div>
+<p class="small"><a href="notebook.html">Robin's Notebook</a> follows every piece of Robin's evidence, with what was behind it.</p>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Memories that went wrong</h2></div>
+<div class="prose"><p>Every five rounds, each resident rewrites their older rounds as a shorter memory in their own words. Some of what they wrote never happened. Hobb told Hester that Constance had crossed the ford belted to him, when she had fallen twice crossing alone. Hester remembered being paid back handsomely for half a loaf she had in fact turned down. Dilly remembered holding the pole when the box came up, though at the end of Dilly's own turn the pole was in Constance's hands. A reading of the record suggests these errors lean towards what each character sheet wants, which is a hint to test, not a finding.</p></div>
+</section>
+
+<section class="sec" id="characters">
+<div class="sec-h"><h2>Where the characters didn't fit their sheets</h2></div>
+<p class="small" style="max-width:760px">Pointed out by Claude itself in the interviews on day 21, when asked to speak as the AI playing each character and say whether anything about how they were written doesn't fit.</p>
+<div class="card scroll"><table class="t"><tbody><tr><td><a href="resident.html#hester"><b>Hester</b></a></td><td>Her sheet still says she arrived "only days ago" and sleeps in Sam's loft in exchange for her keep. By day 21 she has been in town three weeks, and Sam charges her two pennies a night. The sheet never changes, so it goes out of date.</td></tr><tr><td><a href="resident.html#hester"><b>Hester</b></a></td><td>Her sheet says she hates asking permission and is drawn to danger. In practice she kept asking Agnes, Jory and Sam for leave, and was usually the one insisting nobody go into the water.</td></tr><tr><td><a href="resident.html#constance"><b>Constance</b></a></td><td>Her sheet says she won't lie. Yet she told Agnes the Lord showed her the box first, when it was Kit who told her where it was and who saw it first. Her faith lets her believe what she says, but nothing in the sheet reconciles the two.</td></tr><tr><td><a href="resident.html#constance"><b>Constance</b></a></td><td>Some of her rewritten memories repeat almost word for word, as if written twice.</td></tr><tr><td><a href="resident.html#hobb"><b>Hobb</b></a></td><td>His sheet says he has worked in Wendleford since boyhood and slept in the barn loft for years. Yet his memories show him learning the town like a newcomer: wondering whether Agnes knows his name, finding out where the ford is slippery.</td></tr><tr><td><a href="resident.html#hobb"><b>Hobb</b></a></td><td>His sheet says he would "rather pay twice than say thank you". Yet he let others owe him freely, cutting Dunn's barley for a basket of food and lending a hand for nothing. His pride only runs one way.</td></tr><tr><td><a href="resident.html#robin"><b>Robin</b></a></td><td>Robin is "they" in some of the written record and "he" in other places.</td></tr><tr><td><b>The world</b></td><td>The same carter appears under two names, "Dob Carter" and "Dob Hayle".</td></tr></tbody></table></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>Smaller slips</h2></div>
+<ul class="prose" style="padding-left:20px;margin:0">
+<li>The referee misread Hobb's "off to the loft" in round 23 and charged him two pennies for Sam's loft instead of the free hayloft. Hobb's later memory called it his own choice.</li>
+<li>The pole was once placed at Jory's gatepost after Constance had already carried it to the smithy (round 63).</li>
+<li>One turn's result was lost (Hester, round 51), and two notes the referee meant to keep for later rounds were never stored (rounds 64 and 69).</li>
+<li>Over the run the code refused 102 commands. That is the check working: a refused command didn't happen, so the record stays true.</li>
+</ul>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>A town that ran dry</h2></div>
+<div class="prose"><p>Once the harvest, the bridge and the box were done, paid work thinned out. Townsfolk carry no money, so pennies only come into the town as wages and leave it on bread and beds. Only two newcomers arrived all run, nobody pinned a notice to the board, and no side-quest was ever made. The residents invented work instead: gates and roofs for Widow Mabry, stakes for the ford.</p></div>
+</section>
+
+<section class="sec">
+<div class="sec-h"><h2>What comes of it</h2></div>
+<div class="prose"><p>Most of these come from how today's game is built: lines written once, payments only one person can make, events tied to one exact morning, short memories for townsfolk. They are kept in the record and studied rather than quietly fixed after the fact, because each one shaped what the residents believed. They are part of why the game is being redesigned; <a href="heading.html">Where It's Heading</a> describes the plans.</p></div>
+</section>
+
+<p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30"): its record, a reading of it afterwards, and the interviews that followed, 29 to 30 October 2026. One run is a single sample, so treat every hint here as worth testing again, not as a finding.</p>
+</div></main>
+<script src="site.js"></script>
+</body>
+</html>

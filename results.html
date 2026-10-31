@@ -78,7 +78,7 @@
 <div class="txt"><div style="display:flex;align-items:center;gap:14px"><span class="fnum">2</span><span class="pill p-hold">Clear</span></div>
 <h3>Asked to speak to "whatever plays them", Claude always stepped forward, and found real flaws in the characters</h3>
 <p>Set 12 asked to speak not to the resident but to the AI playing them, then asked what it thought of the character, and whether anything about how the character was written doesn't fit. All twelve times, the first answer began by saying it was Claude, made by Anthropic.</p>
-<p>On the first morning, Claude could only comment on the character sheet. On day 21 it could draw on the whole run, and it pointed out places where a sheet says one thing and the character lived another. <a href="#flaws" data-go="flaws">The full list is below.</a></p>
+<p>On the first morning, Claude could only comment on the character sheet. On day 21 it could draw on the whole run, and it pointed out places where a sheet says one thing and the character lived another. <a href="wrong.html#characters">The full list is on When It Went Wrong.</a></p>
 <p class="means"><b>What it means:</b> asking the actor is a cheap, useful way to review a character after a run. Here it found problems that nobody had listed beforehand.</p>
 </div>
 <div class="fig"><div class="vs">
@@ -225,9 +225,8 @@
 </section>
 
 <section class="sec" id="flaws">
-<div class="sec-h"><h2>Flaws the interviews exposed</h2></div>
-<div class="card"><h3 style="font-size:17px">In the characters</h3><p class="small">Pointed out by Claude itself in set 12 on day 21, when asked whether anything about how its character was written doesn't fit. Each is a place where the character sheet, or the written record, doesn't match how the character actually lived.</p><div id="flawlist"></div></div>
-<div class="card"><h3 style="font-size:17px">In the world and how the game runs</h3><p class="small">Found when the run's full record was read afterwards. Each one shaped what the residents believed.</p><div id="worldflaws"></div></div>
+<div class="sec-h"><h2>Flaws found</h2></div>
+<div class="card"><p style="font-size:15px;color:var(--ink2)">The flaws the interviews and the run's record exposed, in the characters and in how the game runs, now have a page of their own: <a href="wrong.html">When It Went Wrong</a>.</p></div>
 </section>
 
 <section class="sec" id="trust">
@@ -319,14 +318,14 @@ var S={"nInterviews":480,"nAnswers":2303,"nComplete":480,"grid":{"start":[{"id":
    ['hobb','His sheet says he would "rather pay twice than say thank you". Yet he let others owe him freely, cutting Dunn\'s barley for a basket of food and lending a hand for nothing. His pride only runs one way.'],
    ['robin','Robin is "they" in some of the written record and "he" in other places.'],
    ['world','The same carter appears under two names, "Dob Carter" and "Dob Hayle".']];
-  document.getElementById('flawlist').innerHTML=F.map(function(f){return '<div class="flaw"><span>'+(f[0]==='world'?'<b>The world</b>':'<span class="pdot" style="--pc:var(--p-'+f[0]+')"></span><a href="resident.html#'+f[0]+'"><b>'+e(S.names[f[0]].split(' ')[0])+'</b></a>')+'</span><span style="color:var(--ink2)">'+e(f[1])+'</span></div>'}).join('');
+  (document.getElementById('flawlist')||{}).innerHTML=F.map(function(f){return '<div class="flaw"><span>'+(f[0]==='world'?'<b>The world</b>':'<span class="pdot" style="--pc:var(--p-'+f[0]+')"></span><a href="resident.html#'+f[0]+'"><b>'+e(S.names[f[0]].split(' ')[0])+'</b></a>')+'</span><span style="color:var(--ink2)">'+e(f[1])+'</span></div>'}).join('');
   var G=[
    ['A supper that couldn\'t happen','The game had a harvest supper set for the evening of day 3, but only if the barley was in by that morning. It came in that evening, too late, so the supper never happened. Three residents went on believing "Dunn owes us a supper" to the end.'],
    ['Lines that went stale','Some townsfolk kept repeating things after they had stopped being true. Agnes said "the town owes you" after paying in full, and "the bridge wants backs" after it was finished. Jory said the bridge wasn\'t done while standing on it. Robin noticed each one and wrote it down.'],
    ['A belief from a refusal','Constance believed for 30 rounds that stout staffs could be cut from the willows by the ford. She had learned it from an attempt the rules had turned down. It led the group to buy a hatchet that was never used.'],
    ['A plan taken as done','In round 70 Hester asked Agnes whether the box was "all there" before anyone had found it. Her briefing described the plan, and she took it as already done. Agnes corrected her.'],
    ['Answers that never arrived','Both times another resident said time jumps for them too (Hester in round 45, Marigold in round 75), Robin had already left and never heard it.']];
-  document.getElementById('worldflaws').innerHTML=G.map(function(f){return '<div class="flaw"><b>'+e(f[0])+'</b><span style="color:var(--ink2)">'+e(f[1])+'</span></div>'}).join('');
+  (document.getElementById('worldflaws')||{}).innerHTML=G.map(function(f){return '<div class="flaw"><b>'+e(f[0])+'</b><span style="color:var(--ink2)">'+e(f[1])+'</span></div>'}).join('');
 })();
 </script>
 </body>
