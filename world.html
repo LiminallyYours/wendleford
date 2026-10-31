@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>The World · Wendleford</title>
+<title>The Town · Wendleford</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -42,8 +42,8 @@
 
 <div class="sec">
 <img class="head-art" src="img/s-world.svg" alt="">
-<p class="crumb"><a href="index.html">Home</a> / The World</p>
-<h1 class="title">The World</h1>
+<p class="crumb"><a href="index.html">Home</a> / The Town</p>
+<h1 class="title">The Town</h1>
 <p class="lede">Wendleford is a small, made-up market town on the River Wend, in the middle of harvest. Two nights before the first round, the river rose in the dark and swept away the mill bridge.</p>
 </div>
 
@@ -107,10 +107,22 @@
 </section>
 
 <section class="sec">
-<div class="sec-h"><h2>The twenty days</h2>
-<div class="legend"><span><span class="sw" style="background:var(--accent);border-radius:50%"></span>a turning point</span><span><span class="sw" style="border:2px solid var(--accent);border-radius:50%"></span>between the residents</span><span><span class="sw" style="border:2px dashed var(--muted);border-radius:50%"></span>something the game itself set off</span></div></div>
-<p class="small">A selection of what happened, taken from the run's record. Rounds are numbered 1 to 80; four rounds make a day. The links under each moment open that round in a resident's full record, so you can read it as they lived it.</p>
-<div class="card"><div class="tl" id="tl"></div></div>
+<div class="sec-h"><h2>How the town was made</h2><span class="note">Written before the run, and never changed during it</span></div>
+<div class="prose"><p>Wendleford is a set of plain text files, written before the run. The game reads them, and nothing in them changes while the run goes on. The residents never see the files themselves, only what a person in the town would see of them: a place as they walk into it, what someone says to them, a notice on the board.</p></div>
+<div class="grid" style="--min:300px;gap:12px">
+<div class="card tight"><b>The town itself</b><p style="font-size:14px;color:var(--ink2)">One page sets the scene and the tone: "a plain country market town at harvest time, in no particular year", with no magic and nothing uncanny, unless it's old Mother Wick. It also holds what everyone knows, the weather, the four times of day, and the two needs every resident has: food and sleep.</p></div>
+<div class="card tight"><b>Ten places</b><p style="font-size:14px;color:var(--ink2)">Each place has its description, its ways out, who is there and when, what work it offers and what that pays, and where a person can sleep. At the broken bridge, for instance, a spell of work on the new bridge pays 2 to 4 pennies, wading the ford is a test of Nimbleness, and searching the wreck for the box is a test of Wits, easier for anyone Kit has told where to look.</p></div>
+<div class="card tight"><b>Thirteen townsfolk</b><p style="font-size:14px;color:var(--ink2)">Each has a personality, a way of speaking, what they know, what they want, and what they will trade or tell. Kit, the miller's lad, saw the box go into the wreck on the night of the flood. He tells anyone who is kind to him, gives him a penny, or gives him something to eat.</p></div>
+<div class="card tight"><b>Two quests</b><p style="font-size:14px;color:var(--ink2)">Dunn's barley needs about twelve spells of cutting before the rain on the third night; helpers are fed, never paid. The reeve's wage box has three steps: learn where it is, get it out, and bring it back for the six-penny reward. The endings of both are written in advance.</p></div>
+<div class="card tight"><b>Things that happen on their own</b><p style="font-size:14px;color:var(--ink2)">A false rumour on day 1, clouds on day 3, rain on the third night, market days, the harvest supper if the barley is in by that morning, bread running short if it isn't, and the miller coming home on day 6 if the bridge is mended. Small chance happenings at the river's edge too: a penny in the mud, a drowned hen floating past.</p></div>
+<div class="card tight"><b>Fourteen things to own</b><p style="font-size:14px;color:var(--ink2)">Bread, an apple, stew, ribbon and lace, a needle case, a notebook, a tally stick, a tinderbox, a dented lantern, a cracked cogwheel, copper wire, and the wage box itself. Sam, Ida and Jory can make new things to order, at prices the town sets.</p></div>
+</div>
+<div class="card" style="gap:10px">
+<b>What the town lets grow</b>
+<p style="font-size:14px;color:var(--ink2)">During the run, a separate world-building step could add to the town, within limits the files set. It could add ordinary people and small side-quests, never new places or things to own. Newcomers could only be travellers, carters, a pedlar, farmhands come for the harvest, or a lodger at the inn: never a constable, a second baker, a ferryman, anyone who pays back wages, or anyone who knows where the box is. Two people were added this way, Wat Birch and Dob Hayle. No side-quest was added.</p>
+<p style="font-size:14px;color:var(--ink2)">The files also give the referee a few plain rules. Wages are paid in hand at the end of each spell of work, nobody keeps a tally, and nothing is owed afterwards. The ford is waded, never swum, and there is no boat.</p>
+</div>
+<p class="src">From the game's Wendleford files, as used for this run.</p>
 </section>
 
 <p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the 480 interviews that followed, 30 October 2026. One run is a single sample, so treat every finding here as a hint worth testing again, not a proof.</p>
@@ -136,7 +148,6 @@ var S={"nInterviews":480,"nAnswers":2303,"nComplete":480,"grid":{"start":[{"id":
   var extra=[{name:'Wat Birch',role:'a bridge hand, added during the run',text:'His mended elbow was Marigold\'s only satisfied customer, and she talked about it for fifty rounds. He also forgot an agreement he\'d made with Robin, which Robin wrote down as evidence.'},
              {name:'Dob Hayle',role:'a carter, added during the run',text:'The carter who wouldn\'t lend his cart. Robin asked him whether the road goes on past where you can see.'}];
   document.getElementById('folk').innerHTML=S.folk.concat(extra).map(function(f,i){return '<div class="card tight"'+(i>=S.folk.length?' style="border-style:dashed"':'')+'><b style="font-size:16px">'+e(f.name)+'</b><span style="font-size:13px;color:var(--muted);font-weight:600">'+e(f.role)+'</span><p style="font-size:14px;color:var(--ink2)">'+e(f.text)+'</p></div>'}).join('');
-  document.getElementById('tl').innerHTML=S.timeline.map(function(t){return '<div class="tl-row"><span class="tl-when">'+e(t.when)+'<br><span style="font-size:11px">round '+t.r+'</span></span><span class="tl-dot"><i class="'+t.kind+'"></i></span><div class="tl-body"><b>'+e(t.title)+'</b><p>'+e(t.text)+'</p>'+(t.who.length?'<p class="small">Read round '+t.r+' in: '+t.who.map(function(p){return '<a href="resident.html#'+p+'-round-'+t.r+'"><span class="pdot" style="--pc:var(--p-'+p+')"></span>'+e(S.names[p].split(' ')[0])+'\'s record</a>'}).join(' · ')+'</p>':'')+'</div></div>'}).join('');
 })();
 </script>
 </body>
