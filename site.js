@@ -77,3 +77,30 @@
   document.addEventListener('focusout', hide);
   document.addEventListener('scroll', hide, true);
 })();
+
+// Menu groups: hovering shows a group; a tap or click on its name pins it open; a tap elsewhere, or Escape, closes it.
+(function () {
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav .dd'));
+  if (!groups.length) return;
+  function closeAll(except) {
+    groups.forEach(function (g) { if (g !== except) { g.classList.remove('open'); g.classList.add('closed'); } });
+  }
+  groups.forEach(function (g) {
+    var btn = g.querySelector('.ngh');
+    btn.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var wasOpen = g.classList.contains('open');
+      closeAll(g);
+      if (wasOpen) { g.classList.remove('open'); g.classList.add('closed'); btn.blur(); }
+      else { g.classList.remove('closed'); g.classList.add('open'); }
+    });
+    g.addEventListener('mouseenter', function () { g.classList.remove('closed'); });
+    g.addEventListener('focusin', function () { g.classList.remove('closed'); });
+  });
+  document.addEventListener('click', function (ev) {
+    if (!ev.target.closest('.nav .dd')) { closeAll(null); if (document.activeElement && document.activeElement.closest('.nav .dd')) document.activeElement.blur(); }
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') { closeAll(null); if (document.activeElement && document.activeElement.closest('.nav .dd')) document.activeElement.blur(); }
+  });
+})();

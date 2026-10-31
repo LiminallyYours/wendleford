@@ -212,6 +212,7 @@ section[id],nav[id]{scroll-margin-top:72px}
 .nav .ngh:hover,.nav .dd:focus-within .ngh{color:var(--head-ink);background:rgba(255,255,255,.06)}
 .nav .dd.here .ngh{color:var(--head-ink);box-shadow:inset 0 -2px 0 var(--accent)}
 .nav .menu{display:none;position:absolute;top:100%;left:0;z-index:20;min-width:230px;flex-direction:column;gap:2px;padding:6px;background:var(--head);border:1px solid rgba(255,255,255,.14);border-radius:6px;box-shadow:0 10px 28px rgba(0,0,0,.3)}
-.nav .dd:hover .menu,.nav .dd:focus-within .menu{display:flex}
+.nav .dd:hover .menu,.nav .dd:focus-within .menu,.nav .dd.open .menu{display:flex}
+.nav .dd.closed .menu{display:none}
 .nav .menu a{display:block;padding:9px 12px}
 @media (max-width:760px){.top-in{position:relative}.nav .dd{position:static}.nav .menu{left:0;right:0;min-width:0}}
