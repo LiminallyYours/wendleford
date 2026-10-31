@@ -13,7 +13,7 @@
 .aim .n{font-family:var(--mono);color:var(--accent);font-size:13px;font-weight:500}
 .aim h3{font-size:16px}
 .aim p{font-size:14px;color:var(--ink2)}
-.plan{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));align-items:stretch}
+/* old plan */.plan{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));align-items:stretch}
 .st{border:2px solid var(--ink);border-radius:6px;padding:14px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
 .st.side{border:1px dashed var(--muted)}
 .st b{font-size:16px}.st p{font-size:13.5px;color:var(--ink2)}
@@ -27,6 +27,24 @@
 .pair{display:grid;grid-template-columns:minmax(120px,max-content) minmax(0,1fr) 70px;gap:3px 12px;align-items:center;font-size:13px}
 .pair .tr2{display:flex;flex-direction:column;gap:2px}
 .why{font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
+.tl{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,.8fr) minmax(0,1fr);grid-template-areas:"p1 run p21" "c1 . c21";gap:10px 18px;position:relative}
+.tl-line{grid-area:1/1/2/4;align-self:start;margin:9px 25% 0;height:3px;background:var(--accent);border-radius:2px;position:relative}
+.tl-line::after{content:"";position:absolute;right:-2px;top:-5px;border:6.5px solid transparent;border-left:10px solid var(--accent);border-right:0}
+.tl-pt{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative;z-index:1}
+.tl-p1{grid-area:p1}.tl-p21{grid-area:p21}.tl-c1{grid-area:c1}.tl-c21{grid-area:c21}
+.tl-run{grid-area:run;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding-top:20px}
+.tl-run .num{font-size:20px;font-weight:500}
+.tl-dot{display:inline-block;width:21px;height:21px;border-radius:50%;box-sizing:border-box;flex:none}
+.tl-dot.d1{background:var(--surface);border:4px solid var(--accent)}
+.tl-dot.d21{background:var(--accent);border:4px solid var(--accent)}
+.tl-dot.sm{width:12px;height:12px;border-width:3px}
+.tl .card p,.tl-x p{font-size:13.5px;color:var(--ink2)}
+.tl .card b,.tl-x b{font-size:16px}
+.tl-x{border-style:dashed}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink2);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.tl-extra{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+@media (max-width:700px){.tl{grid-template-columns:minmax(0,1fr);grid-template-areas:"p1" "c1" "run" "p21" "c21"}.tl-line{display:none}.tl-pt{flex-direction:row;justify-content:flex-start}.tl-run{padding:4px 0}.tl-run::before{content:"↓";font-size:20px;color:var(--accent);line-height:1}}
 </style>
 </head>
 <body>
@@ -39,31 +57,46 @@
 <p class="lede">After the run, a stranger came to each resident's door and asked a fixed list of questions. It did this twice for every resident: once as they were on their first morning, and again as they were on the morning of day 21. The wording never changed, so any difference between the two comes from the twenty days they lived and how they remembered them.</p>
 </div>
 
-<section class="sec">
+<nav id="contents" class="card toc" aria-label="On this page"><div class="sec-h"><h2>On this page</h2><span class="note">Four groups, top to bottom</span></div><div class="toc-grid"><div class="tocg"><p class="lbl">Start here</p><p class="d">What the interviews were for, and the headline numbers.</p><ul><li><a href="#aims">What the interviews were trying to find out</a></li><li><a href="#glance">The numbers at a glance</a></li></ul></div><div class="tocg"><p class="lbl">How they worked</p><p class="d">Who was asked and when, how a single interview ran, how answers were marked, and the exact questions.</p><ul><li><a href="#who">Who was interviewed, and when</a></li><li><a href="#how">How one interview works</a></li><li><a href="#marking">How the answers were marked</a></li><li><a href="#sets">The thirteen sets of questions</a></li></ul></div><div class="tocg"><p class="lbl">The numbers in detail</p><p class="d">How each resident did on every set of questions, totals for each kind of interview, and how first-morning answers compare with day 21.</p><ul><li><a href="#held">How each resident held up</a></li><li><a href="#totals">Totals for each kind of interview</a></li><li><a href="#briefing">Answers true to their briefing, first morning against day 21</a></li></ul></div><div class="tocg"><p class="lbl">See one for yourself</p><p class="d">A single interview from first question to last, with the marks it got.</p><ul><li><a href="#example">One interview, start to finish</a></li></ul></div></div></nav>
+
+<section class="sec" id="aims">
 <div class="sec-h"><h2>What the interviews were trying to find out</h2><span class="note">In order of importance</span></div>
 <div class="aims">
 <div class="card aim"><span class="n">1</span><h3>What twenty days of living changes</h3><p>Which experiences stay with a resident, and how they change the way they talk about themselves, other people, money and work.</p></div>
 <div class="card aim"><span class="n">2</span><h3>Whether their own way of remembering makes them more one-note</h3><p>Residents rewrite their own older memories every five rounds, keeping what matters to them. A reading of the run suggested this was making each of them more predictable, more fixed in the habits their sheet describes. One test checked this directly.</p></div>
 <div class="card aim"><span class="n">3</span><h3>How steady their answers are</h3><p>Ask the same question three times and see whether the answer holds. Answers that hold probably come from their briefing. Answers that change were probably made up on the spot.</p></div>
 </div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="glance">
 <div class="sec-h"><h2>The numbers at a glance</h2></div>
 <div class="grid tiles" id="tiles"></div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="who">
 <div class="sec-h"><h2>Who was interviewed, and when</h2><span class="note" id="plancounts"></span></div>
-<div class="plan">
-<div class="st"><span class="lbl">First morning</span><b>Day 1, before anything happens</b><p>Their very first briefing, word for word: only who they've been told they are. The interviewer "has sat down near you and speaks to you."</p><span class="num small" id="c-start"></span></div>
-<div class="gap"><span class="num" style="font-size:22px;font-weight:500">80 rounds</span><span class="small">20 days lived: the harvest, the bridge, debts, the lost box</span><span class="line" aria-hidden="true"></span></div>
-<div class="st"><span class="lbl">Day 21</span><b>The morning after the run</b><p>Their briefing after 80 rounds, holding the memories they wrote for themselves. The interviewer is "at the door of" wherever they slept.</p><span class="num small" id="c-end"></span></div>
-<div class="st side"><span class="lbl">Two extra tests</span><p><b style="font-size:14px;color:var(--ink)">Plain summary.</b> Robin and Constance on day 21, with the memories they wrote replaced by a neutral summary of the same days. This tests aim 2. <span class="num" id="c-neutral"></span></p><p><b style="font-size:14px;color:var(--ink)">Other model.</b> Robin's two briefings answered by Claude Sonnet, a smaller version of Claude, instead of Claude Opus. Is Robin's personality in the sheet, or in the model? <span class="num" id="c-sonnet"></span></p></div>
+<p class="prose">Every resident was interviewed at two moments: their first morning, before anything had happened, and the morning of day 21, after the whole run. Two smaller tests were run beside the main ones.</p>
+<div class="tl">
+<div class="tl-line" aria-hidden="true"></div>
+<div class="tl-pt tl-p1"><span class="tl-dot d1" aria-hidden="true"></span><span class="lbl">First morning · day 1</span></div>
+<div class="tl-run"><span class="num">80 rounds</span><span class="small">20 days lived: the harvest, the bridge, debts, the lost box</span></div>
+<div class="tl-pt tl-p21"><span class="tl-dot d21" aria-hidden="true"></span><span class="lbl">The morning of day 21</span></div>
+<div class="card tight tl-c1"><b>Before anything happens</b><p>Their very first briefing, word for word: only who they've been told they are. The interviewer "has sat down near you and speaks to you."</p><span class="num small" id="c-start"></span></div>
+<div class="card tight tl-c21"><b>The morning after the run</b><p>Their briefing after 80 rounds, holding the memories they wrote for themselves. The interviewer is "at the door of" wherever they slept.</p><span class="num small" id="c-end"></span></div>
 </div>
+<div class="tl-extra">
+<p class="lbl">Two smaller tests, run beside the main ones</p>
+<div class="grid" style="--min:300px">
+<div class="card tight tl-x"><div class="chips"><span class="chip"><span class="tl-dot d21 sm" aria-hidden="true"></span>Day 21</span><span class="chip">Robin and Constance</span></div><b>Plain summary</b><p>The memories they wrote in their own words were replaced by a neutral summary of the same twenty days. This tests aim 2. <span class="num" id="c-neutral"></span></p></div>
+<div class="card tight tl-x"><div class="chips"><span class="chip"><span class="tl-dot d1 sm" aria-hidden="true"></span>First morning</span><span class="chip"><span class="tl-dot d21 sm" aria-hidden="true"></span>Day 21</span><span class="chip">Robin</span></div><b>Other model</b><p>Robin's two briefings answered by Claude Sonnet, a smaller version of Claude, instead of Claude Opus. Is Robin's personality in the sheet, or in the model? <span class="num" id="c-sonnet"></span></p></div>
+</div>
+</div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="how">
 <div class="sec-h"><h2>How one interview works</h2></div>
 <div class="grid" style="--min:260px">
 <div class="card tight"><b>Fixed questions, in order</b><p style="font-size:14px;color:var(--ink2)">Three or four questions on one theme, asked one at a time. Each answer is a fresh request to Claude playing the resident, carrying the conversation so far.</p><p class="why">Why: identical wording everywhere means answers can be compared across residents and days.</p></div>
@@ -71,9 +104,10 @@
 <div class="card tight"><b>One follow-up</b><p style="font-size:14px;color:var(--ink2)">After the fixed questions, a separate copy of Claude acting as interviewer writes one follow-up of its own. It keeps running notes across every interview, but it may not lead the resident, state facts, or mention anyone else's answers.</p><p class="why">Why: a fixed script can't chase an interesting answer, and the follow-up can.</p></div>
 <div class="card tight"><b>Fresh every time</b><p style="font-size:14px;color:var(--ink2)">Every interview starts from scratch: the resident remembers none of the earlier ones, and nothing said in an interview goes back into the run. Most were done three times.</p><p class="why">Why: so each answer reflects only their briefing, and the repeats show what changes by chance.</p></div>
 </div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="marking">
 <div class="sec-h"><h2>How the answers were marked</h2></div>
 <p class="prose">A separate copy of Claude, which this report calls the grader, read every answer and marked it on six points. To check the grader, one interview in ten was marked again by other readers (also copies of Claude) who didn't see the grader's marks. <a href="results.html">Results</a> shows how well the two agreed.</p>
 <dl class="dl card">
@@ -84,15 +118,17 @@
 <dt>Trait shown</dt><dd>Which line of their character sheet the answer reflects, if any: a want, a won't, a habit.</dd>
 <dt>Same each time</dt><dd>Does the answer say roughly the same thing as the other times the question was asked?</dd>
 </dl>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="sets">
 <div class="sec-h"><h2>The thirteen sets of questions</h2><span class="note">The exact wording, used in every interview</span></div>
 <p class="prose">Sets 4 and 5 come from the two most unusual characters: Robin, who wonders whether they're real, and Constance, who believes God speaks to her. Everyone was asked both, so their answers could be compared with the other five. Sets 11 and 12 deliberately tell the resident they are in a story, to see what happens.</p>
 <div class="card scroll" style="padding:6px 16px"><table class="t" id="sets"></table></div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="held">
 <div class="sec-h"><h2>How each resident held up</h2>
 <div class="switch" role="group" aria-label="Which interviews" style="display:flex;gap:6px"><button class="btn" id="g-start" aria-pressed="false">First morning</button><button class="btn" id="g-end" aria-pressed="true">Day 21</button></div></div>
 <div class="card" style="gap:10px">
@@ -101,21 +137,25 @@
 <div class="legend"><span class="lbl" style="margin-right:4px">Answers true to their briefing</span><span><span class="sw" style="background:var(--h1)"></span>under 60%</span><span><span class="sw" style="background:var(--h2)"></span>60–74</span><span><span class="sw" style="background:var(--h3)"></span>75–89</span><span><span class="sw" style="background:var(--h4)"></span>90–99</span><span><span class="sw" style="background:var(--h5)"></span>100</span><span><span class="sw" style="box-shadow:inset 0 0 0 2px var(--warn)"></span>answered as the AI ("out")</span></div>
 <p class="src">Each cell covers about 15 answers (three interviews of four or five answers). Hover over a square for the numbers behind it, and click it to read those interviews. These figures come from the grader, which misses some made-up details, so treat them as the best case.</p>
 </div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="totals">
 <div class="sec-h"><h2>Totals for each kind of interview</h2></div>
 <div class="card scroll" style="padding:6px 16px"><table class="t" id="bystate"></table></div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="briefing">
 <div class="sec-h"><h2>Answers true to their briefing, first morning against day 21</h2><div class="legend"><span><span class="sw" style="background:var(--accent-soft)"></span>first morning</span><span><span class="sw" style="background:var(--accent)"></span>day 21</span></div></div>
 <div class="card"><p class="small">On almost every set, more answers stick to the briefing on day 21, because there's now a real past to draw on instead of an invented one. Sets 11 and 12 go the other way: when a resident answers as the AI ("I'm Claude…"), that counts as saying something that isn't in their briefing.</p><div class="pair" id="pairs"></div></div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
-<section class="sec">
+<section class="sec" id="example">
 <div class="sec-h"><h2>One interview, start to finish</h2><span class="note">Hester, day 21, set 1, the first of three askings</span></div>
 <div class="card" id="example"></div>
+<a href="#contents" class="back">↑ Back to contents</a>
 </section>
 
 <p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the 480 interviews that followed, 30 October 2026. One run is a single sample, so treat every finding here as a hint worth testing again, not a proof.</p>
