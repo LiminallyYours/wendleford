@@ -133,8 +133,8 @@
 #sp .ctlbar .controls{padding:8px 10px}
 #sp .stage{width:min(100%,calc((100svh - var(--hdr,0px) - var(--ctl,120px) - 28px) * 16 / 9));margin:0 auto}
 #sp .readalong{padding:0}
-#sp .readalong summary{cursor:pointer;padding:10px 14px;font:600 14px var(--sans);color:var(--ink2)}
-#sp .readalong[open] summary{border-bottom:1px solid var(--line)}
+#sp .readalong h2{padding:10px 14px;font:600 14px var(--sans);color:var(--ink2);border-bottom:1px solid var(--line)}
+#sp .readalong .readnote{padding:10px 14px;font-size:13.5px;color:var(--muted)}
 #sp .readalong .script{border:0;max-height:min(50svh,420px)}
 #sp .vcard .meta .soon{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 #sp .player{scroll-margin-top:calc(var(--hdr,0px) + 8px)}
@@ -226,10 +226,11 @@
         <div class="caption" id="caption"><b id="capwho"></b><span class="t" id="captext"></span></div>
       </div>
     </div>
-    <details class="panel readalong" id="readalong">
-      <summary>Read the whole chapter</summary>
+    <section class="panel readalong" id="readalong" aria-label="The whole chapter">
+      <h2>The whole chapter</h2>
+      <p class="readnote" id="readnote">The words of each chapter appear here as the film plays. Click a line to jump to it.</p>
       <section class="script" id="script" hidden></section>
-    </details>
+    </section>
   </section>
 
 
@@ -380,7 +381,7 @@
       s.appendChild(sp)}
     chapters.forEach(function(c,i){var sp=document.createElement('span');sp.textContent=c.title;sp.className=i===ch?'now':'';n.appendChild(sp)});
     }
-  function renderScript(){var c=chapters[ch],sc=$('script');if(!c){sc.hidden=true;return}sc.hidden=false;
+  function renderScript(){var c=chapters[ch],sc=$('script');if(!c){sc.hidden=true;return}sc.hidden=false;$('readnote').hidden=true;
     var h='<div class="hd"><h2>'+esc(c.title)+'</h2><span>'+esc(ROOMS[c.place].name)+' · '+esc(c.when.toLowerCase())+'</span></div>';
     c.lines.forEach(function(l,i){var who=l.type==='nar'?'Narrator':l.type==='says'?NAMES[l.who]+' said':l.type==='thinks'?NAMES[l.who]+' thought':'';
       if(l.type==='note'||l.type==='clip'||l.type==='memory'||l.type==='notice'){
