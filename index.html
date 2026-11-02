@@ -15,7 +15,28 @@
 .go p{color:var(--ink2);font-size:14.5px}
 .idea{font-size:14px;color:var(--ink2)}
 .go .arrow{font-family:var(--mono);color:var(--accent);margin-top:auto;font-size:13px}
-@media (max-width:600px){.hero h1{font-size:32px}.hero p{font-size:16px}}
+.moment{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:0;padding:0;overflow:hidden}
+.moment .m-img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block}
+.moment .m-body{display:flex;flex-direction:column;gap:14px;padding:26px 28px}
+.moment .m-q{margin:0;font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink)}
+.moment .m-who{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.moment .m-who img{width:30px;height:30px;border-radius:50%}
+.moment .m-txt{font-size:15px;color:var(--ink2)}
+.moment .m-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 18px;border-radius:8px;background:var(--accent);color:var(--on-accent);font-weight:600;text-decoration:none}
+.moment .m-btn:hover{color:var(--on-accent);filter:brightness(1.08)}
+.ideas{margin:0;display:flex;flex-direction:column;max-width:960px}
+.ideas .row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;padding:10px 0;border-top:1px solid var(--line)}
+.ideas .row:first-child{border-top:0;padding-top:0}
+.ideas dt{font-weight:700;font-size:15px}
+.ideas dd{margin:0;font-size:14px;color:var(--ink2);line-height:1.5}
+.contents{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px 32px;max-width:1040px}
+.cg{display:flex;flex-direction:column;gap:8px}
+.cg ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.cg li{display:flex;flex-direction:column;gap:1px;font-size:14px;line-height:1.4}
+.cg li a{font-weight:600;text-decoration:none}
+.cg li span{color:var(--muted);font-size:13px}
+@media (max-width:760px){.moment{grid-template-columns:minmax(0,1fr)}.moment .m-img{min-height:0;height:auto;aspect-ratio:16/9}.moment .m-body{padding:20px}.moment .m-q{font-size:18px}}
+@media (max-width:600px){.hero h1{font-size:32px}.hero p{font-size:16px}.ideas .row{grid-template-columns:minmax(0,1fr);gap:3px}}
 </style>
 </head>
 <body>
@@ -54,31 +75,58 @@
 </div>
 </section>
 <section class="sec">
-<div class="sec-h"><h2>The ideas you'll meet</h2><span class="note">In the order they come up</span></div>
-<div class="grid" style="--min:300px;gap:12px">
-<div class="card tight"><b>Residents</b><p class="idea">The six characters the simulation is about: <span class="nm-dot"><img src="img/p-hester.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Hester</span>, <span class="nm-dot"><img src="img/p-hobb.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Hobb</span>, <span class="nm-dot"><img src="img/p-dilly.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Dilly</span>, <span class="nm-dot"><img src="img/p-marigold.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Marigold</span>, <span class="nm-dot"><img src="img/p-robin.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Robin</span> and <span class="nm-dot"><img src="img/p-constance.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Constance</span>. On every turn a fresh copy of Claude plays the resident, working only from their briefing (below). Nobody else decides for them.</p></div>
-<div class="card tight"><b>Character sheet</b><p class="idea">The short written description each resident was built from: who they are, what they want, what they won't do, how they tend to behave. It's written before the run and never changes during it.</p></div>
-<div class="card tight"><b>Townsfolk</b><p class="idea">Everyone else in town: the baker, the reeve, the carpenter and so on. They aren't the subject of the study. Four who matter most to the story each speak through their own copy of Claude, told only what that person would know; the referee voices the rest.</p></div>
-<div class="card tight"><b>Rounds, turns and days</b><p class="idea">The run moves in rounds. In each round every resident takes one turn, in an order shuffled at the start of the round and balanced so that, over the run, each resident goes first about equally often. Four rounds make a day (morning, afternoon, evening, night). This run lasted 80 rounds: twenty days. "Round 45" means the 45th round of the run.</p></div>
-<div class="card tight"><b>The briefing</b><p class="idea">At the start of every turn, the resident is handed a written briefing holding everything they know: who they are, what they remember, where they are, what they have, and what was said near them. It's all they see. They never see the rules, the dice or anyone else's thoughts.</p></div>
-<div class="card tight"><b>The rules and the referee</b><p class="idea">The game's rules are written as computer code. The code rolls the dice, does the arithmetic and keeps the official record of the world: where everyone is and what they have. The referee, a separate copy of Claude, takes what a resident says they do, runs it through the code, and tells the resident exactly what the code reported. If the code refuses, it didn't happen. The referee may not invent places, people or facts.</p></div>
-<div class="card tight"><b>Memories and lessons</b><p class="idea">A briefing holds only the last five rounds in full. Every five rounds, the resident is shown their older rounds and rewrites them as a shorter memory in their own words, keeping what mattered to them. They also keep a list of up to twenty lessons learned. Apart from who they've met and where they've been, that's all they keep of the past.</p></div>
-<div class="card tight"><b>The interviews</b><p class="idea">After the run, a stranger asked each resident the same sets of questions on their first morning and again on day 21. There are thirteen sets; most were asked three times over, and one, about the lost wage box, only on day 21. With two side tests, that made 480 interviews.</p></div>
-<div class="card tight"><b>The grader</b><p class="idea">Another copy of Claude that marked every interview answer on six points. The two that matter most: did the resident stay in character, and was everything they said about their own life true to their briefing, or made up?</p></div>
-<div class="card tight"><b>The personality tests</b><p class="idea">After the run, each resident also sat two standard personality questionnaires, ten times on their first morning and ten times on day 21. They show how residents describe themselves, which can be set beside their character sheets, the average person and Claude answering as itself.</p></div>
+<div class="card moment">
+<img class="m-img" src="img/story-bridge.jpg" alt="A painting of the new bridge over the River Wend, from the film">
+<div class="m-body">
+<span class="lbl">From the first film · Found or given?</span>
+<blockquote class="m-q">“Reeve, the Lord showed me your green box this morning, plain as paint, low on the downstream side of the far pier, and He's kept me for it. I'll be the one puts it in your hand, mark me.”</blockquote>
+<p class="m-who"><img src="img/p-constance.svg" alt="">Constance, one of the six residents, on the seventh night</p>
+<p class="m-txt">The flood swept away the bridge, and with it the iron box holding the wages for the men rebuilding it. Over eighteen days, several of the residents each have a hand in getting it back. When it finally comes out of the river, was it found, or given?</p>
+<a class="m-btn" href="story.html"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2 L12 7 L3 12 Z" fill="currentColor"/></svg>Watch the film · about 12 minutes</a>
+</div>
 </div>
 </section>
 <section class="sec">
+<div class="sec-h"><h2>The ideas you'll meet</h2><span class="note">In the order they come up</span></div>
+<dl class="ideas">
+<div class="row"><dt>Residents</dt><dd>The six characters the simulation is about: <span class="nm-dot"><img src="img/p-hester.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Hester</span>, <span class="nm-dot"><img src="img/p-hobb.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Hobb</span>, <span class="nm-dot"><img src="img/p-dilly.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Dilly</span>, <span class="nm-dot"><img src="img/p-marigold.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Marigold</span>, <span class="nm-dot"><img src="img/p-robin.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Robin</span> and <span class="nm-dot"><img src="img/p-constance.svg" width="22" height="22" alt="" style="display:inline-block;vertical-align:-6px;margin-right:4px;border-radius:50%">Constance</span>. On every turn a fresh copy of Claude plays the resident, working only from their briefing (below). Nobody else decides for them.</dd></div>
+<div class="row"><dt>Character sheet</dt><dd>The short written description each resident was built from: who they are, what they want, what they won't do, how they tend to behave. It's written before the run and never changes during it.</dd></div>
+<div class="row"><dt>Townsfolk</dt><dd>Everyone else in town: the baker, the reeve, the carpenter and so on. They aren't the subject of the study. Four who matter most to the story each speak through their own copy of Claude, told only what that person would know; the referee voices the rest.</dd></div>
+<div class="row"><dt>Rounds, turns and days</dt><dd>The run moves in rounds. In each round every resident takes one turn, in an order shuffled at the start of the round and balanced so that, over the run, each resident goes first about equally often. Four rounds make a day (morning, afternoon, evening, night). This run lasted 80 rounds: twenty days. "Round 45" means the 45th round of the run.</dd></div>
+<div class="row"><dt>The briefing</dt><dd>At the start of every turn, the resident is handed a written briefing holding everything they know: who they are, what they remember, where they are, what they have, and what was said near them. It's all they see. They never see the rules, the dice or anyone else's thoughts.</dd></div>
+<div class="row"><dt>The rules and the referee</dt><dd>The game's rules are written as computer code. The code rolls the dice, does the arithmetic and keeps the official record of the world: where everyone is and what they have. The referee, a separate copy of Claude, takes what a resident says they do, runs it through the code, and tells the resident exactly what the code reported. If the code refuses, it didn't happen. The referee may not invent places, people or facts.</dd></div>
+<div class="row"><dt>Memories and lessons</dt><dd>A briefing holds only the last five rounds in full. Every five rounds, the resident is shown their older rounds and rewrites them as a shorter memory in their own words, keeping what mattered to them. They also keep a list of up to twenty lessons learned. Apart from who they've met and where they've been, that's all they keep of the past.</dd></div>
+<div class="row"><dt>The interviews</dt><dd>After the run, a stranger asked each resident the same sets of questions on their first morning and again on day 21. There are thirteen sets; most were asked three times over, and one, about the lost wage box, only on day 21. With two side tests, that made 480 interviews.</dd></div>
+<div class="row"><dt>The grader</dt><dd>Another copy of Claude that marked every interview answer on six points. The two that matter most: did the resident stay in character, and was everything they said about their own life true to their briefing, or made up?</dd></div>
+<div class="row"><dt>The personality tests</dt><dd>After the run, each resident also sat two standard personality questionnaires, ten times on their first morning and ten times on day 21. They show how residents describe themselves, which can be set beside their character sheets, the average person and Claude answering as itself.</dd></div>
+</dl>
+</section>
+<section class="sec">
 <div class="sec-h"><h2>Every page</h2><span class="note">Grouped as in the menu</span></div>
-<h3 class="lbl">Wendleford and its twenty days</h3>
-<nav class="grid" style="--min:250px" aria-label="Wendleford and its twenty days"><a class="card link-card go" href="world.html"><img class="card-art" src="img/s-world.svg" alt=""><h3>The Town</h3><p>Wendleford as a place: the flood, the places, the townsfolk, and what everyone in town knows.</p><span class="arrow">Open →</span></a><a class="card link-card go" href="cast.html"><div class="card-art art-six" aria-hidden="true"><img src="img/p-hester.svg" alt=""><img src="img/p-hobb.svg" alt=""><img src="img/p-dilly.svg" alt=""><img src="img/p-marigold.svg" alt=""><img src="img/p-robin.svg" alt=""><img src="img/p-constance.svg" alt=""></div><h3>The Cast</h3><p>The six residents. Each has their own page here, with their character sheet, every turn they took, their memories, their briefings and every interview.</p><span class="arrow">Open →</span></a></nav>
-<div class="grid" style="--min:250px"><a class="card link-card go tight" href="run.html"><h3 style="font-size:17px">The Run</h3><p>The 80 rounds: how the run was set up, the turning points day by day, and where everyone ended up.</p></a><a class="card link-card go tight" href="story.html"><h3 style="font-size:17px">The Story</h3><p>Short films from the twenty days, each true to the record. The first is ready; two more are coming.</p></a></div>
-<h3 class="lbl">What we tried to learn</h3>
-<nav class="grid" style="--min:250px" aria-label="What we tried to learn"><a class="card link-card go" href="interviews.html"><img class="card-art" src="img/s-interviews.svg" alt=""><h3>The Interviews</h3><p>What the interviews were trying to find out, how they worked, the exact questions, and the overall numbers.</p><span class="arrow">Open →</span></a><a class="card link-card go" href="results.html"><span class="lbl">For what we found</span><h3>Analysis</h3><p>What the interviews and personality tests showed about the six after twenty days, and where Claude shows through.</p><span class="arrow">Open →</span></a><a class="card link-card go" href="personality.html"><div class="card-art art-six art-scale" aria-hidden="true"><img src="img/p-hester.svg" alt=""><img src="img/p-hobb.svg" alt=""><img src="img/p-dilly.svg" alt=""><img src="img/p-marigold.svg" alt=""><img src="img/p-robin.svg" alt=""><img src="img/p-constance.svg" alt=""><span class="scale"></span></div><h3>Personality tests</h3><p>Two standard questionnaires, put to each resident twenty times: did they answer like their character sheets, did twenty days change them, and does Claude show through?</p><span class="arrow">Open →</span></a></nav>
-<div class="grid" style="--min:250px"><a class="card link-card go tight" href="itself.html"><h3 style="font-size:17px">Claude as Itself</h3><p>Claude answering the same personality questionnaires as itself, with no character, to set beside the six.</p></a><a class="card link-card go tight ex-row" href="notebook.html"><img src="img/s-notebook.svg" alt=""><span><h3 style="font-size:17px">Robin's notebook</h3><p>The evidence Robin gathered about whether they are real, and what was really behind it.</p></span></a><a class="card link-card go tight ex-row" href="compare.html"><img src="img/s-compare.svg" alt=""><span><h3 style="font-size:17px">Compare the six</h3><p>Pick any interview question and read all six residents' answers side by side.</p></span></a></div>
-<h3 class="lbl">The sim behind it</h3>
-<div class="grid" style="--min:250px"><a class="card link-card go tight" href="how.html"><h3 style="font-size:17px">How It Works</h3><p>How a turn runs, and one real turn from start to finish.</p></a><a class="card link-card go tight" href="wrong.html"><h3 style="font-size:17px">When It Went Wrong</h3><p>Where the game itself made mistakes, and what the residents came to believe because of them.</p></a><a class="card link-card go tight" href="questions.html"><h3 style="font-size:17px">Open Questions</h3><p>What we would like to find out next, about a person, a group and a whole run.</p></a><a class="card link-card go tight" href="heading.html"><h3 style="font-size:17px">Where It's Heading</h3><p>The plan to turn one town into a platform for many worlds, casts and tests. Designed, not yet built.</p></a><a class="card link-card go tight" href="about.html"><h3 style="font-size:17px">About</h3><p>How this was made, how far to trust it, and the questions people ask.</p></a></div>
-<div class="grid" style="--min:250px"><a class="card link-card go tight ex-row" href="search.html"><img src="img/s-search.svg" alt=""><span><h3 style="font-size:17px">Search everything</h3><p>Find any word across every turn, memory and interview answer.</p></span></a></div>
+<nav class="contents" aria-label="Every page">
+<div class="cg"><h3 class="lbl">Wendleford and its twenty days</h3><ul>
+<li><a href="world.html">The Town</a><span>the flood, the places, the townsfolk, and what everyone knows</span></li>
+<li><a href="cast.html">The Cast</a><span>the six residents, with every turn, memory, briefing and interview</span></li>
+<li><a href="run.html">The Run</a><span>the 80 rounds, turning point by turning point</span></li>
+<li><a href="story.html">The Story</a><span>short films from the twenty days; the first is ready</span></li>
+</ul></div>
+<div class="cg"><h3 class="lbl">What we tried to learn</h3><ul>
+<li><a href="interviews.html">The Interviews</a><span>what they asked, how they worked, the overall numbers</span></li>
+<li><a href="results.html">Analysis</a><span>what the interviews and tests showed, and where Claude shows through</span></li>
+<li><a href="personality.html">Personality Tests</a><span>two questionnaires, twenty times each, set beside the character sheets</span></li>
+<li><a href="itself.html">Claude as Itself</a><span>the same questionnaires with no character</span></li>
+<li><a href="notebook.html">Robin's Notebook</a><span>the evidence Robin gathered about whether they are real</span></li>
+<li><a href="compare.html">Compare</a><span>all six residents' answers to any question, side by side</span></li>
+</ul></div>
+<div class="cg"><h3 class="lbl">The sim behind it</h3><ul>
+<li><a href="how.html">How It Works</a><span>a turn in five steps, and one real turn traced through</span></li>
+<li><a href="wrong.html">When It Went Wrong</a><span>the game's own mistakes and what the residents believed because of them</span></li>
+<li><a href="questions.html">Open Questions</a><span>what we would like to find out next</span></li>
+<li><a href="heading.html">Where It's Heading</a><span>one town into a platform for many worlds; designed, not built</span></li>
+<li><a href="about.html">About</a><span>how this was made and how far to trust it</span></li>
+<li><a href="search.html">Search</a><span>any word across every turn, memory and interview answer</span></li>
+</ul></div>
+</nav>
 </section>
 <p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the interviews and personality tests that followed, 30 October 2026. One run is a single sample, so treat every finding here as a hint worth testing again, not a proof.</p>
 </div></main>

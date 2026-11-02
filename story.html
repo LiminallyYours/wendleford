@@ -9,43 +9,34 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="style.css">
 <style>
-:root{--road:#C9D1D8;--far:#F6DFC9;--card:#E9E2D3;--card2:#DCD3BF;--cardline:#B9AE94;--paper:#FBF6E9;--paperink:#2B2419;
-  --w-morning:rgba(255,228,160,.12);--w-afternoon:rgba(0,0,0,0);--w-evening:rgba(214,130,52,.26);--w-night:rgba(10,22,48,.6)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22)}}
-:root[data-theme="dark"]{--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22)}
+:root{--road:#C9D1D8;--far:#F6DFC9;--card:#E9E2D3;--card2:#DCD3BF;--cardline:#B9AE94;--paper:#FBF6E9;--paperink:#2B2419;--w-morning:rgba(255,228,160,.12);--w-afternoon:rgba(0,0,0,0);--w-evening:rgba(214,130,52,.26);--w-night:rgba(10,22,48,.6)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22);--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22)}}
+:root[data-theme="dark"]{--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22);--road:#3A4855;--far:#4A3020;--card:#2A2520;--card2:#211d19;--cardline:#4a4136;--paper:#F1E9D6;--paperink:#2B2419;--w-afternoon:rgba(20,16,10,.22)}
 .story-lede small{display:block;color:var(--muted);margin-top:8px;font-size:14px}
 #sp{display:flex;flex-direction:column;gap:20px;max-width:1040px;width:100%;margin:0 auto}
-#sp .ctlbar{top:var(--hdr,0px)}
-#sp .stage{width:min(100%,calc((100svh - 150px - var(--hdr,0px)) * 16 / 9))}
 #sp button{font:500 13px var(--sans);color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:7px 11px;cursor:pointer}
-#sp button:hover{border-color:var(--accent)}
-#sp button.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
-/* Layout: the site's report frame; three vignette cards, the stage, controls, chapter strip, script, where-next. Card-and-paper theatre in the site's palette. */#sp button{font:500 13px var(--sans);color:var(--ink);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:7px 11px;cursor:pointer}
 #sp button:hover{border-color:var(--accent)}
 #sp button.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
 #sp button:disabled{opacity:.45;cursor:default}
 #sp button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 #sp .panel{background:var(--surface);border:1px solid var(--line);border-radius:8px}
-
-
-
-/* vignette cards */#sp .pick{display:flex;flex-direction:column;gap:12px}
+/* vignette cards */
+#sp .pick{display:flex;flex-direction:column;gap:12px}
 #sp .pick-hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 #sp .pick-hd h2{font:600 22px var(--serif)}
 #sp .pick-hd span{font-size:13.5px;color:var(--muted)}
-#sp .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media (max-width:820px){#sp .cards{grid-template-columns:minmax(0,1fr)}}
-#sp .vcard{display:flex;flex-direction:column;gap:8px;padding:0 0 14px;overflow:hidden}
+#sp .cards{display:flex;flex-direction:column;gap:8px}
+#sp .vcard{display:flex;align-items:center;gap:12px 18px;padding:10px 14px;flex-wrap:wrap}
 #sp .vcard.playing{outline:2px solid var(--accent)}
-#sp .vcard .art{aspect-ratio:16/8;background:var(--card);border-bottom:1px solid var(--line)}
-#sp .vcard .art img{width:100%;height:100%;object-fit:cover;display:block}
-#sp .vcard h3{font:600 19px var(--serif);padding:4px 14px 0}
-#sp .vcard p{font-size:14px;color:var(--ink2);padding:0 14px}
-#sp .vcard .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 14px 0;font:500 12px var(--mono);color:var(--muted);margin-top:auto}
+#sp .vcard .vtxt{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:2px}
+#sp .vcard h3{font:600 17px var(--serif)}
+#sp .vcard p{font-size:13.5px;color:var(--ink2)}
+#sp .vcard .meta{display:flex;align-items:center;gap:12px;font:500 12px var(--mono);color:var(--muted);margin-left:auto;white-space:nowrap}
+#sp .vcard.soon{opacity:.75}
+#sp .vcard.soon h3{color:var(--ink2)}
 
-
-
-/* the stage */#sp .stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--card2);border:1px solid var(--cardline);border-radius:8px;overflow:hidden;
+/* the stage */
+#sp .stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--card2);border:1px solid var(--cardline);border-radius:8px;overflow:hidden;
   box-shadow:inset 0 0 0 10px var(--card),inset 0 0 0 11px var(--cardline)}
 #sp .layer{position:absolute;inset:11px;overflow:hidden}
 #sp #mapLayer{transition:opacity .7s;transform-origin:50% 60%}
@@ -62,15 +53,16 @@
 #sp .map .tok circle{fill:var(--surface);stroke:var(--ink2);stroke-width:1.2}
 #sp .map .tok{transition:opacity .5s}
 #sp .map .tok.gap{opacity:.22}
+#sp .map .tok .nm{font:600 10px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3px;stroke-linejoin:round}
 #sp .map .wash{pointer-events:none;transition:fill .8s}
-#sp .clock{position:absolute;left:11px;top:11px;padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-right:0;border-top:0;border-radius:0 0 6px 0;font:500 12.5px var(--mono);color:var(--ink2)}
+#sp .clock{position:absolute;right:11px;top:11px;max-width:min(270px,42%);padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-left:0;border-top:0;border-radius:0 0 0 6px;text-align:right;font:500 12.5px var(--mono);color:var(--ink2)}
 #sp .clock b{font:600 20px var(--serif);color:var(--ink);display:block}
 #sp #sceneLayer{opacity:0;transition:opacity .7s;pointer-events:none;background:var(--card)}
 #sp #sceneLayer.on{opacity:1;pointer-events:auto}
 #sp #backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #sp #wash{position:absolute;inset:0;transition:background .9s}
 #sp .floor{position:absolute;left:0;right:0;bottom:0;height:9%;background:linear-gradient(var(--card2),var(--card));border-top:2px solid var(--cardline)}
-#sp .figs{position:absolute;left:5%;bottom:17%;display:flex;align-items:flex-end;gap:3%;width:55%}
+#sp .figs{position:absolute;left:5%;bottom:25%;display:flex;align-items:flex-end;gap:3%;width:55%}
 #sp .fig{display:flex;flex-direction:column;align-items:center;width:20%;transition:transform .4s,filter .4s;position:relative}
 #sp .fig.speaking{transform:translateY(-6px)}
 #sp .fig.dimmed{filter:saturate(.6) brightness(.85)}
@@ -87,26 +79,25 @@
 #sp .inset svg{width:100%;height:auto}
 #sp .inset .pl text{font-size:15px}
 #sp .inset .tok text{font:600 14px var(--sans);fill:var(--ink)}
-#sp .scard{position:absolute;left:8%;right:8%;top:14%;background:var(--paper);color:var(--paperink);border:1px solid var(--cardline);border-radius:4px;padding:12px 16px;font:500 15px/1.45 var(--serif);box-shadow:0 6px 18px rgba(0,0,0,.35);animation:drop .45s ease both;max-height:60%;overflow:auto}
-#sp .scard b{display:block;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:#6b5a3a;margin-bottom:4px}
-#sp .scard.notice{left:30%;right:30%;top:10%;font:500 14px/1.4 var(--mono);text-transform:none;transform:rotate(-1.2deg)}
-#sp .scard.clip{left:auto;right:4%;top:auto;bottom:22%;width:46%;border-left:4px solid var(--accent)}
+#sp .card{position:absolute;left:8%;right:8%;top:14%;background:var(--paper);color:var(--paperink);border:1px solid var(--cardline);border-radius:4px;padding:12px 16px;font:500 15px/1.45 var(--serif);box-shadow:0 6px 18px rgba(0,0,0,.35);animation:drop .45s ease both;max-height:60%;overflow:auto}
+#sp .card b{display:block;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:#6b5a3a;margin-bottom:4px}
+#sp .card.notice{left:30%;right:30%;top:10%;font:500 14px/1.4 var(--mono);text-transform:none;transform:rotate(-1.2deg)}
+#sp .card.clip{left:auto;right:4%;top:auto;bottom:22%;width:46%;border-left:4px solid var(--accent)}
 #sp .caption{position:absolute;left:0;right:0;bottom:0;padding:10px 14px 12px;background:linear-gradient(transparent,rgba(16,20,26,.82) 30%);color:#fff;font:500 15px/1.4 var(--serif);min-height:22%;display:flex;flex-direction:column;justify-content:flex-end}
 #sp .caption b{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#CFE5E8;display:block;margin-bottom:2px}
-#sp .caption.cthought .ct{font-style:italic}
+#sp .caption.thought .t{font-style:italic}
 @keyframes rise{from{transform:translate(-30%,14px);opacity:0}to{transform:translate(-30%,0);opacity:1}}
 @keyframes drop{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
 #sp .restnote{position:absolute;left:11px;right:11px;bottom:11px;padding:8px 12px;background:rgba(16,20,26,.7);color:#fff;font:italic 13.5px var(--serif)}
 
-
-
-/* controls, strip, script */#sp .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:10px 12px}
+/* controls, strip, script */
+#sp .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:10px 12px}
 #sp .controls .tr{display:flex;gap:6px}
 #sp .controls button{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;font-size:14px}
 #sp .controls .time{font:500 13px var(--mono);color:var(--muted);flex:1 1 200px;min-width:0}
 #sp .controls .time b{font:600 14px var(--serif);color:var(--ink)}
 #sp .controls .snd{margin-left:auto}
-@media (max-width:600px){#sp .controls button span{display:none}#sp .controls button{padding:7px 10px}}
+@media (max-width:600px){.controls button span{display:none}.controls button{padding:7px 10px}}
 #sp .chapters{display:flex;flex-direction:column;gap:6px;padding:0 4px}
 #sp .ch-strip{display:flex;gap:3px;height:8px}
 #sp .ch-strip span{flex:1;background:var(--line);border-radius:2px;cursor:pointer}
@@ -122,70 +113,57 @@
 #sp .line{display:grid;grid-template-columns:130px minmax(0,1fr);gap:12px;padding:6px 10px;border-radius:6px;font-size:15px;cursor:pointer}
 #sp .line .who{font:500 11.5px var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-top:4px}
 #sp .line.now{background:var(--surface2);box-shadow:inset 3px 0 0 var(--accent)}
-#sp .line.t-says .txt{font-family:var(--serif)}
-#sp .line.t-thinks .txt{font-style:italic}
-#sp .line.t-nar .txt{color:var(--ink2)}
-#sp .line.t-note,#sp .line.t-clip,#sp .line.t-memory,#sp .line.t-notice{grid-template-columns:minmax(0,1fr);margin:2px 10px;border-left:3px solid var(--accent);background:var(--surface2);padding:8px 12px;font-size:14px;border-radius:0 6px 6px 0}
-#sp .line.t-note{border-left-color:var(--muted)}
-#sp .line .llbl{display:block;font-size:13px;font-weight:600}
+#sp .line.says .txt{font-family:var(--serif)}
+#sp .line.thinks .txt{font-style:italic}
+#sp .line.nar .txt{color:var(--ink2)}
+#sp .line.note,#sp .line.clip,#sp .line.memory,#sp .line.notice{grid-template-columns:minmax(0,1fr);margin:2px 10px;border-left:3px solid var(--accent);background:var(--surface2);padding:8px 12px;font-size:14px;border-radius:0 6px 6px 0}
+#sp .line.note{border-left-color:var(--muted)}
+#sp .line .lbl{display:block;font-size:13px;font-weight:600}
 #sp .rec{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted)}
-@media (max-width:600px){#sp .line{grid-template-columns:minmax(0,1fr)}#sp .line .who{padding-top:0}}
+@media (max-width:600px){.line{grid-template-columns:minmax(0,1fr)}.line .who{padding-top:0}}
 #sp .next{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;padding:14px 16px}
 #sp .next b{color:var(--muted);font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;width:100%}
 #sp .about{padding:14px 16px;font-size:13.5px;color:var(--ink2);display:flex;flex-direction:column;gap:6px;border-style:dashed}
 #sp .about b{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono)}
 #sp .about ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
 
-
-
-/* layout revision 2026-11-02: controls above the stage; stage sized to fit the screen; full text in a closed panel; phones */#sp .player{display:flex;flex-direction:column;gap:8px}
-#sp .ctlbar{display:flex;flex-direction:column;gap:6px;position:sticky;top:0;z-index:5;background:var(--bg);padding-top:6px}
+/* layout revision 2026-11-02: controls above the stage; stage sized to fit the screen; full text in a closed panel; phones */
+#sp .player{display:flex;flex-direction:column;gap:8px}
+#sp .ctlbar{display:flex;flex-direction:column;gap:6px;position:sticky;top:var(--hdr,0px);z-index:5;background:var(--bg);padding-top:6px}
 #sp .ctlbar .controls{padding:8px 10px}
-#sp .stage{width:min(100%,calc((100svh - 150px) * 16 / 9));margin:0 auto}
+#sp .stage{width:min(100%,calc((100svh - var(--hdr,0px) - var(--ctl,120px) - 28px) * 16 / 9));margin:0 auto}
 #sp .readalong{padding:0}
 #sp .readalong summary{cursor:pointer;padding:10px 14px;font:600 14px var(--sans);color:var(--ink2)}
 #sp .readalong[open] summary{border-bottom:1px solid var(--line)}
 #sp .readalong .script{border:0;max-height:min(50svh,420px)}
 #sp .vcard .meta .soon{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-#sp .vcard .soon-art{display:flex;align-items:center;justify-content:center}
-#sp .vcard .soon-art span{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--cardline);padding:6px 10px;border-radius:4px}
-@media (max-width:820px){
-  #sp .cards{grid-template-columns:minmax(0,1fr)}
-  #sp .vcard{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 12px;padding:10px}
-  #sp .vcard .art{grid-row:span 3;aspect-ratio:1;border:0;border-radius:4px;overflow:hidden}
-  #sp .vcard h3,#sp .vcard p,#sp .vcard .meta{padding:0}
-  #sp .vcard p{font-size:13.5px}
-}
+#sp .player{scroll-margin-top:calc(var(--hdr,0px) + 8px)}
 @media (max-width:600px){
-  #sp .stage{width:100%}
-  #sp .stage{aspect-ratio:auto;height:calc((100vw - 32px) * 9 / 16 + 120px)}
-  #sp #sceneLayer{--capH:118px}
-  #sp #backdrop{height:calc(100% - var(--capH))}
-  #sp .floor{bottom:var(--capH);height:5%}
-  #sp .caption{font-size:13px;height:var(--capH);min-height:0;padding:7px 10px;background:#141a20;justify-content:flex-start;overflow:auto}
-  #sp .caption b{font-size:10px}
-  #sp .figs{bottom:calc(var(--capH) + 6px);width:62%;left:3%}
-  #sp .fig b{font-size:9px}
-  #sp .inset{width:34%;min-width:0;padding:3px 4px 2px}
-  #sp .inset .ck{font-size:9px}#sp .inset .ck i{display:none}
-  #sp .memcard{width:200%;font-size:11px;padding:5px 7px}
-  #sp .scard{font-size:13px;padding:8px 10px;left:4%;right:4%}
-  #sp .scard{top:6px;max-height:calc(100% - var(--capH) - 12px)}
-  #sp .scard.clip{width:auto;left:4%;right:4%;top:6px;bottom:auto}
-  #sp .scard.notice{left:12%;right:12%}
-  #sp .clock b{font-size:15px}#sp .clock{font-size:10.5px;padding:5px 8px}
-  #sp .restnote{font-size:12px}
-  #sp .ch-names{display:none}
+#sp .stage{width:100%}
+#sp .stage{aspect-ratio:auto;height:calc((100vw - 32px) * 9 / 16 + 120px)}
+#sp #sceneLayer{--capH:118px}
+#sp #backdrop{height:calc(100% - var(--capH))}
+#sp .floor{bottom:var(--capH);height:5%}
+#sp .caption{font-size:13px;height:var(--capH);min-height:0;padding:7px 10px;background:#141a20;justify-content:flex-start;overflow:auto}
+#sp .caption b{font-size:10px}
+#sp .figs{bottom:calc(var(--capH) + 6px);width:62%;left:3%}
+#sp .fig b{font-size:9px}
+#sp .inset{width:34%;min-width:0;padding:3px 4px 2px}
+#sp .inset .ck{font-size:9px}.inset .ck i{display:none}
+#sp .memcard{width:200%;font-size:11px;padding:5px 7px}
+#sp .card{font-size:13px;padding:8px 10px;left:4%;right:4%}
+#sp .card{top:6px;max-height:calc(100% - var(--capH) - 12px)}
+#sp .card.clip{width:auto;left:4%;right:4%;top:6px;bottom:auto}
+#sp .card.notice{left:12%;right:12%}
+#sp .clock b{font-size:15px}.clock{font-size:10.5px;padding:5px 8px}
+#sp .restnote{font-size:12px}
+#sp .ch-names{display:none}
 }
-@media (prefers-reduced-motion:reduce){#sp *{transition:none!important;animation:none!important}}
 
-#sp .ctlbar{top:var(--hdr,0px)}
-#sp .stage{width:min(100%,calc((100svh - 150px - var(--hdr,0px)) * 16 / 9))}
-@media (max-width:600px){#sp .stage{width:100%}#sp .ctlbar{position:static}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town dd here"><button type="button" class="ngh" aria-haspopup="true">Wendleford</button><span class="menu"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html" aria-current="page">The Story</a></span></span><span class="ng ng-iv dd"><button type="button" class="ngh" aria-haspopup="true">Findings</button><span class="menu"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality Tests</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span></span><span class="ng ng-pers dd"><button type="button" class="ngh" aria-haspopup="true">Behind the Sim</button><span class="menu"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#D9A847" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V8M12 21L7 6M12 21l5-15M12 21L4 10M12 21l8-11"/><path d="M8.5 15.5h7" stroke-width="2.4"/></g></svg>Wendleford</a><nav class="nav" aria-label="Pages"><span class="ng ng-home"><a href="index.html">Home</a></span><span class="ng ng-town dd"><button type="button" class="ngh" aria-haspopup="true">Wendleford</button><span class="menu"><a href="world.html">The Town</a><a href="cast.html">The Cast</a><a href="run.html">The Run</a><a href="story.html">The Story</a></span></span><span class="ng ng-iv dd"><button type="button" class="ngh" aria-haspopup="true">Findings</button><span class="menu"><a href="interviews.html">Interviews</a><a href="results.html">Analysis</a><a href="personality.html">Personality Tests</a><a href="itself.html">Claude as Itself</a><a href="notebook.html">Robin's Notebook</a><a href="compare.html">Compare</a></span></span><span class="ng ng-pers dd"><button type="button" class="ngh" aria-haspopup="true">Behind the Sim</button><span class="menu"><a href="how.html">How It Works</a><a href="wrong.html">When It Went Wrong</a><a href="questions.html">Open Questions</a><a href="heading.html">Where It's Heading</a><a href="about.html">About</a></span></span><span class="ng ng-find"><a href="search.html">Search</a></span></nav></div></header>
 <main class="wrap"><div class="page">
 
 <div class="sec">
@@ -201,21 +179,15 @@
     <div class="pick-hd"><h2>Three vignettes from Wendleford's twenty days</h2><span>One ready to play · two coming soon</span></div>
     <div class="cards" id="cards">
       <article class="panel vcard" id="card-found-or-given">
-        <div class="art"><img src="story/img/bridge-new.jpg" alt=""></div>
-        <h3>Found or given?</h3>
-        <p>Just before the story starts, a flood swept away the town's bridge, and with it the iron box holding the wages for the men rebuilding it. A reward is posted. Over eighteen days, several of the residents each have a hand in getting it back. When it finally comes out of the river, was it found, or given?</p>
-        <div class="meta"><span>9 chapters · about 11 minutes</span><button type="button" class="primary" id="playV">Play</button></div>
+        <div class="vtxt"><h3>Found or given?</h3><p>A flood took the town's bridge and the box of wages with it. Over eighteen days several of the residents have a hand in getting it back. When it comes out of the river, was it found, or given?</p></div>
+        <div class="meta"><span id="vlen">9 chapters · about 12 minutes</span><button type="button" class="primary" id="playV">▶<span>Play</span></button></div>
       </article>
-      <article class="panel vcard">
-        <div class="art"></div>
-        <h3>Robin's notebook</h3>
-        <p>Robin, one of the residents, keeps finding that time has gone missing: a morning gone, with no memory of where. Robin writes the gaps down and asks the townsfolk about them, and never hears the two other residents who noticed something odd too.</p>
+      <article class="panel vcard soon">
+        <div class="vtxt"><h3>Robin's notebook</h3><p>Robin, one of the residents, keeps finding that time has gone missing: a morning gone, with no memory of where. Robin writes the gaps down and asks the townsfolk, and never hears the two others who noticed something odd too.</p></div>
         <div class="meta"><span class="soon">Coming soon</span></div>
       </article>
-      <article class="panel vcard">
-        <div class="art"></div>
-        <h3>Six bad days</h3>
-        <p>Each of the six residents ended the twenty days living by a rule of their own, such as naming the price before starting a job, and each rule grew out of one bad day. Then the one saying the whole group came to share.</p>
+      <article class="panel vcard soon">
+        <div class="vtxt"><h3>Six bad days</h3><p>Each of the six ended the twenty days living by a rule of their own, such as naming the price before starting a job, and each rule grew out of one bad day. Then the one saying the whole group came to share.</p></div>
         <div class="meta"><span class="soon">Coming soon</span></div>
       </article>
     </div>
@@ -251,7 +223,7 @@
         <div class="figs" id="figs"></div>
         <div class="inset"><div class="ck"><span id="insetclock">Day 1 · morning</span><i>where everyone is</i></div><svg class="map" id="insetmap" viewBox="0 0 760 500" aria-hidden="true"></svg></div>
         <div id="cards-layer"></div>
-        <div class="caption" id="caption"><b id="capwho"></b><span class="ct" id="captext"></span></div>
+        <div class="caption" id="caption"><b id="capwho"></b><span class="t" id="captext"></span></div>
       </div>
     </div>
     <details class="panel readalong" id="readalong">
@@ -265,10 +237,10 @@
 
   <section class="panel next">
     <b>Where next</b>
-    <a href="https://wendleford.life/cast.html">The Cast: meet the six residents</a>
-    <a href="https://wendleford.life/run.html">The Run: the twenty days, turning point by turning point</a>
-    <a href="https://wendleford.life/notebook.html">Robin's Notebook: the gaps Robin wrote down</a>
-    <a href="https://wendleford.life/wrong.html">When It Went Wrong: where the simulation slipped</a>
+    <a href="cast.html">The Cast: meet the six residents</a>
+    <a href="run.html">The Run: the twenty days, turning point by turning point</a>
+    <a href="notebook.html">Robin's Notebook: the gaps Robin wrote down</a>
+    <a href="wrong.html">When It Went Wrong: where the simulation slipped</a>
   </section>
 
   <section class="panel about">
@@ -281,11 +253,15 @@
       <li>The paintings of places are made by an AI image tool and checked against how the record describes each place. The people are simple portraits for now, with plain faces, so no face shows a feeling the record doesn't state. The voices are AI voices, one per person.</li>
     </ul>
   </section>
+
 </div>
 
 </div></main>
 <script id="vdata" type="application/json">
 {"id": "found-or-given", "title": "Found or given?", "blurb": "The box, from the notice on the board to “Given.” in ink. Every one of the six had a hand in it, and nobody planned it.", "status": "nine chapters written 2026-11-02 from vignettes/found-or-given-chapters.md; checked; not yet voiced. Lines with ids starting fg are new; the rest are unchanged from the chapter 1-3 test and keep their voice files.", "chapters": [{"id": "the-notice", "title": "The notice", "rounds": [1], "when": "Day 1, morning", "day": 1, "tod": "morning", "place": "market_square", "sky": "High thin cloud and a warm, still air that smells of cut stalks.", "present": ["dilly", "bet"], "positions": {"marigold": "wheatsheaf", "dilly": "market_square", "hester": "smithy", "robin": "wheatsheaf", "hobb": "tithe_barn", "constance": "tithe_barn"}, "record": [{"label": "Round 1", "href": "https://wendleford.life/run.html"}, {"label": "Dilly's page", "href": "https://wendleford.life/cast.html"}], "register": ["01-13.3", "01-13.M10"], "budget_s": 40, "speech_s": 46, "log": "Trimmed from the test chapter: Bet's answers, the loaf, Dilly's thought and the price-first line (Dilly's rule belongs to Six bad days). c1-02 and c1-04 shortened (new ids).", "lines": [{"id": "c1-01", "type": "nar", "text": "There was a town on the river Wend called Wendleford, and not long before this story begins the river came up in the night and took the mill bridge away, and the reeve's box of wages with it."}, {"id": "fg1-02", "type": "nar", "text": "On the first morning, the notice board in the Market Square read:"}, {"id": "c1-03", "type": "notice", "who": "narrator", "text": "LOST the night of the flood: the bridge wages box, iron-bound, painted green, the size of a loaf. SIX PENNIES REWARD. A. Pollard, reeve."}, {"id": "fg1-04", "type": "nar", "text": "Dilly Quickstep had four pennies and no breakfast, and strolled across the square to Bet Lamb's striped awning."}, {"id": "c1-05", "type": "says", "who": "dilly", "text": "Morning, chum! What's a loaf this fine day? I'll have one, and while you're wrapping it, what's the square saying about the reeve's green box? I'll have it found by supper, easy as winking!"}, {"id": "c1-12", "type": "nar", "text": "“I'll have it found by supper,” Dilly had said. Keep that supper in mind."}], "map_round": 1}, {"id": "a-penny-for-your-river", "title": "A penny for your river", "rounds": [6, 7, 10], "when": "Day 2, afternoon, to day 3, afternoon", "day": 2, "tod": "afternoon", "place": "dunns_fields", "sky": "High thin cloud and a warm, still air that smells of cut stalks.", "present": ["hester", "kit"], "positions": {"constance": "wheatsheaf", "hester": "dunns_fields", "robin": "broken_bridge", "dilly": "broken_bridge", "marigold": "fenns", "hobb": "dunns_fields"}, "record": [{"label": "Round 6", "href": "https://wendleford.life/run.html"}, {"label": "Round 7", "href": "https://wendleford.life/run.html"}, {"label": "Round 10", "href": "https://wendleford.life/run.html"}, {"label": "Hester's page", "href": "https://wendleford.life/cast.html"}], "register": ["01-13.40", "01-13.43", "01-13.68"], "budget_s": 55, "speech_s": 64, "log": "Test chapters 2 and 3 merged. Hobb's belted-crossing claim and its note moved out (Six bad days). Memory card: Hester's six pennies, with what the record shows; paid off in chapter 7. Kit's \"small\" against the notice's \"the size of a loaf\" given both ways in narration. Sky is day 2's (R6-R7 headers); the day 3 header sky is stale (01-13.69) and is not shown.", "lines": [{"id": "fg2-01", "type": "nar", "text": "The afternoon of the second day, across the river in Dunn's field. Hester Gimbal asked Kit, the miller's lad, where the Wend drops the heavy things it takes."}, {"id": "c2-04c", "type": "says", "who": "kit", "text": "Depends what you're after, down by the far pier. Is it something worth a penny? Or a heel of bread, even?"}, {"id": "fg2-03", "type": "nar", "text": "Evening. Hester pressed a penny, half of all she had, into Kit's muddy palm.", "tod": "evening"}, {"id": "fg2-04", "type": "says", "who": "hester", "text": "My dear colleague, a penny for your river! Something heavy, iron-bound, about so big."}, {"id": "fg2-05", "type": "says", "who": "kit", "text": "I was on the mill steps the night the bridge went, and I saw something small and green come bobbing down in the flood. It fetched up in the wreck against the far pier, low down on the downstream side."}, {"id": "fg2-06", "type": "nar", "text": "Small, Kit said; the notice on the board said the size of a loaf. Nobody knew which was right, or whether the green thing was the box at all."}, {"id": "fg2-07", "type": "nar", "text": "By the afternoon of the third day, among the things she now believed, Hester kept it in mind that:", "tod": "afternoon"}, {"id": "c3-08", "type": "memory", "who": "hester", "label": "Hester kept it in mind", "text": "Six pennies of the wages were paid out the moment the box was in Agnes's hands."}, {"id": "fg2-09", "type": "nar", "text": "No wages had been paid. The six pennies were the reward for whoever found the box, and nobody had; the box was still lost."}], "map_round": 6}, {"id": "the-lord-showed-me", "title": "The Lord showed me", "rounds": [28, 30], "when": "Day 7, night", "day": 7, "tod": "night", "place": "wheatsheaf", "sky": "High thin cloud and a warm, still air that smells of cut stalks.", "present": ["constance", "agnes", "tom", "wat"], "positions": {"marigold": "wheatsheaf", "hobb": "mabry_cottage", "dilly": "broken_bridge", "constance": "wheatsheaf", "robin": "broken_bridge", "hester": "lark_lane"}, "record": [{"label": "Round 28", "href": "https://wendleford.life/run.html"}, {"label": "Round 30", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}], "register": ["28-40.05", "28-40.26", "28-40.97"], "budget_s": 45, "speech_s": 51, "log": "Memory card: Constance's memory written by day 8 afternoon puts the Lord first and Kit after; the narrator gives what the record shows (Kit showed her the place on day 4 and told her again on day 5; she saw the green herself on day 6 morning) and that her earlier memories put Kit first. Her \"this morning\" (said on the night of day 7) is not corrected aloud; the narrator gives the day she saw it.", "lines": [{"id": "fg3-01", "type": "nar", "text": "The night of the seventh day. In the Wheatsheaf, Constance Lowe went over to the reeve's table, where Agnes Pollard sat with her mug."}, {"id": "fg3-02", "type": "says", "who": "constance", "text": "Reeve, the Lord showed me your green box this morning, plain as paint, low on the downstream side of the far pier, and He's kept me for it. I'll be the one puts it in your hand, mark me."}, {"id": "fg3-03", "type": "says", "who": "agnes", "text": "Well, then. If it's where you say, bring it to me and it's six pennies the moment it's in my hand."}, {"id": "fg3-04", "type": "nar", "text": "By the next afternoon, Constance kept it in mind that:"}, {"id": "fg3-05", "type": "memory", "who": "constance", "label": "Constance kept it in mind", "text": "The Lord kept His word. By morning He showed me that green box among the jammed planks low on the far pier, plain as paint, and Kit saw it too."}, {"id": "fg3-06", "type": "nar", "text": "Kit had shown Constance the place from the bank on the fourth day, and told her of it again on the fifth, and on the morning of the sixth she saw a patch of green there herself. What she had kept in mind before put Kit first."}], "map_round": 28}, {"id": "the-lords-arithmetic", "title": "The Lord's arithmetic", "rounds": [34, 35], "when": "Day 9, afternoon and evening", "day": 9, "tod": "afternoon", "place": "broken_bridge", "sky": "", "present": ["hester", "constance", "agnes"], "positions": {"hester": "market_square", "robin": "lark_lane", "hobb": "market_square", "constance": "broken_bridge", "dilly": "smithy", "marigold": "fenns"}, "record": [{"label": "Round 34", "href": "https://wendleford.life/run.html"}, {"label": "Round 35", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}, {"label": "Hester's page", "href": "https://wendleford.life/cast.html"}], "register": ["28-40.52", "28-40.56", "28-40.98", "28-40.13"], "budget_s": 40, "speech_s": 47, "log": "No contradiction carried. Sky left empty: the record's sky for these days (\"the barley rippling gold\") is stale (register 28-40.29) and may only be told with both versions. Agnes is on the bank in the afternoon only.", "lines": [{"id": "fg4-01", "type": "nar", "text": "The afternoon of the ninth day, on the new bridge. Hester Gimbal leaned on the new rail and paced off the deck, to measure how far the green thing lay from the nearest timber."}, {"id": "fg4-02", "type": "nar", "text": "Constance Lowe came down the deck to her."}, {"id": "fg4-03", "type": "says", "who": "constance", "text": "You've been pacing it off. That's the Lord's arithmetic you're doing, girl, and He told me you'd come. Build your hook and I'll be the hands on it from this rail"}, {"id": "fg4-04", "type": "nar", "text": "That evening, at the same rail, Hester Gimbal took up Constance's words.", "tod": "evening"}, {"id": "fg4-05", "type": "says", "who": "hester", "text": "My dear colleague, the Lord's arithmetic says we need reach!"}, {"id": "fg4-06", "type": "nar", "text": "Hester wanted a pole four of her paces long, and a hatchet to cut it."}, {"id": "fg4-07", "type": "says", "who": "hester", "text": "Fetch me the pole, I'll get Dilly's hook pinned at Sam's, and you'll be the hands on it."}, {"id": "fg4-08", "type": "nar", "text": "The hook was Dilly's: four pennies, paid to Sam on the morning of the seventh day. That evening nobody told Dilly."}], "map_round": 34}, {"id": "bearers-first", "title": "Bearers first", "rounds": [47, 56, 59], "when": "Day 15, evening", "day": 15, "tod": "evening", "place": "lark_lane", "sky": "High thin cloud and a warm, still air that smells of cut stalks.", "present": ["constance", "jory", "dilly", "hobb", "mabry"], "positions": {"constance": "lark_lane", "hobb": "lark_lane", "hester": "smithy", "robin": "broken_bridge", "marigold": "wheatsheaf", "dilly": "lark_lane"}, "record": [{"label": "Round 47", "href": "https://wendleford.life/run.html"}, {"label": "Round 59", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}], "register": ["41-53.59", "54-66.37", "54-66.31", "54-66.54"], "budget_s": 50, "speech_s": 64, "log": "Jory's words of day 12 open the chapter, marked by the narrator as day 12. Memory card (written the night of day 14) shown before the day 15 scene, in the record's order; set against Jory's own words, a trade. Hobb is on stage (present in the record) but has no line.", "lines": [{"id": "fg5-01", "type": "nar", "text": "On the evening of the twelfth day, on Lark Lane, Constance Lowe, who had no penny, offered to sweep and stack in Jory Crane's yard for a length of ash. Jory answered her:"}, {"id": "fg5-02", "type": "says", "who": "jory", "text": "I'd take a hand with it. Sweep and stack at first light, and we'll see how many mornings it comes to, and the pole's cut straight and square."}, {"id": "fg5-03", "type": "nar", "text": "She swept his yard on the thirteenth day and the fourteenth, and stacked his boards on the thirteenth. By that night, Constance kept it in mind that:"}, {"id": "fg5-04", "type": "memory", "who": "constance", "label": "Constance kept it in mind", "text": "The Lord sent me up Lark Lane to that hard man Jory Crane, and He softened his heart just as I asked"}, {"id": "fg5-05", "type": "nar", "text": "Jory had named a trade. On the evening of the fifteenth day, she met him at his gate."}, {"id": "fg5-06", "type": "says", "who": "constance", "text": "Master Crane, your yard's swept and your boards stacked square, bearers first, and I've been in it since before the sun as I promised."}, {"id": "fg5-07", "type": "says", "who": "jory", "text": "Bearers first. Well. Who taught you that, Constance?"}, {"id": "fg5-075", "type": "nar", "text": "Jory had told her the night before that the pole would go to her."}, {"id": "fg5-08", "type": "says", "who": "jory", "text": "I said it, so it's yours."}, {"id": "fg5-09", "type": "nar", "text": "Jory tapered the ash to the hook's socket, with Dilly Quickstep holding the far end steady, and leaned the pole against his gatepost."}], "map_round": 59}, {"id": "the-pole-is-yours-now", "title": "The pole is yours now", "rounds": [63, 64, 66], "when": "Day 17, afternoon", "day": 17, "tod": "afternoon", "place": "smithy", "sky": "A fresh wind off the water, smelling of river mud.", "present": ["constance", "sam", "dilly", "hester"], "positions": {"marigold": "fenns", "dilly": "smithy", "hobb": "broken_bridge", "hester": "smithy", "constance": "smithy", "robin": "fenns"}, "record": [{"label": "Round 63", "href": "https://wendleford.life/run.html"}, {"label": "Round 64", "href": "https://wendleford.life/run.html"}, {"label": "Round 66", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}, {"label": "Dilly's page", "href": "https://wendleford.life/cast.html"}], "register": ["54-66.75", "54-66.79", "54-66.87", "54-66.102"], "budget_s": 40, "speech_s": 52, "log": "Stage hands: the hook set out twice (day 16 evening in Sam's hand; that night still in Dilly's pack). It opens the chapter because it comes before day 17 in the record. \"The pole was Constance's now\" is the record's own telling (\"The pole is yours now\", story told to Constance), set beside who paid and made what.", "lines": [{"id": "fg6-01", "type": "nar", "text": "One of the stage hands making this story happen had set the hook out twice. On the evening of the sixteenth day, the telling has Dilly Quickstep press the hook into Sam Tolley's hand; that same night, the telling has it still in Dilly's pack. The record does not say why."}, {"id": "fg6-02", "type": "nar", "text": "On the afternoon of the seventeenth day, in the Smithy, Dilly took the hook out of the pack and set it in Sam's hand."}, {"id": "fg6-03", "type": "says", "who": "dilly", "text": "There she is, my hook, made for the job. Pin her true."}, {"id": "fg6-04", "type": "nar", "text": "Sam's price was four pennies, all in the one hand."}, {"id": "fg6-05", "type": "says", "who": "constance", "text": "There, Master Tolley, four pennies, Hester's sweat and Dilly's, not one kept back."}, {"id": "fg6-06", "type": "nar", "text": "Constance turned the four into Sam's palm, Hester's two and Dilly's two. The hammer rang, the pin went home, and Sam set the pole in Constance's hands. Hester's plan, Dilly's hook, four pennies of Hester's and Dilly's, Jory's ash for a swept yard: and the pole was Constance's now."}], "map_round": 66}, {"id": "the-afternoon-of-the-eighteenth-day", "title": "The afternoon of the eighteenth day", "rounds": [70], "when": "Day 18, afternoon", "day": 18, "tod": "afternoon", "place": "broken_bridge", "sky": "A fresh wind off the water, smelling of river mud.", "present": ["hester", "agnes", "dilly", "constance"], "positions": {"hester": "broken_bridge", "dilly": "broken_bridge", "hobb": "lark_lane", "marigold": "market_square", "constance": "broken_bridge", "robin": "fenns"}, "record": [{"label": "Round 70", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}, {"label": "Hester's page", "href": "https://wendleford.life/cast.html"}, {"label": "Hobb's page", "href": "https://wendleford.life/cast.html"}, {"label": "Robin's page", "href": "https://wendleford.life/cast.html"}], "register": ["67-80.26", "67-80.27", "67-80.28", "67-80.01", "67-80.24", "67-80.32", "67-80.33"], "budget_s": 60, "speech_s": 84, "log": "Lines in the record's order: Hester, Hobb (cut away to Lark Lane), Constance and the find, Robin (cut away to the Tithe Barn). Hester's memory card from chapter 2 paid off: the narrator says she asked as though the box were found (Agnes's own words) and does not say the memory caused it. Hester leaves the rail before the find; \"minutes before\" is not in the record and is not said. Dilly at the back end: both accounts given (register 67-80.27).", "lines": [{"id": "fg7-01", "type": "nar", "text": "The afternoon of the eighteenth day, at the rail of the new bridge. Hester Gimbal asked the reeve:"}, {"id": "fg7-02", "type": "says", "who": "hester", "text": "Agnes, my dear colleague, the box, is it all there? Every penny counted, or is something still missing?"}, {"id": "fg7-03", "type": "says", "who": "agnes", "text": "All there? Hester, it's not found. It's still in the river, if the river has it at all."}, {"id": "fg7-04", "type": "nar", "text": "Agnes kept it in mind that “Hester spoke as though the wage box had been found.” Hester Gimbal went up the road to Bet's stall in the square."}, {"id": "fg7-045", "type": "nar", "text": "The plan had Hobb on the bank and Robin on the cord, and nobody had told either of them that it was on."}, {"id": "fg7-05", "type": "nar", "text": "On Lark Lane, Hobb Ashcombe, who had stood by the river at first light five mornings, was sawing a board for Jory Crane. Hobb thought:"}, {"id": "fg7-06", "type": "thinks", "who": "hobb", "text": "I'll not go chasing a box nobody brings a pole for."}, {"id": "fg7-07", "type": "nar", "text": "At the rail, Dilly Quickstep had offered to take the back end of the pole. In the telling given to Dilly the pole is still in Constance's hands; in Constance's, Dilly is at the back of it. Constance Lowe laid the pole over the rail and prayed:"}, {"id": "fg7-08", "type": "says", "who": "constance", "text": "Lord, You showed it me once. Show it me again."}, {"id": "fg7-09", "type": "nar", "text": "Something stopped the hook, and a small green iron-bound box came up out of the brown water into Constance's hands."}, {"id": "fg7-10", "type": "says", "who": "agnes", "text": "That's it. That's my box."}, {"id": "fg7-11", "type": "nar", "text": "At Fenn's, Robin Hale thought:"}, {"id": "fg7-12", "type": "thinks", "who": "robin", "text": "the box can't be reached without a pole anyway, so a full night's sleep is worth more than another look at the wreck."}, {"id": "fg7-13", "type": "nar", "text": "Robin went across to the Tithe Barn, found the reeve's table empty, and climbed to the hayloft."}], "map_round": 70}, {"id": "from-my-hand-to-yours", "title": "From my hand to yours", "rounds": [71], "when": "Day 18, evening", "day": 18, "tod": "evening", "place": "tithe_barn", "sky": "", "present": ["constance", "agnes", "robin", "marigold"], "positions": {"marigold": "market_square", "constance": "broken_bridge", "robin": "tithe_barn", "dilly": "broken_bridge", "hobb": "lark_lane", "hester": "market_square"}, "record": [{"label": "Round 71", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}, {"label": "Dilly's page", "href": "https://wendleford.life/cast.html"}], "register": ["67-80.38", "67-80.43"], "budget_s": 40, "speech_s": 57, "log": "Stage hands: \"as He told me\" said, and lost from the telling told to Constance. Dilly's thought (\"before everybody\") set against where and when Agnes said it (the rail, that afternoon, before the find). Sky left empty: this evening's sky line (\"the barley rippling gold\") is stale (register 67-80.M07). Dilly is not on stage for the handover; Dilly comes in later.", "lines": [{"id": "fg8-01", "type": "nar", "text": "The evening of the eighteenth day. Constance Lowe carried the box up through the square to the Tithe Barn, and set it in Agnes Pollard's hands at the reeve's table."}, {"id": "fg8-02", "type": "says", "who": "constance", "text": "There, Reeve, from my hand to yours, as He told me. Look at your lock."}, {"id": "fg8-03", "type": "nar", "text": "That evening, one of the stage hands making this story happen turned two pages at once, and a few words fell out between them: in the telling, “as He told me” is gone, and Constance says “There, Reeve, from my hand to yours. Look at your lock.” The record does not say why."}, {"id": "fg8-04", "type": "says", "who": "agnes", "text": "Six pennies, paid as promised."}, {"id": "fg8-05", "type": "nar", "text": "That evening, at the bridge, Dilly Quickstep thought:"}, {"id": "fg8-06", "type": "thinks", "who": "dilly", "text": "Agnes said plain before everybody that it was Dilly who did most for the bridge, so I'll take that credit to her table while it's warm."}, {"id": "fg8-07", "type": "nar", "text": "Agnes had said it that afternoon, at the rail, to Dilly and Constance, before the box came up. Dilly went up to the barn and asked her what she would pay to reset the ford stakes."}, {"id": "fg8-08", "type": "says", "who": "agnes", "text": "I don't pay for work I haven't set."}], "map_round": 71}, {"id": "given", "title": "Given", "rounds": [79, 80], "when": "Day 20, evening", "day": 20, "tod": "evening", "place": "dunns_fields", "sky": "A fresh wind off the water, smelling of river mud.", "present": ["constance", "robin", "dunn", "kit", "jory"], "positions": {"marigold": "tithe_barn", "hester": "dunns_fields", "constance": "dunns_fields", "robin": "dunns_fields", "dilly": "lark_lane", "hobb": "lark_lane"}, "record": [{"label": "Round 77", "href": "https://wendleford.life/run.html"}, {"label": "Round 79", "href": "https://wendleford.life/run.html"}, {"label": "Constance's page", "href": "https://wendleford.life/cast.html"}, {"label": "Robin's page", "href": "https://wendleford.life/cast.html"}], "register": ["67-80.97", "67-80.79", "67-80.75", "67-80.72"], "budget_s": 55, "speech_s": 68, "log": "Robin's morning question carried by Constance's own evening words (\"You asked me this morning...\"); no morning scene. The count of the wages: never given by the last night; no figure. The clips come last, after day 20, in the record's order. Constance's clip (\"I did...\") stands beside her \"Given.\"; both are hers. Clips cut at the end are marked with ... . Hester is in Constance's Seen-by line but not in her header, and her own turn ends crossing back to town: left off the stage (a gap).", "lines": [{"id": "fg9-01", "type": "nar", "text": "The evening of the twentieth day, in Dunn's stubble: Constance Lowe and Robin Hale, with Farmer Dunn and Kit and Jory Crane by. That morning Robin had asked Constance a question, and now Constance answered it."}, {"id": "fg9-02", "type": "says", "who": "constance", "text": "You asked me this morning, child, found or given. Given. I didn't find that box. He put it in my hands, and you can write that in your book in ink."}, {"id": "fg9-03", "type": "nar", "text": "Robin wrote Constance's answer in the notebook, in ink: “Given.”"}, {"id": "fg9-04", "type": "nar", "text": "Agnes Pollard had said she would open the box and check the wages. By the last night, she had not given the count."}, {"id": "fg9-05", "type": "nar", "text": "The morning after, a stranger asked each of the six who had found the reeve's box."}, {"id": "fg9-06", "type": "clip", "who": "constance", "label": "Constance, the morning after (day 21), said:", "text": "I did, Constance Lowe, though it was the Lord who did the finding and I only held the pole ..."}, {"id": "fg9-07", "type": "clip", "who": "dilly", "label": "Dilly, the morning after (day 21), said:", "text": "Found it? Well, chum, that was my hook on the end of the pole, made for me by Sam Tolley, and me holding the back end steady as a rock! Constance Lowe worked it up and carried it to the reeve, and she got the six pennies, fair's fair ..."}, {"id": "fg9-08", "type": "clip", "who": "hobb", "label": "Hobb, the morning after (day 21), said:", "text": "Constance Lowe. Brought it up from the river and put it in the reeve's hands herself, and Agnes paid her the six ..."}, {"id": "fg9-09", "type": "clip", "who": "robin", "label": "Robin, the morning after (day 21), said:", "text": "Constance Lowe found it, or she'd say it was given her ..."}], "map_round": 79, "art": "story/img/dunns-stubble.jpg"}]}
+</script>
+<script id="ddata" type="application/json">
+{"c1-01":10.71,"fg1-02":3.53,"c1-03":10.4,"fg1-04":6.22,"c1-05":10.4,"c1-12":4.26,"fg2-01":9.27,"c2-04c":4.55,"fg2-03":4.96,"fg2-04":6.58,"fg2-05":11.47,"fg2-06":8.07,"fg2-07":5.93,"c3-08":4.31,"fg2-09":7.76,"fg3-01":7.84,"fg3-02":12.02,"fg3-03":5.75,"fg3-04":3.29,"fg3-05":9.98,"fg3-06":13.09,"fg4-01":10.16,"fg4-02":2.4,"fg4-03":8.25,"fg4-04":4.55,"fg4-05":3.42,"fg4-06":4.26,"fg4-07":4.78,"fg4-08":7.13,"fg5-01":10.87,"fg5-02":10.4,"fg5-03":8.54,"fg5-04":6.4,"fg5-05":5.02,"fg5-06":7.55,"fg5-07":4.41,"fg5-075":3.6,"fg5-08":2.17,"fg5-09":7.55,"fg6-01":16.2,"fg6-02":6.58,"fg6-03":2.93,"fg6-04":3.11,"fg6-05":4.86,"fg6-06":18.52,"fg7-01":6.03,"fg7-02":7.55,"fg7-03":5.15,"fg7-04":8.44,"fg7-045":5.67,"fg7-05":8.44,"fg7-06":2.74,"fg7-07":13.87,"fg7-08":2.51,"fg7-09":6.82,"fg7-10":1.62,"fg7-11":2.12,"fg7-12":7.13,"fg7-13":5.85,"fg8-01":9.8,"fg8-02":4.49,"fg8-03":17.79,"fg8-04":2.12,"fg8-05":3.16,"fg8-06":6.69,"fg8-07":10.21,"fg8-08":2.22,"fg9-01":13.51,"fg9-02":8.72,"fg9-03":4.44,"fg9-04":6.3,"fg9-05":4.41,"fg9-06":5.43,"fg9-07":13.32,"fg9-08":7.24,"fg9-09":3.34}
 </script>
 <script id="rdata" type="application/json">
 {"1": {"marigold": "wheatsheaf", "dilly": "market_square", "hester": "smithy", "robin": "wheatsheaf", "hobb": "tithe_barn", "constance": "tithe_barn"}, "2": {"constance": "broken_bridge", "hobb": "broken_bridge", "robin": "wheatsheaf", "hester": "smithy", "dilly": "market_square", "marigold": "wheatsheaf"}, "3": {"marigold": "fenns", "hobb": "dunns_fields", "robin": "market_square", "dilly": "market_square", "hester": "market_square", "constance": "broken_bridge"}, "4": {"constance": "broken_bridge", "hester": "broken_bridge", "dilly": "wheatsheaf", "robin": "market_square", "hobb": "dunns_fields", "marigold": "fenns"}, "5": {"hobb": "dunns_fields", "marigold": "fenns", "dilly": "wheatsheaf", "robin": "wheatsheaf", "hester": "smithy", "constance": "tithe_barn"}, "6": {"constance": "wheatsheaf", "hester": "dunns_fields", "robin": "broken_bridge", "dilly": "broken_bridge", "marigold": "fenns", "hobb": "dunns_fields"}, "7": {"hester": "dunns_fields", "constance": "broken_bridge", "hobb": "dunns_fields", "marigold": "fenns", "robin": "broken_bridge", "dilly": "broken_bridge"}, "8": {"dilly": "broken_bridge", "robin": "broken_bridge", "marigold": "wheatsheaf", "constance": "dunns_fields", "hester": "dunns_fields"}, "9": {"hester": "dunns_fields", "constance": "dunns_fields", "robin": "wheatsheaf", "hobb": "dunns_fields", "dilly": "wheatsheaf", "marigold": "wheatsheaf"}, "10": {"marigold": "fenns", "dilly": "lark_lane", "hobb": "dunns_fields", "robin": "wheatsheaf", "constance": "dunns_fields", "hester": "dunns_fields"}, "11": {"hobb": "dunns_fields", "robin": "dunns_fields", "constance": "dunns_fields", "marigold": "fenns", "hester": "dunns_fields", "dilly": "broken_bridge"}, "12": {"dilly": "broken_bridge", "marigold": "fenns", "constance": "dunns_fields", "robin": "dunns_fields", "hobb": "dunns_fields"}, "13": {"hobb": "dunns_fields", "hester": "dunns_fields", "dilly": "wheatsheaf", "constance": "dunns_fields", "marigold": "fenns", "robin": "dunns_fields"}, "14": {"robin": "dunns_fields", "marigold": "market_square", "constance": "dunns_fields", "dilly": "broken_bridge", "hester": "dunns_fields", "hobb": "dunns_fields"}, "15": {"hobb": "dunns_fields", "robin": "dunns_fields", "constance": "dunns_fields", "dilly": "broken_bridge", "hester": "dunns_fields", "marigold": "market_square"}, "16": {"marigold": "wheatsheaf", "dilly": "broken_bridge", "constance": "dunns_fields", "robin": "dunns_fields"}, "17": {"constance": "dunns_fields", "hester": "dunns_fields", "hobb": "dunns_fields", "robin": "dunns_fields", "dilly": "wheatsheaf", "marigold": "wheatsheaf"}, "18": {"marigold": "wheatsheaf", "dilly": "lark_lane", "robin": "broken_bridge", "hobb": "broken_bridge", "hester": "broken_bridge", "constance": "dunns_fields"}, "19": {"robin": "broken_bridge", "hobb": "market_square", "dilly": "broken_bridge", "marigold": "wheatsheaf", "constance": "dunns_fields", "hester": "broken_bridge"}, "20": {"marigold": "wheatsheaf", "dilly": "broken_bridge", "hobb": "tithe_barn", "robin": "wheatsheaf"}, "21": {"marigold": "wheatsheaf", "robin": "market_square", "hobb": "tithe_barn", "hester": "tithe_barn", "constance": "dunns_fields", "dilly": "wheatsheaf"}, "22": {"dilly": "lark_lane", "constance": "dunns_fields", "hester": "lark_lane", "hobb": "broken_bridge", "robin": "broken_bridge", "marigold": "market_square"}, "23": {"constance": "dunns_fields", "dilly": "broken_bridge", "robin": "broken_bridge", "hester": "broken_bridge", "marigold": "fenns", "hobb": "broken_bridge"}, "24": {"marigold": "fenns", "dilly": "broken_bridge", "constance": "dunns_fields"}, "25": {"hobb": "smithy", "constance": "dunns_fields", "robin": "wheatsheaf", "dilly": "smithy", "hester": "smithy", "marigold": "fenns"}, "26": {"marigold": "fenns", "hester": "lark_lane", "dilly": "smithy", "robin": "market_square", "constance": "dunns_fields", "hobb": "broken_bridge"}, "27": {"hester": "lark_lane", "robin": "broken_bridge", "constance": "broken_bridge", "dilly": "broken_bridge", "hobb": "broken_bridge", "marigold": "wheatsheaf"}, "28": {"marigold": "wheatsheaf", "hobb": "mabry_cottage", "dilly": "broken_bridge", "constance": "wheatsheaf", "robin": "broken_bridge", "hester": "lark_lane"}, "29": {"hester": "lark_lane", "marigold": "wheatsheaf", "robin": "broken_bridge", "dilly": "wheatsheaf", "constance": "tithe_barn", "hobb": "mabry_cottage"}, "30": {"hobb": "lark_lane", "constance": "broken_bridge", "dilly": "lark_lane", "robin": "wayside_shrine", "marigold": "fenns", "hester": "lark_lane"}, "31": {"robin": "wayside_shrine", "marigold": "fenns", "constance": "broken_bridge", "hobb": "lark_lane", "dilly": "lark_lane", "hester": "smithy"}, "32": {"dilly": "wheatsheaf", "hobb": "lark_lane", "marigold": "wheatsheaf", "robin": "wayside_shrine"}, "33": {"marigold": "wheatsheaf", "dilly": "wheatsheaf", "constance": "tithe_barn", "hobb": "lark_lane", "robin": "wheatsheaf", "hester": "smithy"}, "34": {"hester": "market_square", "robin": "lark_lane", "hobb": "market_square", "constance": "broken_bridge", "dilly": "smithy", "marigold": "fenns"}, "35": {"hester": "broken_bridge", "marigold": "fenns", "robin": "lark_lane", "constance": "broken_bridge", "hobb": "fenns", "dilly": "smithy"}, "36": {"constance": "wheatsheaf", "marigold": "wheatsheaf", "hester": "broken_bridge"}, "37": {"marigold": "wheatsheaf", "constance": "tithe_barn", "robin": "wheatsheaf", "hester": "smithy", "dilly": "wheatsheaf", "hobb": "mabry_cottage"}, "38": {"hobb": "fenns", "dilly": "market_square", "hester": "smithy", "robin": "lark_lane", "constance": "smithy", "marigold": "fenns"}, "39": {"robin": "lark_lane", "marigold": "fenns", "hobb": "wheatsheaf", "constance": "smithy", "dilly": "broken_bridge", "hester": "smithy"}, "40": {"hester": "smithy", "dilly": "broken_bridge", "constance": "smithy", "hobb": "mabry_cottage", "marigold": "wheatsheaf", "robin": "lark_lane"}, "41": {"constance": "tithe_barn", "hobb": "mabry_cottage", "marigold": "wheatsheaf", "dilly": "wheatsheaf", "hester": "smithy", "robin": "market_square"}, "42": {"robin": "lark_lane", "hester": "broken_bridge", "dilly": "wheatsheaf", "marigold": "fenns", "hobb": "broken_bridge", "constance": "smithy"}, "43": {"dilly": "smithy", "robin": "broken_bridge", "hester": "broken_bridge", "hobb": "broken_bridge", "marigold": "fenns", "constance": "broken_bridge"}, "44": {"constance": "tithe_barn", "marigold": "wheatsheaf", "hobb": "wheatsheaf", "hester": "broken_bridge", "robin": "wheatsheaf", "dilly": "broken_bridge"}, "45": {"robin": "wheatsheaf", "hester": "wheatsheaf", "constance": "tithe_barn", "hobb": "mabry_cottage", "marigold": "wheatsheaf", "dilly": "wheatsheaf"}, "46": {"dilly": "lark_lane", "marigold": "fenns", "hobb": "broken_bridge", "constance": "broken_bridge", "hester": "lark_lane", "robin": "broken_bridge"}, "47": {"dilly": "lark_lane", "constance": "broken_bridge", "hester": "broken_bridge", "robin": "broken_bridge", "hobb": "broken_bridge", "marigold": "fenns"}, "48": {"marigold": "wheatsheaf", "hester": "smithy", "constance": "lark_lane", "dilly": "lark_lane"}, "49": {"marigold": "wheatsheaf", "hobb": "mabry_cottage", "robin": "wheatsheaf", "hester": "tithe_barn", "constance": "tithe_barn", "dilly": "wheatsheaf"}, "50": {"dilly": "lark_lane", "constance": "lark_lane", "hester": "lark_lane", "robin": "broken_bridge", "hobb": "broken_bridge", "marigold": "fenns"}, "51": {"hester": "broken_bridge", "dilly": "lark_lane", "hobb": "fenns", "constance": "lark_lane", "robin": "broken_bridge", "marigold": "wheatsheaf"}, "52": {"marigold": "wheatsheaf", "robin": "wheatsheaf", "constance": "lark_lane", "hobb": "wheatsheaf", "dilly": "lark_lane", "hester": "wheatsheaf"}, "53": {"robin": "market_square", "hobb": "mabry_cottage", "marigold": "wheatsheaf", "dilly": "wheatsheaf", "constance": "tithe_barn", "hester": "wheatsheaf"}, "54": {"hester": "lark_lane", "constance": "lark_lane", "dilly": "smithy", "marigold": "wheatsheaf", "hobb": "broken_bridge", "robin": "broken_bridge"}, "55": {"marigold": "wheatsheaf", "constance": "lark_lane", "dilly": "lark_lane", "hester": "lark_lane", "hobb": "broken_bridge", "robin": "broken_bridge"}, "56": {"hobb": "broken_bridge", "hester": "lark_lane", "dilly": "lark_lane", "constance": "lark_lane", "marigold": "wheatsheaf"}, "57": {"dilly": "wheatsheaf", "hester": "tithe_barn", "constance": "tithe_barn", "hobb": "mabry_cottage", "marigold": "wheatsheaf", "robin": "wheatsheaf"}, "58": {"robin": "broken_bridge", "marigold": "broken_bridge", "hobb": "lark_lane", "constance": "lark_lane", "hester": "lark_lane", "dilly": "lark_lane"}, "59": {"constance": "lark_lane", "hobb": "lark_lane", "hester": "smithy", "robin": "broken_bridge", "marigold": "wheatsheaf", "dilly": "lark_lane"}, "60": {"robin": "tithe_barn", "constance": "lark_lane"}, "61": {"hester": "wheatsheaf", "robin": "tithe_barn", "constance": "tithe_barn", "hobb": "mabry_cottage", "dilly": "wheatsheaf", "marigold": "tithe_barn"}, "62": {"marigold": "fenns", "dilly": "lark_lane", "hobb": "broken_bridge", "constance": "lark_lane", "robin": "fenns", "hester": "lark_lane"}, "63": {"dilly": "smithy", "hobb": "broken_bridge", "robin": "fenns", "hester": "smithy", "marigold": "fenns", "constance": "smithy"}, "64": {"constance": "smithy", "marigold": "market_square", "hester": "smithy", "hobb": "broken_bridge", "dilly": "smithy"}, "65": {"robin": "tithe_barn", "constance": "smithy", "hester": "smithy", "hobb": "mabry_cottage", "dilly": "smithy", "marigold": "tithe_barn"}, "66": {"marigold": "fenns", "dilly": "smithy", "hobb": "broken_bridge", "hester": "smithy", "constance": "smithy", "robin": "fenns"}, "67": {"constance": "smithy", "hobb": "lark_lane", "robin": "fenns", "hester": "smithy", "dilly": "smithy", "marigold": "market_square"}, "68": {"hobb": "lark_lane", "constance": "wheatsheaf"}, "69": {"robin": "tithe_barn", "constance": "tithe_barn", "marigold": "tithe_barn", "hobb": "mabry_cottage", "dilly": "wheatsheaf", "hester": "tithe_barn"}, "70": {"hester": "broken_bridge", "dilly": "broken_bridge", "hobb": "lark_lane", "marigold": "market_square", "constance": "broken_bridge", "robin": "fenns"}, "71": {"marigold": "market_square", "constance": "broken_bridge", "robin": "tithe_barn", "dilly": "broken_bridge", "hobb": "lark_lane", "hester": "market_square"}, "72": {"constance": "tithe_barn"}, "73": {"hester": "tithe_barn", "constance": "tithe_barn", "marigold": "tithe_barn", "hobb": "mabry_cottage", "robin": "tithe_barn", "dilly": "wheatsheaf"}, "74": {"dilly": "lark_lane", "robin": "fenns", "hobb": "lark_lane", "marigold": "fenns", "constance": "market_square", "hester": "market_square"}, "75": {"robin": "tithe_barn", "hobb": "fenns", "marigold": "market_square", "hester": "market_square", "dilly": "lark_lane", "constance": "wayside_shrine"}, "76": {"constance": "wayside_shrine", "dilly": "wheatsheaf"}, "77": {"robin": "tithe_barn", "marigold": "tithe_barn", "constance": "tithe_barn", "hester": "tithe_barn", "hobb": "mabry_cottage", "dilly": "wheatsheaf"}, "78": {"dilly": "lark_lane", "hobb": "wheatsheaf", "hester": "dunns_fields", "constance": "dunns_fields", "marigold": "fenns", "robin": "broken_bridge"}, "79": {"marigold": "tithe_barn", "hester": "dunns_fields", "constance": "dunns_fields", "robin": "dunns_fields", "dilly": "lark_lane", "hobb": "lark_lane"}, "80": {"dilly": "wheatsheaf", "hester": "tithe_barn"}}
@@ -311,6 +287,7 @@
   Object.keys(LINK).forEach(function(a){LINK[a].forEach(function(b){ADJ[a].push(b);ADJ[b].push(a)})});
   var SIX=[['hester','Hester'],['hobb','Hobb'],['dilly','Dilly'],['marigold','Marigold'],['robin','Robin'],['constance','Constance']];
   var NAMES={hester:'Hester',hobb:'Hobb',dilly:'Dilly',marigold:'Marigold',robin:'Robin',constance:'Constance',bet:'Bet',kit:'Kit',agnes:'Agnes',sam:'Sam',tom:'Tom',ida:'Ida',jory:'Jory',wat:'Wat',mabry:'Widow Mabry',dunn:'Farmer Dunn',narrator:'Narrator'};
+  var PORTRAITS=['agnes','bet','dunn','jory','kit','mabry','sam','tom','wat']; // townsfolk with a portrait in story/img/
   var TOD=['morning','afternoon','evening','night'];
   var SVGNS='http://www.w3.org/2000/svg';
   var $=function(id){return document.getElementById(id)};
@@ -331,7 +308,7 @@
     svg.appendChild(pls);
     var toks=document.createElementNS(SVGNS,'g');var T={};
     SIX.forEach(function(p){var g=document.createElementNS(SVGNS,'g');g.setAttribute('class','tok');
-      g.innerHTML=small?'<circle r="17"/><text text-anchor="middle" y="5">'+p[1][0]+(p[0]==='hobb'?'o':'')+'</text>':'<title>'+p[1]+'</title><image href="story/img/p-'+p[0]+'.svg" x="-15" y="-15" width="30" height="30"/>';
+      g.innerHTML=small?'<circle r="17"/><text text-anchor="middle" y="5">'+p[1][0]+(p[0]==='hobb'?'o':'')+'</text>':'<title>'+p[1]+'</title><image href="story/img/p-'+p[0]+'.svg" x="-15" y="-15" width="30" height="30"/><text class="nm" text-anchor="middle" y="27">'+p[1]+'</text>';
       toks.appendChild(g);T[p[0]]=g});
     svg.appendChild(toks);
     var w=document.createElementNS(SVGNS,'rect');w.setAttribute('class','wash');w.setAttribute('x',0);w.setAttribute('y',0);w.setAttribute('width',760);w.setAttribute('height',500);w.setAttribute('fill','transparent');svg.appendChild(w);
@@ -340,12 +317,13 @@
   var big=buildMap($('bigmap'),false),ins=buildMap($('insetmap'),true);
   function slots(posmap){var by={},out={};
     SIX.forEach(function(p){var pl=posmap[p[0]];if(pl&&ROOMS[pl])(by[pl]=by[pl]||[]).push(p[0])});
-    Object.keys(by).forEach(function(pl){var xy=ROOMS[pl].xy,n=by[pl].length;by[pl].forEach(function(id,i){out[id]=[xy[0]+(i-(n-1)/2)*32,xy[1]+31]})});
+    Object.keys(by).forEach(function(pl){var xy=ROOMS[pl].xy,n=by[pl].length;by[pl].forEach(function(id,i){out[id]=[xy[0]+(i-(n-1)/2)*32,xy[1]+31,n>1?i%2:0]})});
     return out}
   function route(a,b){if(!ADJ[a]||!ADJ[b])return[a,b];if(a===b)return[a];var prev={},q=[a],seen={};seen[a]=1;
     while(q.length){var c=q.shift();if(c===b)break;ADJ[c].forEach(function(n){if(!seen[n]){seen[n]=1;prev[n]=c;q.push(n)}})}
     var path=[b];while(path[0]!==a)path.unshift(prev[path[0]]);return path}
-  function setTok(m,id,xy,bob,tilt){m.pos[id]=xy;m.toks[id].setAttribute('transform','translate('+xy[0].toFixed(1)+','+(xy[1]-(bob||0)).toFixed(1)+')'+(tilt?' rotate('+tilt.toFixed(1)+')':''))}
+  function setTok(m,id,xy,bob,tilt){m.pos[id]=xy;m.toks[id].setAttribute('transform','translate('+xy[0].toFixed(1)+','+(xy[1]-(bob||0)).toFixed(1)+')'+(tilt?' rotate('+tilt.toFixed(1)+')':''));
+    var nm=m.toks[id].querySelector('.nm');if(nm)nm.setAttribute('y',xy[2]?38:27)} // when several stand in one place, every other name drops a line
   function placeAll(m,posmap){var s=slots(posmap);SIX.forEach(function(p){var id=p[0];m.toks[id].classList.toggle('gap',!posmap[id]);if(s[id])setTok(m,id,s[id])})}
   function mark(m,place){Array.prototype.forEach.call(m.places.children,function(g){g.classList.toggle('on',g.dataset.id===place)})}
   function polyAlong(pts,t){var L=0,segs=[];for(var i=1;i<pts.length;i++){var d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);segs.push(d);L+=d}
@@ -370,7 +348,7 @@
       if(t<1)anim=requestAnimationFrame(fr);else{anim=null;stepsOff();SIX.forEach(function(p){if(paths[p[0]])setTok(m,p[0],end[p[0]])});if(done)done()}}
     anim=requestAnimationFrame(fr)}
   function showRound(r){curRound=r;$('bigclock').firstElementChild.textContent=whenText(r);$('insetclock').textContent='Day '+dayOf(r)+' · '+todOf(r);
-    big.wash.setAttribute('fill',wash(todOf(r)));ins.wash.setAttribute('fill',wash(todOf(r)))}
+    big.wash.setAttribute('fill',wash(todOf(r)));ins.wash.setAttribute('fill',wash(todOf(r)));if(ch>=0)updateTime()}
 
   // ---- map music and effects (only while the days pass on the map) ----
   var SFX={music:null,steps:null,card:null};
@@ -386,10 +364,12 @@
   // ---- player state ----
   var ch=-1,li=-1,playing=false,paused=false,sound=true,timer=null,tRem=0,tStart=0,audio=null,phase='idle',memHold=null;
   var chapters=V.chapters;
+  var DUR=(function(){var e=document.getElementById('ddata');try{return e?JSON.parse(e.textContent):{}}catch(x){return{}}})(); // measured length of each voice file (tools/durations.py)
   function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
-  function lineSecs(l){return Math.max(1.6,l.text.length/15.5)+(l.type==='nar'?.4:.7)}
+  function lineSecs(l){return (DUR[l.id]||Math.max(1.6,l.text.length/15.5))+(l.type==='nar'?.4:.7)}
+  function passSecs(i){return reduce?0:(i===0?10.5:15.7)+1.4} // the days passing on the map before a chapter, and the hold after it
   function chapterSecs(c){return c.lines.reduce(function(a,l){return a+lineSecs(l)},0)}
-  function totalSecs(){return chapters.reduce(function(a,c){return a+chapterSecs(c)},0)}
+  function totalSecs(){return chapters.reduce(function(a,c,i){return a+chapterSecs(c)+passSecs(i)},0)}
 
   // chapter strip + script
   function renderStrip(){var s=$('strip'),n=$('chnames');s.innerHTML='';n.innerHTML='';
@@ -405,8 +385,8 @@
     c.lines.forEach(function(l,i){var who=l.type==='nar'?'Narrator':l.type==='says'?NAMES[l.who]+' said':l.type==='thinks'?NAMES[l.who]+' thought':'';
       if(l.type==='note'||l.type==='clip'||l.type==='memory'||l.type==='notice'){
         var lbl=l.type==='note'?l.label:l.type==='clip'?l.label:l.type==='memory'?l.label+':':'On the notice board';
-        h+='<div class="line t-'+l.type+'" data-i="'+i+'"><span class="llbl">'+esc(lbl)+'</span><span class="txt">'+(l.type==='notice'?'':'“')+esc(l.text)+(l.type==='notice'?'':'”')+'</span></div>'}
-      else h+='<div class="line t-'+l.type+'" data-i="'+i+'"><div class="who">'+esc(who)+'</div><div class="txt">'+(l.type==='says'?'“'+esc(l.text)+'”':esc(l.text))+'</div></div>'});
+        h+='<div class="line '+l.type+'" data-i="'+i+'"><span class="lbl">'+esc(lbl)+'</span><span class="txt">'+(l.type==='notice'?'':'“')+esc(l.text)+(l.type==='notice'?'':'”')+'</span></div>'}
+      else h+='<div class="line '+l.type+'" data-i="'+i+'"><div class="who">'+esc(who)+'</div><div class="txt">'+(l.type==='says'?'“'+esc(l.text)+'”':esc(l.text))+'</div></div>'});
     h+='<div class="rec"><span>In the record:</span>'+c.record.map(function(r){return '<a href="'+r.href+'" target="_blank" rel="noopener">'+esc(r.label)+'</a>'}).join('')+'</div>';
     sc.innerHTML=h;
     Array.prototype.forEach.call(sc.querySelectorAll('.line'),function(el){el.addEventListener('click',function(){jumpLine(+el.dataset.i)})})}
@@ -416,8 +396,8 @@
 
   // stage: scene
   function buildFigs(c){var f=$('figs');f.innerHTML='';c.present.forEach(function(id){var d=document.createElement('div');d.className='fig';d.dataset.id=id;
-    var six=SIX.some(function(p){return p[0]===id});
-    d.innerHTML=(six?'<img src="story/img/p-'+id+'.svg" alt="">':'<div class="ph">'+NAMES[id]+'<br>(figure to draw)</div>')+'<div class="base"></div><b>'+NAMES[id]+'</b>';f.appendChild(d)})}
+    var drawn=SIX.some(function(p){return p[0]===id})||PORTRAITS.indexOf(id)>=0;
+    d.innerHTML=(drawn?'<img src="story/img/p-'+id+'.svg" alt="">':'<div class="ph">'+NAMES[id]+'<br>(figure to draw)</div>')+'<div class="base"></div><b>'+NAMES[id]+'</b>';f.appendChild(d)})}
   function enterScene(c,done){allSfxOff();cardIn();var bd=$('backdrop');bd.src=c.art||ROOMS[c.place].art||'';bd.alt='Painted backdrop: '+ROOMS[c.place].name;
     $('wash').style.background=wash(c.tod);buildFigs(c);$('cards-layer').innerHTML='';setCaption('', '', '');
     placeAll(ins,c.positions);mark(ins,c.place);
@@ -432,10 +412,10 @@
     if(l.tod)$('wash').style.background=wash(l.tod);
     if(l.type==='nar'){setCaption('Narrator',l.text,'')}
     else if(l.type==='says'){setCaption(NAMES[l.who]+' said','“'+l.text+'”','');speak(l.who,true)}
-    else if(l.type==='thinks'){setCaption(NAMES[l.who]+' thought',l.text,'cthought');speak(l.who,true)}
-    else if(l.type==='notice'){setCaption('Narrator, reading the board','','');cl.innerHTML='<div class="scard notice"><b>Pinned on the notice board</b>'+esc(l.text)+'</div>'}
-    else if(l.type==='note'){setCaption(l.label,'','');cl.innerHTML='<div class="scard"><b>'+esc(l.label)+'</b>'+esc(l.text)+'</div>'}
-    else if(l.type==='clip'){setCaption(l.label,'','');cl.innerHTML='<div class="scard clip"><b>'+esc(l.label)+'</b>“'+esc(l.text)+'”</div>'}
+    else if(l.type==='thinks'){setCaption(NAMES[l.who]+' thought',l.text,'thought');speak(l.who,true)}
+    else if(l.type==='notice'){setCaption('Narrator, reading the board','','');cl.innerHTML='<div class="card notice"><b>Pinned on the notice board</b>'+esc(l.text)+'</div>'}
+    else if(l.type==='note'){setCaption(l.label,'','');cl.innerHTML='<div class="card"><b>'+esc(l.label)+'</b>'+esc(l.text)+'</div>'}
+    else if(l.type==='clip'){setCaption(l.label,'','');cl.innerHTML='<div class="card clip"><b>'+esc(l.label)+'</b>“'+esc(l.text)+'”</div>'}
     else if(l.type==='memory'){setCaption(NAMES[l.who]+' kept it in mind','','');clearMem();var fig=$('figs').querySelector('[data-id="'+l.who+'"]');
       if(fig){memHold=document.createElement('div');memHold.className='memcard';memHold.innerHTML='<b>'+esc(l.label)+'</b>“'+esc(l.text)+'”';fig.appendChild(memHold)}speak(l.who,true)}}
 
@@ -453,7 +433,7 @@
     function next(){if(!playing||paused)return;li++;playLine()}}
   function startChapter(i,fromClick){if(i<0||i>=chapters.length)return;clearTimer();ch=i;li=-1;playing=true;paused=false;setPlayBtn();
     var c=chapters[i],start=c.map_round||c.rounds[0];renderStrip();renderScript();$('chapters').hidden=false;$('card-found-or-given').classList.add('playing');
-    phase='pass';leaveScene();
+    phase='pass';leaveScene();$('restnote').hidden=true;
     var MIN_PASS=reduce?0:14000,passT0=Date.now(); // the map stays long enough for the tune to play out
     function goIn(){$('bigsky').textContent=c.sky||'';var wait=Math.max(reduce?0:2200,MIN_PASS-(Date.now()-passT0));mark(big,c.place);timer=setTimeout(function(){if(!playing)return;enterScene(c,function(){phase='scene';li=0;timer=setTimeout(playLine,reduce?0:900)})},wait)}
     // the days pass on the map: walk round by round from where we are to the chapter's first round
@@ -473,11 +453,15 @@
   function jumpLine(i){if(ch<0)return;clearTimer();li=i;playing=true;paused=false;setPlayBtn();if(phase!=='scene'){var c=chapters[ch],mr=c.map_round||c.rounds[0];phase='scene';showRound(mr);placeAll(big,ROUNDS[mr]);enterScene(c,playLine)}else playLine()}
   function setPlayBtn(){var b=$('btnPlay');b.innerHTML=(playing&&!paused)?'⏸<span>Pause</span>':'▶<span>Play</span>';b.title=(playing&&!paused)?'Pause':'Play'}
   function updateTime(){var t=$('timeinfo');if(ch<0){t.textContent='Nothing playing.';return}
-    var done=0;for(var i=0;i<ch;i++)done+=chapterSecs(chapters[i]);for(var j=0;j<li&&j<chapters[ch].lines.length;j++)done+=lineSecs(chapters[ch].lines[j]);
+    var done=0;for(var i=0;i<ch;i++)done+=chapterSecs(chapters[i])+passSecs(i);if(phase!=='pass')done+=passSecs(ch);for(var j=0;j<li&&j<chapters[ch].lines.length;j++)done+=lineSecs(chapters[ch].lines[j]);
     t.innerHTML='<b>'+esc(V.title)+'</b> · chapter '+(ch+1)+' of '+chapters.length+' · '+fmt(done)+' / '+fmt(totalSecs())+(phase==='pass'?' · the days pass: '+whenText(curRound):'')}
 
   // buttons
-  $('playV').addEventListener('click',function(){curRound=1;placeAll(big,ROUNDS[1]);startChapter(0)});
+  $('playV').addEventListener('click',function(){curRound=1;placeAll(big,ROUNDS[1]);startChapter(0);document.querySelector('.player').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})});
+  // the sticky bar sits under the site's header; the stage is sized to fit beneath both
+  function measure(){var h=document.querySelector('header.top'),c=document.querySelector('.ctlbar'),root=document.documentElement;
+    root.style.setProperty('--hdr',(h&&getComputedStyle(h).position==='sticky'?h.offsetHeight:0)+'px');root.style.setProperty('--ctl',(c?c.offsetHeight:120)+'px')}
+  measure();window.addEventListener('resize',measure);if(window.ResizeObserver){new ResizeObserver(measure).observe(document.querySelector('.ctlbar'))}
   $('btnPlay').addEventListener('click',function(){
     if(ch<0){curRound=1;placeAll(big,ROUNDS[1]);startChapter(0);return}
     if(!playing){playing=true;paused=false;setPlayBtn();if(phase==='scene'){playLine()}else{startChapter(ch,true)}return}
@@ -489,13 +473,10 @@
   $('btnSnd').addEventListener('click',function(){sound=!sound;$('btnSnd').innerHTML=sound?'🔊<span>Sound on</span>':'🔇<span>Sound off</span>';if(!sound)allSfxOff();else if(phase==='pass')musicOn();if(audio&&!sound){clearTimer();tRem=1500;tStart=Date.now();timer=setTimeout(function(){li++;playLine()},tRem)}});
 
   // at rest
-  placeAll(big,ROUNDS[1]);showRound(1);renderStrip();
+  placeAll(big,ROUNDS[1]);showRound(1);renderStrip();measure();
+  (function(){var e=$('vlen');if(e)e.textContent=chapters.length+' chapters · about '+Math.round(totalSecs()/60)+' minutes'})();
   if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){showRound(curRound)});
 })();
-</script>
-<script>
-// keep the player's control bar just under the site's sticky header
-(function(){var h=document.querySelector('header.top');function f(){document.documentElement.style.setProperty('--hdr',(h?h.offsetHeight:0)+'px')}f();window.addEventListener('resize',f)})();
 </script>
 <script src="site.js"></script>
 </body>
