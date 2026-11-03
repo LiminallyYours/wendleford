@@ -490,6 +490,8 @@
   // at rest
   placeAll(big,ROUNDS[1]);showRound(1);renderStrip();measure();
   Array.prototype.forEach.call(document.querySelectorAll('.vlen'),function(e){var f=FILMS[e.dataset.film];if(f)e.textContent=f.chapters.length+' chapters · about '+Math.round(totalSecs(f.chapters)/60)+' minutes'});
+  // a link to story.html#<film id> (the home page's Watch buttons) picks that film and points to its row
+  (function(){var id=(location.hash||'').slice(1);if(!FILMS[id])return;chooseFilm(id);markCard();var c=document.getElementById('card-'+id);if(c)c.scrollIntoView({block:'center'})})();
   if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){showRound(curRound)});
 })();
 </script>

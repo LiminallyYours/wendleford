@@ -35,6 +35,14 @@
 .cg li{display:flex;flex-direction:column;gap:1px;font-size:14px;line-height:1.4}
 .cg li a{font-weight:600;text-decoration:none}
 .cg li span{color:var(--muted);font-size:13px}
+.moments{position:relative}
+.moments .m-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:56px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 30px/1 var(--serif);cursor:pointer;opacity:.92;display:flex;align-items:center;justify-content:center;padding:0 0 4px}
+.moments .m-nav:hover{border-color:var(--accent);color:var(--accent);opacity:1}
+.moments .m-nav:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.moments .m-prev{left:-20px}.moments .m-next{right:-20px}
+.moments .moment[hidden]{display:none}
+@media (max-width:1100px){.moments .m-prev{left:8px}.moments .m-next{right:8px}}
+@media (max-width:760px){.moments .m-nav{top:calc((100vw - 32px) * 9 / 32);width:36px;height:48px}}
 @media (max-width:760px){.moment{grid-template-columns:minmax(0,1fr)}.moment .m-img{min-height:0;height:auto;aspect-ratio:16/9}.moment .m-body{padding:20px}.moment .m-q{font-size:18px}}
 @media (max-width:600px){.hero h1{font-size:32px}.hero p{font-size:16px}.ideas .row{grid-template-columns:minmax(0,1fr);gap:3px}}
 </style>
@@ -71,19 +79,33 @@
 <div class="grid" style="--min:250px">
 <a class="card link-card go" href="how.html"><span class="lbl">For how it's built</span><h3>How It Works</h3><p>The game underneath, and one real turn traced from start to finish.</p><span class="arrow">Open →</span></a>
 <a class="card link-card go" href="results.html"><span class="lbl">For what we found</span><h3>Analysis</h3><p>What the interviews and personality tests showed about the six after twenty days, and where Claude shows through.</p><span class="arrow">Open →</span></a>
-<a class="card link-card go" href="story.html"><span class="lbl">For the story</span><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>The Story</h3></div><p>Short films from the twenty days, each true to the record. The first, “Found or given?”, is ready to play; two more are coming.</p><span class="arrow">Open →</span></a>
+<a class="card link-card go" href="story.html"><span class="lbl">For the story</span><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>The Story</h3></div><p>Short films from the twenty days, each true to the record. Two are ready to play, “Found or given?” and “Robin's notebook”; one more is coming.</p><span class="arrow">Open →</span></a>
 </div>
 </section>
 <section class="sec">
-<div class="card moment">
+<div class="moments" aria-roledescription="carousel" aria-label="Moments from the films">
+<button type="button" class="m-nav m-prev" aria-label="Previous film">‹</button>
+<div class="card moment" data-film="found-or-given">
 <img class="m-img" src="img/story-bridge.jpg" alt="A painting of the new bridge over the River Wend, from the film">
 <div class="m-body">
 <span class="lbl">From the first film · Found or given?</span>
 <blockquote class="m-q">“Reeve, the Lord showed me your green box this morning, plain as paint, low on the downstream side of the far pier, and He's kept me for it. I'll be the one puts it in your hand, mark me.”</blockquote>
 <p class="m-who"><img src="img/p-constance.svg" alt="">Constance, one of the six residents, on the seventh night</p>
 <p class="m-txt">The flood swept away the bridge, and with it the iron box holding the wages for the men rebuilding it. Over eighteen days, several of the residents each have a hand in getting it back. When it finally comes out of the river, was it found, or given?</p>
-<a class="m-btn" href="story.html"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2 L12 7 L3 12 Z" fill="currentColor"/></svg>Watch the film · about 12 minutes</a>
+<a class="m-btn" href="story.html#found-or-given"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2 L12 7 L3 12 Z" fill="currentColor"/></svg>Watch the film · about 12 minutes</a>
 </div>
+</div>
+<div class="card moment" data-film="robins-notebook" hidden>
+<img class="m-img" src="img/story-shrine.jpg" alt="A painting of the wayside shrine under its thorn tree, from the film">
+<div class="m-body">
+<span class="lbl">From the second film · Robin's notebook</span>
+<blockquote class="m-q">“What you can't remember was never yours to forget, Robin Hale.”</blockquote>
+<p class="m-who"><img src="story/img/p-wick.svg" alt="">Mother Wick, who keeps the wayside shrine, to Robin, on the eighth evening</p>
+<p class="m-txt">Robin, one of the residents, keeps finding that time has gone missing: a morning gone, with no memory of where. Robin writes the gaps down and asks the townsfolk, and never hears the two others who noticed something odd too.</p>
+<a class="m-btn" href="story.html#robins-notebook"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 2 L12 7 L3 12 Z" fill="currentColor"/></svg>Watch the film · about 14 minutes</a>
+</div>
+</div>
+<button type="button" class="m-nav m-next" aria-label="Next film">›</button>
 </div>
 </section>
 <section class="sec">
@@ -108,7 +130,7 @@
 <li><a href="world.html">The Town</a><span>the flood, the places, the townsfolk, and what everyone knows</span></li>
 <li><a href="cast.html">The Cast</a><span>the six residents, with every turn, memory, briefing and interview</span></li>
 <li><a href="run.html">The Run</a><span>the 80 rounds, turning point by turning point</span></li>
-<li><a href="story.html">The Story</a><span>short films from the twenty days; the first is ready</span></li>
+<li><a href="story.html">The Story</a><span>short films from the twenty days; two are ready</span></li>
 </ul></div>
 <div class="cg"><h3 class="lbl">What we tried to learn</h3><ul>
 <li><a href="interviews.html">The Interviews</a><span>what they asked, how they worked, the overall numbers</span></li>
@@ -131,6 +153,11 @@
 <p class="foot">Source: one 80-round run of the CodeRPG-Sim simulation (filed as run "step76-30") and the interviews and personality tests that followed, 30 October 2026. One run is a single sample, so treat every finding here as a hint worth testing again, not a proof.</p>
 </div></main>
 
+<script>
+(function(){var w=document.querySelector('.moments');if(!w)return;var s=w.querySelectorAll('.moment'),i=0;
+function show(n){i=(n+s.length)%s.length;for(var k=0;k<s.length;k++)s[k].hidden=k!==i}
+w.querySelector('.m-prev').addEventListener('click',function(){show(i-1)});w.querySelector('.m-next').addEventListener('click',function(){show(i+1)})})();
+</script>
 <script src="site.js"></script>
 </body>
 </html>
