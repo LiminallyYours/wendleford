@@ -142,16 +142,21 @@
 @media (max-width:600px){
 #sp .stage{width:100%}
 #sp .stage{aspect-ratio:auto;height:calc((100vw - 32px) * 9 / 16 + 120px)}
+}
+/* phones, upright or held sideways: the caption has its own band under the picture */
+@media (max-width:600px), (max-height:500px) and (orientation:landscape){
 #sp #sceneLayer{--capH:118px}
 #sp #backdrop{height:calc(100% - var(--capH))}
 #sp .floor{bottom:var(--capH);height:5%}
-#sp .caption{font-size:13px;height:var(--capH);min-height:0;padding:7px 10px;background:#141a20;justify-content:flex-start;overflow:auto}
+#sp .caption{font-size:13px;height:auto;min-height:var(--capH);max-height:calc(100% - 6px);padding:7px 10px;background:#141a20;justify-content:flex-start;overflow:auto}
 #sp .caption b{font-size:10px}
 #sp .figs{bottom:calc(var(--capH) + 6px);width:62%;left:3%}
 #sp .fig b{font-size:9px}
 #sp .inset{width:34%;min-width:0;padding:3px 4px 2px}
 #sp .inset .ck{font-size:9px}.inset .ck i{display:none}
 #sp .memcard{width:200%;font-size:11px;padding:5px 7px}
+#sp #sceneLayer>.memcard{left:4%;right:4%;top:6px;bottom:auto;width:auto;max-height:calc(100% - var(--capH) - 12px);overflow:auto;font-size:13px;padding:8px 10px;animation:drop .45s ease both}
+#sp #sceneLayer>.memcard::after{display:none}
 #sp .card{font-size:13px;padding:8px 10px;left:4%;right:4%}
 #sp .card{top:6px;max-height:calc(100% - var(--capH) - 12px)}
 #sp .card.clip{width:auto;left:4%;right:4%;top:6px;bottom:auto}
@@ -159,6 +164,16 @@
 #sp .clock b{font-size:15px}.clock{font-size:10.5px;padding:5px 8px}
 #sp .restnote{font-size:12px}
 #sp .ch-names{display:none}
+}
+/* a phone held sideways (short, wide screens): the controls take one row and the stage takes the screen's height under them */
+@media (max-height:500px) and (orientation:landscape){
+#sp .controls button span{display:none}
+#sp .controls button{padding:5px 10px}
+#sp .controls{padding:5px 8px;gap:6px 12px}
+#sp .controls .time{font-size:12px}
+#sp .ctlbar{gap:4px;padding-top:4px}
+#sp .stage{aspect-ratio:auto;height:calc(100svh - var(--ctl,60px) - 20px);width:min(100%,calc((100svh - var(--ctl,60px) - 20px) * 16 / 9))}
+#sp #sceneLayer{--capH:76px}
 }
 /* title and end screens, and the game's voice (DECISIONS Q34, Q35) */
 #sp .tcard{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--card2);z-index:1}
@@ -174,7 +189,7 @@
 #sp .caption.game .t{font:500 14.5px/1.45 var(--mono)}
 #sp .line.game .who{color:var(--accent)}
 #sp .line.game .txt{font:500 13.5px/1.5 var(--mono);color:var(--ink2)}
-@media (max-width:600px){
+@media (max-width:600px), (max-height:500px) and (orientation:landscape){
 #sp .tcard{bottom:var(--capH)}
 #sp .tcard .tc{margin-bottom:0}
 #sp .caption.game .t{font-size:12.5px}
@@ -362,7 +377,7 @@
     if(reduce||ms<=0){SIX.forEach(function(p){if(end[p[0]])setTok(m,p[0],end[p[0]])});if(done)done();return}
     var t0=null;if(anim)cancelAnimationFrame(anim);stepsOn();
     var hops={};SIX.forEach(function(p){var pts=paths[p[0]];if(!pts)return;var L=0;for(var i=1;i<pts.length;i++)L+=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);hops[p[0]]=Math.max(1,Math.round(L/38))});
-    function fr(ts){if(!t0)t0=ts;var t=Math.min(1,(ts-t0)/ms);
+    var last=null;function fr(ts){if(!t0)t0=ts;if(paused&&last!==null){t0+=ts-last;last=ts;anim=requestAnimationFrame(fr);return}last=ts;var t=Math.min(1,(ts-t0)/ms);
       SIX.forEach(function(p){var id=p[0],pts=paths[id];if(!pts)return;var n=hops[id];
         // bump along: each hop is a little arc; the figure tips forward and back as it goes
         var h=Math.min(n,Math.floor(t*n)),f=Math.min(1,t*n-h),ease=f<.5?2*f*f:1-Math.pow(-2*f+2,2)/2,e=(h+ease)/n;
@@ -432,22 +447,24 @@
     var drawn=SIX.some(function(p){return p[0]===id})||PORTRAITS.indexOf(id)>=0;
     d.innerHTML=(drawn?'<img src="story/img/p-'+id+'.svg" alt="">':'<div class="ph">'+NAMES[id]+'<br>(figure to draw)</div>')+'<div class="base"></div><b>'+NAMES[id]+'</b>';f.appendChild(d)})}
   // where a chapter cuts away: a line may carry its own place (and who is there); it holds until the next line that carries one
+  // the inset shows where the six are at the chapter's opening moment (its positions); once a line moves the time on, or the scene is another place or group, it is hidden
   function sceneAt(c,i){if(c.kind)return {screen:c.kind,place:null,present:[],art:'',key:'screen:'+c.kind};
-    var s={place:c.place,present:c.present,art:c.art||ROOMS[c.place].art||''};
-    for(var j=0;j<=i&&j<c.lines.length;j++){var l=c.lines[j];if(l.place){s={place:l.place,present:l.present||(l.place===c.place?c.present:[]),art:l.art||(l.place===c.place?(c.art||ROOMS[c.place].art):ROOMS[l.place].art)||''}}}
-    s.key=s.place+'|'+s.present.join(',');return s}
-  function applyScene(s){var bd=$('backdrop'),tc=$('tcard'),inset=document.querySelector('#sceneLayer .inset');
+    var s={place:c.place,present:c.present,art:c.art||ROOMS[c.place].art||''},moved=false;
+    for(var j=0;j<=i&&j<c.lines.length;j++){var l=c.lines[j];if(l.tod&&l.tod!==c.tod||l.day&&l.day!==c.day)moved=true;
+      if(l.place){s={place:l.place,present:l.present||(l.place===c.place?c.present:[]),art:l.art||(l.place===c.place?(c.art||ROOMS[c.place].art):ROOMS[l.place].art)||''}}}
+    s.key=s.place+'|'+s.present.join(',');s.inset=!moved&&s.place===c.place&&s.present.join()===c.present.join();return s}
+  function applyScene(s){var bd=$('backdrop'),tc=$('tcard'),inset=document.querySelector('#sceneLayer .inset');clearMem(); // a memory card goes with its scene (on a phone it is not inside the figure)
     if(s.screen){bd.hidden=true;inset.hidden=true;$('figs').innerHTML='';$('tcT').textContent=s.screen==='title'?V.title:'The end';
       $('tcS').textContent=s.screen==='title'?((V.screen&&V.screen.sub)||''):V.title;
       $('tcF').textContent=s.screen==='title'?'A short film from one run of a simulation'+(V.screen&&V.screen.n?' · '+V.screen.n:''):'Every line a resident or townsperson speaks is from the record · wendleford.life';
       tc.hidden=false;curScene=s.key;return}
-    tc.hidden=true;bd.hidden=false;inset.hidden=false;
+    tc.hidden=true;bd.hidden=false;inset.hidden=!s.inset;
     bd.src=s.art;bd.alt='Painted backdrop: '+ROOMS[s.place].name;buildFigs(s);mark(ins,s.place);curScene=s.key}
   function enterScene(c,done){allSfxOff();cardIn();
     $('wash').style.background=wash(c.tod);$('cards-layer').innerHTML='';setCaption('', '', '');
     if(c.positions)placeAll(ins,c.positions);applyScene(sceneAt(c,li));
     $('mapLayer').classList.add('off');$('sceneLayer').classList.add('on');$('restnote').hidden=true;
-    setTimeout(done,reduce?0:750)}
+    later(done,reduce?0:750)}
   function leaveScene(){$('sceneLayer').classList.remove('on');$('mapLayer').classList.remove('off');$('cards-layer').innerHTML='';clearMem()}
   function setCaption(who,text,cls){var cap=$('caption');cap.className='caption'+(cls?' '+cls:'');$('capwho').textContent=who;$('captext').textContent=text}
   function speak(id,on){Array.prototype.forEach.call($('figs').children,function(d){d.classList.toggle('speaking',on&&d.dataset.id===id);d.classList.toggle('dimmed',on&&id&&d.dataset.id!==id&&false)})}
@@ -464,38 +481,55 @@
     else if(l.type==='note'){setCaption(l.label,'','');cl.innerHTML='<div class="card"><b>'+esc(l.label)+'</b>'+esc(l.text)+'</div>'}
     else if(l.type==='clip'){setCaption(l.label,'','');cl.innerHTML='<div class="card clip"><b>'+esc(l.label)+'</b>“'+esc(l.text)+'”</div>'}
     else if(l.type==='memory'){setCaption(NAMES[l.who]+' kept it in mind','','');clearMem();var fig=$('figs').querySelector('[data-id="'+l.who+'"]');
-      if(fig){memHold=document.createElement('div');memHold.className='memcard';memHold.innerHTML='<b>'+esc(l.label)+'</b>“'+esc(l.text)+'”';fig.appendChild(memHold)}speak(l.who,true)}}
+      if(fig){memHold=document.createElement('div');memHold.className='memcard';memHold.innerHTML='<b>'+esc(l.label)+'</b>“'+esc(l.text)+'”';(COMPACT&&COMPACT.matches?$('sceneLayer'):fig).appendChild(memHold)}speak(l.who,true)}}
+  var COMPACT=window.matchMedia&&window.matchMedia('(max-width:600px), (max-height:500px) and (orientation:landscape)'); // the phone layouts in the CSS
 
-  // playback engine
-  function clearTimer(){if(timer){clearTimeout(timer);timer=null}if(audio){audio.onended=null;audio.pause();audio=null}}
+  // ---- voice files: fetched ahead (a chapter's while the map before it plays, the opening's under the title), two at a time, in the order they are spoken ----
+  var VC={},VQ=[],VN=0; // VC: line id -> {u: the file to play once loaded, w: lines waiting for it}; VQ: ids still to fetch; VN: fetches under way
+  function vload(id){var e=VC[id];if(e)return e;e=VC[id]={u:null,w:[]};VN++;var url='story/audio/'+id+'.mp3';
+    function fin(u){e.u=u;VN--;e.w.splice(0).forEach(function(f){f(u)});vpump()}
+    if(!window.fetch||location.protocol==='file:')fin(url); // no fetch here: the audio element loads the file itself
+    else fetch(url).then(function(r){if(!r.ok)throw r.status;return r.blob()}).then(function(b){fin(URL.createObjectURL(b))},function(){fin(url)});return e}
+  function vpump(){while(VN<2&&VQ.length){var id=VQ.shift();if(!VC[id])vload(id)}}
+  function prefetch(i){VQ=[];if(sound)[i,i+1].forEach(function(k){var c=chapters[k];if(c)c.lines.forEach(function(l){if(!VC[l.id])VQ.push(l.id)})});vpump()}
+  function voice(id,cb){var e=VC[id]||vload(id);if(e.u)cb(e.u);else e.w.push(cb)}
+
+  // playback engine. Every wait goes through later(), so Pause can hold it and Play carry it on; tok numbers each line, and a callback from an older line does nothing.
+  var tok=0,tFn=null,WAIT=9000; // WAIT: the longest a line waits for its voice file, caption showing, before it goes on without it
+  function later(fn,ms){if(timer)clearTimeout(timer);timer=null;tFn=fn;tRem=ms;if(!paused){tStart=Date.now();timer=setTimeout(function(){timer=null;tFn=null;fn()},ms)}}
+  function hold(){if(timer){clearTimeout(timer);timer=null;tRem=Math.max(0,tRem-(Date.now()-tStart))}}
+  function carryOn(){if(tFn&&!timer)later(tFn,tRem)}
+  function clearTimer(){tok++;tFn=null;if(timer){clearTimeout(timer);timer=null}if(audio){audio.onended=null;audio.pause();audio=null}if(anim){cancelAnimationFrame(anim);anim=null;stepsOff()}}
   function playLine(){var c=chapters[ch],l=c.lines[li];if(!l){endChapter();return}
-    var s=sceneAt(c,li);if(s.key!==curScene){applyScene(s);cardIn()}
+    var s=sceneAt(c,li);if(s.key!==curScene){applyScene(s);cardIn()}document.querySelector('#sceneLayer .inset').hidden=!s.inset;
     showLine(l);markLine();updateTime();
-    clearTimer();var secs=lineSecs(l);
-    if(sound){var a=new Audio('story/audio/'+l.id+'.mp3');var started=false;
-      a.oncanplaythrough=function(){if(started)return;started=true;audio=a;a.onended=next;a.play().catch(function(){fallback()})};
-      a.onerror=function(){if(!started){started=true;fallback()}};
-      setTimeout(function(){if(!started){started=true;fallback()}},1200);
-    } else fallback();
-    function fallback(){audio=null;tRem=secs*1000;tStart=Date.now();timer=setTimeout(next,tRem)}
-    function next(){if(!playing||paused)return;li++;playLine()}}
-  function startChapter(i,fromClick){if(i<0||i>=chapters.length)return;clearTimer();ch=i;li=-1;playing=true;paused=false;setPlayBtn();
+    clearTimer();var my=tok,secs=lineSecs(l),t0=Date.now(),got=false;
+    if(sound){later(function(){got=true;fallback(Math.max(1500,secs*1000-(Date.now()-t0)))},WAIT);
+      voice(l.id,function(u){if(my!==tok||got)return;got=true;if(timer){clearTimeout(timer);timer=null}tFn=null;
+        if(!sound){fallback(Math.max(1500,secs*1000-(Date.now()-t0)));return}
+        var a=new Audio(u);audio=a;a.onended=next;a.onerror=function(){if(my===tok&&audio===a){audio=null;fallback(secs*1000)}};
+        if(!paused)a.play().catch(function(){if(my===tok&&audio===a&&!paused){audio=null;fallback(secs*1000)}})});
+    } else fallback(secs*1000);
+    function fallback(ms){audio=null;later(next,ms)}
+    function next(){if(my!==tok||!playing)return;if(paused)later(adv,0);else adv()}
+    function adv(){li++;playLine()}}
+  function startChapter(i,fromClick){if(i<0||i>=chapters.length)return;clearTimer();ch=i;li=-1;playing=true;paused=false;setPlayBtn();prefetch(i);
     var c=chapters[i],start=c.map_round||c.rounds[0];renderStrip();renderScript();$('chapters').hidden=false;markCard();
-    if(c.kind){allSfxOff();$('restnote').hidden=true;phase='screen';curScene='';enterScene(c,function(){phase='scene';li=0;timer=setTimeout(playLine,reduce?0:(c.kind==='title'?2500:1500))});return}
+    if(c.kind){allSfxOff();$('restnote').hidden=true;phase='screen';curScene='';enterScene(c,function(){phase='scene';li=0;later(playLine,reduce?0:(c.kind==='title'?2500:1500))});return}
     phase='pass';leaveScene();$('restnote').hidden=true;
     var MIN_PASS=reduce?0:14000,passT0=Date.now(); // the map stays long enough for the tune to play out
-    function goIn(){$('bigsky').textContent=c.sky||'';var wait=Math.max(reduce?0:2200,MIN_PASS-(Date.now()-passT0));mark(big,c.place);timer=setTimeout(function(){if(!playing)return;enterScene(c,function(){phase='scene';li=0;timer=setTimeout(playLine,reduce?0:900)})},wait)}
+    function goIn(){$('bigsky').textContent=c.sky||'';var wait=Math.max(reduce?0:2200,MIN_PASS-(Date.now()-passT0));mark(big,c.place);later(function(){if(!playing)return;enterScene(c,function(){phase='scene';li=0;later(playLine,reduce?0:900)})},wait)}
     // the days pass on the map: walk round by round from where we are to the chapter's first round
     var from=curRound;if(from>start||fromClick&&from!==start){placeAll(big,ROUNDS[start-1]||ROUNDS[start]);from=Math.max(1,start-1)}
-    if(from===start&&i===firstReal()){placeAll(big,ROUNDS[start]);showRound(start);timer=setTimeout(function(){musicOn();MIN_PASS=reduce?0:9000;passT0=Date.now();goIn()},reduce?0:600);return}
+    if(from===start&&i===firstReal()){placeAll(big,ROUNDS[start]);showRound(start);later(function(){musicOn();MIN_PASS=reduce?0:9000;passT0=Date.now();goIn()},reduce?0:600);return}
     mark(big,null);var r=from;showRound(r);$('bigsky').textContent='';
     // up to four parts of a day apart: every part of the day is walked. Further apart: two or three hops, so the walk stays short.
     var gap=start-from,plan=[];if(gap<=4){for(var k=from+1;k<=start;k++)plan.push(k)}else{var n=gap<=8?2:3;for(var k=1;k<=n;k++)plan.push(from+Math.round(gap*k/n))}
-    timer=setTimeout(function(){musicOn();passT0=Date.now();timer=setTimeout(step,reduce?0:2200)},reduce?0:700); // a breath, then the tune, then a moment before anyone moves
-    function step(){if(!playing){return}if(paused){timer=setTimeout(step,200);return}
+    later(function(){musicOn();passT0=Date.now();later(step,reduce?0:2200)},reduce?0:700); // a breath, then the tune, then a moment before anyone moves
+    function step(){if(!playing){return}if(paused){later(step,200);return}
       if(r>=start){goIn();return}
-      var nr=plan.shift();showRound(nr);timer=setTimeout(function(){if(!playing)return;walkTo(big,ROUNDS[r],ROUNDS[nr],reduce?0:2600,function(){r=nr;updateTime();timer=setTimeout(step,reduce?0:(todOf(r)==='morning'?1600:900))})},reduce?0:500)}}
-  function endChapter(){clearTimer();var rs=chapters[ch].rounds.filter(function(r){return ROUNDS[r]});var lastR=rs.length?Math.max.apply(null,rs):0;if(lastR>curRound)curRound=lastR;setCaption('','','');timer=setTimeout(function(){if(ch+1<chapters.length){startChapter(ch+1)}else{stop(true)}},reduce?0:1400)}
+      var nr=plan.shift(),my=tok;showRound(nr);later(function(){if(!playing)return;walkTo(big,ROUNDS[r],ROUNDS[nr],reduce?0:2600,function(){if(my!==tok)return;r=nr;updateTime();later(step,reduce?0:(todOf(r)==='morning'?1600:900))})},reduce?0:500)}}
+  function endChapter(){clearTimer();var rs=chapters[ch].rounds.filter(function(r){return ROUNDS[r]});var lastR=rs.length?Math.max.apply(null,rs):0;if(lastR>curRound)curRound=lastR;setCaption('','','');later(function(){if(ch+1<chapters.length){startChapter(ch+1)}else{stop(true)}},reduce?0:1400)}
   function stop(finished){clearTimer();allSfxOff();playing=false;paused=false;phase='idle';leaveScene();setPlayBtn();
     $('restnote').hidden=false;$('restnote').textContent=finished?'The end of “'+V.title+'”.':'Stopped. Press Play to carry on from this chapter.';
     updateTime()}
@@ -509,18 +543,24 @@
   // buttons
   Array.prototype.forEach.call(document.querySelectorAll('.playF'),function(b){b.addEventListener('click',function(){chooseFilm(b.dataset.film);curRound=1;placeAll(big,ROUNDS[1]);showRound(1);startChapter(0);document.querySelector('.player').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})})});
   // the sticky bar sits under the site's header; the stage is sized to fit beneath both
-  function measure(){var h=document.querySelector('header.top'),c=document.querySelector('.ctlbar'),root=document.documentElement;
+  var SHORT=window.matchMedia&&window.matchMedia('(max-height:500px) and (orientation:landscape)'); // a phone held sideways: the site's header scrolls away with the page
+  function measure(){var h=document.querySelector('header.top'),c=document.querySelector('.ctlbar'),root=document.documentElement;if(h)h.style.position=SHORT&&SHORT.matches?'static':'';
     root.style.setProperty('--hdr',(h&&getComputedStyle(h).position==='sticky'?h.offsetHeight:0)+'px');root.style.setProperty('--ctl',(c?c.offsetHeight:120)+'px')}
-  measure();window.addEventListener('resize',measure);if(window.ResizeObserver){new ResizeObserver(measure).observe(document.querySelector('.ctlbar'))}
+  measure();window.addEventListener('resize',measure);
+  // turning the phone: if the stage was on screen before the turn, bring the player back to the top, as Play does (not if the viewer had scrolled away to read)
+  var orient=innerWidth>innerHeight,stageSeen=false;
+  function seen(){var r=$('stage').getBoundingClientRect();return Math.min(r.bottom,innerHeight)-Math.max(r.top,0)>r.height/2}
+  window.addEventListener('scroll',function(){if((innerWidth>innerHeight)===orient)stageSeen=seen()},{passive:true});
+  window.addEventListener('resize',function(){var o=innerWidth>innerHeight;if(o===orient)return;orient=o;if(ch>=0&&playing&&stageSeen)document.querySelector('.player').scrollIntoView({block:'start'});stageSeen=seen()});if(window.ResizeObserver){new ResizeObserver(measure).observe(document.querySelector('.ctlbar'))}
   $('btnPlay').addEventListener('click',function(){
     if(ch<0){curRound=1;placeAll(big,ROUNDS[1]);startChapter(0);return}
     if(!playing){playing=true;paused=false;setPlayBtn();if(phase==='scene'){playLine()}else{startChapter(ch,true)}return}
-    if(paused){paused=false;setPlayBtn();if(phase==='pass')musicOn();if(audio){audio.play()}else if(phase==='scene'){tStart=Date.now();timer=setTimeout(function(){li++;playLine()},tRem)}}
-    else{paused=true;setPlayBtn();if(phase==='pass'){if(SFX.music)SFX.music.pause();stepsOff()}if(audio)audio.pause();else if(timer){clearTimeout(timer);timer=null;tRem=Math.max(200,tRem-(Date.now()-tStart))}}});
+    if(paused){paused=false;setPlayBtn();if(phase==='pass'){musicOn();if(anim)stepsOn()}if(audio)audio.play().catch(function(){});carryOn()}
+    else{paused=true;setPlayBtn();if(phase==='pass'){if(SFX.music)SFX.music.pause();stepsOff()}if(audio)audio.pause();hold()}});
   $('btnNext').addEventListener('click',function(){if(ch<0)return;if(ch+1<chapters.length)startChapter(ch+1,true);else stop(true)});
   $('btnPrev').addEventListener('click',function(){if(ch<0)return;startChapter(Math.max(0,ch-1),true)});
   $('btnStop').addEventListener('click',function(){stop(false)});
-  $('btnSnd').addEventListener('click',function(){sound=!sound;$('btnSnd').innerHTML=sound?'🔊<span>Sound on</span>':'🔇<span>Sound off</span>';if(!sound)allSfxOff();else if(phase==='pass')musicOn();if(audio&&!sound){clearTimer();tRem=1500;tStart=Date.now();timer=setTimeout(function(){li++;playLine()},tRem)}});
+  $('btnSnd').addEventListener('click',function(){sound=!sound;$('btnSnd').innerHTML=sound?'🔊<span>Sound on</span>':'🔇<span>Sound off</span>';if(!sound)allSfxOff();else{if(phase==='pass')musicOn();if(ch>=0)prefetch(ch)}if(audio&&!sound){clearTimer();later(function(){li++;playLine()},1500)}});
 
   // at rest
   placeAll(big,ROUNDS[1]);showRound(1);renderStrip();measure();
