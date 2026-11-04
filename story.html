@@ -174,6 +174,7 @@
 #sp .ctlbar{gap:4px;padding-top:4px}
 #sp .stage{aspect-ratio:auto;height:calc(100svh - var(--ctl,60px) - 20px);width:min(100%,calc((100svh - var(--ctl,60px) - 20px) * 16 / 9))}
 #sp #sceneLayer{--capH:76px}
+#sp #sceneLayer.ended .tcard .tc{width:92%;padding:3%}
 }
 /* title and end screens, and the game's voice (DECISIONS Q34, Q35) */
 #sp .tcard{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--card2);z-index:1}
@@ -184,6 +185,8 @@
 #sp .tcard .s{font:italic clamp(12px,1.7vw,17px) var(--serif);color:#4a4030}
 #sp .tcard .r{width:32%;height:1px;background:var(--cardline);margin:.9em auto}
 #sp .tcard .f{font:500 clamp(9px,1.2vw,11px) var(--mono);letter-spacing:.08em;color:#6b5f48}
+#sp .tcard .b{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:1em}
+#sp .tcard .b[hidden]{display:none}
 #sp #caption{z-index:2}
 #sp .caption.game b{color:#F6DFC9}
 #sp .caption.game .t{font:500 14.5px/1.45 var(--mono)}
@@ -192,6 +195,8 @@
 @media (max-width:600px), (max-height:500px) and (orientation:landscape){
 #sp .tcard{bottom:var(--capH)}
 #sp .tcard .tc{margin-bottom:0}
+#sp #sceneLayer.ended .tcard{bottom:0}
+#sp #sceneLayer.ended .caption{display:none}
 #sp .caption.game .t{font-size:12.5px}
 }
 
@@ -219,7 +224,7 @@
       </article>
       <article class="panel vcard" id="card-robins-notebook">
         <div class="vtxt"><h3>Robin's notebook</h3><p>Robin, one of the residents, keeps finding that time has gone missing: a morning gone, with no memory of where. Robin writes the gaps down and asks the townsfolk, and never hears the two others who noticed something odd too.</p></div>
-        <div class="meta"><span class="vlen" data-film="robins-notebook">9 chapters · about 17 minutes</span><button type="button" class="primary playF" data-film="robins-notebook">▶<span>Play</span></button></div>
+        <div class="meta"><span class="vlen" data-film="robins-notebook">9 chapters · about 16 minutes</span><button type="button" class="primary playF" data-film="robins-notebook">▶<span>Play</span></button></div>
       </article>
       <article class="panel vcard" id="card-six-bad-days">
         <div class="vtxt"><h3>Six bad days</h3><p>Each of the six ended the twenty days living by a rule of their own, such as naming the price before starting a job, and each rule grew out of one bad day. Then the one rule, eat before the work, that five of the six reached on their own.</p></div>
@@ -258,7 +263,7 @@
         <div class="figs" id="figs"></div>
         <div class="inset"><div class="ck"><span id="insetclock">Day 1 · morning</span><i>where everyone is</i></div><svg class="map" id="insetmap" viewBox="0 0 760 500" aria-hidden="true"></svg></div>
         <div id="cards-layer"></div>
-        <div class="tcard" id="tcard" hidden><div class="tc"><div class="k">Wendleford · twenty days</div><div class="t" id="tcT"></div><div class="s" id="tcS"></div><div class="r"></div><div class="f" id="tcF"></div></div></div>
+        <div class="tcard" id="tcard" hidden><div class="tc"><div class="k">Wendleford · twenty days</div><div class="t" id="tcT"></div><div class="s" id="tcS"></div><div class="r"></div><div class="f" id="tcF"></div><div class="b" id="tcB" hidden><button type="button" class="primary" id="tcNext"></button><button type="button" id="tcAgain">Watch again</button></div></div></div>
         <div class="caption" id="caption"><b id="capwho"></b><span class="t" id="captext"></span></div>
       </div>
     </div>
@@ -415,7 +420,7 @@
   function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
   function lineSecs(l){return (DUR[l.id]||Math.max(1.6,l.text.length/15.5))+(l.type==='nar'?.4:.7)}
   function passSecs(i,cs){cs=cs||chapters;if(cs[i]&&cs[i].kind)return reduce?0:(cs[i].kind==='title'?2.5:1.5)+1.4; // a screen's hold before the voice
-    return reduce?0:(i===firstReal(cs)?10.5:15.7)+1.4} // the days passing on the map before a chapter, and the hold after it
+    return reduce?0:(i===firstReal(cs)?8.5:11.3)+1.4} // the days passing on the map before a chapter, and the hold after it
   function chapterSecs(c){return c.lines.reduce(function(a,l){return a+lineSecs(l)},0)}
   function totalSecs(cs){cs=cs||chapters;return cs.reduce(function(a,c,i){return a+chapterSecs(c)+passSecs(i,cs)},0)}
 
@@ -453,7 +458,7 @@
     for(var j=0;j<=i&&j<c.lines.length;j++){var l=c.lines[j];if(l.tod&&l.tod!==c.tod||l.day&&l.day!==c.day)moved=true;
       if(l.place){s={place:l.place,present:l.present||(l.place===c.place?c.present:[]),art:l.art||(l.place===c.place?(c.art||ROOMS[c.place].art):ROOMS[l.place].art)||''}}}
     s.key=s.place+'|'+s.present.join(',');s.inset=!moved&&s.place===c.place&&s.present.join()===c.present.join();return s}
-  function applyScene(s){var bd=$('backdrop'),tc=$('tcard'),inset=document.querySelector('#sceneLayer .inset');clearMem(); // a memory card goes with its scene (on a phone it is not inside the figure)
+  function applyScene(s){var bd=$('backdrop'),tc=$('tcard'),inset=document.querySelector('#sceneLayer .inset');clearMem();$('tcB').hidden=true;$('sceneLayer').classList.remove('ended'); // a memory card goes with its scene (on a phone it is not inside the figure)
     if(s.screen){bd.hidden=true;inset.hidden=true;$('figs').innerHTML='';$('tcT').textContent=s.screen==='title'?V.title:'The end';
       $('tcS').textContent=s.screen==='title'?((V.screen&&V.screen.sub)||''):V.title;
       $('tcF').textContent=s.screen==='title'?'A short film from one run of a simulation'+(V.screen&&V.screen.n?' · '+V.screen.n:''):'Every line a resident or townsperson speaks is from the record · wendleford.life';
@@ -465,7 +470,7 @@
     if(c.positions)placeAll(ins,c.positions);applyScene(sceneAt(c,li));
     $('mapLayer').classList.add('off');$('sceneLayer').classList.add('on');$('restnote').hidden=true;
     later(done,reduce?0:750)}
-  function leaveScene(){$('sceneLayer').classList.remove('on');$('mapLayer').classList.remove('off');$('cards-layer').innerHTML='';clearMem()}
+  function leaveScene(){$('sceneLayer').classList.remove('on','ended');$('tcB').hidden=true;$('mapLayer').classList.remove('off');$('cards-layer').innerHTML='';clearMem()}
   function setCaption(who,text,cls){var cap=$('caption');cap.className='caption'+(cls?' '+cls:'');$('capwho').textContent=who;$('captext').textContent=text}
   function speak(id,on){Array.prototype.forEach.call($('figs').children,function(d){d.classList.toggle('speaking',on&&d.dataset.id===id);d.classList.toggle('dimmed',on&&id&&d.dataset.id!==id&&false)})}
   function clearMem(){if(memHold){memHold.remove();memHold=null}}
@@ -517,22 +522,27 @@
     var c=chapters[i],start=c.map_round||c.rounds[0];renderStrip();renderScript();$('chapters').hidden=false;markCard();
     if(c.kind){allSfxOff();$('restnote').hidden=true;phase='screen';curScene='';enterScene(c,function(){phase='scene';li=0;later(playLine,reduce?0:(c.kind==='title'?2500:1500))});return}
     phase='pass';leaveScene();$('restnote').hidden=true;
-    var MIN_PASS=reduce?0:14000,passT0=Date.now(); // the map stays long enough for the tune to play out
-    function goIn(){$('bigsky').textContent=c.sky||'';var wait=Math.max(reduce?0:2200,MIN_PASS-(Date.now()-passT0));mark(big,c.place);later(function(){if(!playing)return;enterScene(c,function(){phase='scene';li=0;later(playLine,reduce?0:900)})},wait)}
+    var MIN_PASS=reduce?0:10000,passT0=Date.now(); // the map stays long enough for the tune to play out
+    function goIn(){$('bigsky').textContent=c.sky||'';var wait=Math.max(reduce?0:800,MIN_PASS-(Date.now()-passT0));mark(big,c.place);later(function(){if(!playing)return;enterScene(c,function(){phase='scene';li=0;later(playLine,reduce?0:900)})},wait)}
     // the days pass on the map: walk round by round from where we are to the chapter's first round
     var from=curRound;if(from>start||fromClick&&from!==start){placeAll(big,ROUNDS[start-1]||ROUNDS[start]);from=Math.max(1,start-1)}
-    if(from===start&&i===firstReal()){placeAll(big,ROUNDS[start]);showRound(start);later(function(){musicOn();MIN_PASS=reduce?0:9000;passT0=Date.now();goIn()},reduce?0:600);return}
+    if(from===start&&i===firstReal()){placeAll(big,ROUNDS[start]);showRound(start);later(function(){musicOn();MIN_PASS=reduce?0:7000;passT0=Date.now();goIn()},reduce?0:600);return}
     mark(big,null);var r=from;showRound(r);$('bigsky').textContent='';
     // up to four parts of a day apart: every part of the day is walked. Further apart: two or three hops, so the walk stays short.
     var gap=start-from,plan=[];if(gap<=4){for(var k=from+1;k<=start;k++)plan.push(k)}else{var n=gap<=8?2:3;for(var k=1;k<=n;k++)plan.push(from+Math.round(gap*k/n))}
-    later(function(){musicOn();passT0=Date.now();later(step,reduce?0:2200)},reduce?0:700); // a breath, then the tune, then a moment before anyone moves
+    later(function(){musicOn();passT0=Date.now();later(step,reduce?0:600)},reduce?0:700); // a breath, then the tune, then a moment before anyone moves
     function step(){if(!playing){return}if(paused){later(step,200);return}
       if(r>=start){goIn();return}
-      var nr=plan.shift(),my=tok;showRound(nr);later(function(){if(!playing)return;walkTo(big,ROUNDS[r],ROUNDS[nr],reduce?0:2600,function(){if(my!==tok)return;r=nr;updateTime();later(step,reduce?0:(todOf(r)==='morning'?1600:900))})},reduce?0:500)}}
+      var nr=plan.shift(),my=tok;showRound(nr);later(function(){if(!playing)return;walkTo(big,ROUNDS[r],ROUNDS[nr],reduce?0:2600,function(){if(my!==tok)return;r=nr;updateTime();later(step,reduce?0:(todOf(r)==='morning'?1000:500))})},reduce?0:300)}}
   function endChapter(){clearTimer();var rs=chapters[ch].rounds.filter(function(r){return ROUNDS[r]});var lastR=rs.length?Math.max.apply(null,rs):0;if(lastR>curRound)curRound=lastR;setCaption('','','');later(function(){if(ch+1<chapters.length){startChapter(ch+1)}else{stop(true)}},reduce?0:1400)}
-  function stop(finished){clearTimer();allSfxOff();playing=false;paused=false;phase='idle';leaveScene();setPlayBtn();
+  function stop(finished){clearTimer();allSfxOff();playing=false;paused=false;phase='idle';if(finished&&chapters[ch]&&chapters[ch].kind==='end')endScreen();else leaveScene();setPlayBtn();
     $('restnote').hidden=false;$('restnote').textContent=finished?'The end of “'+V.title+'”.':'Stopped. Press Play to carry on from this chapter.';
     updateTime()}
+  // the film has finished: the end screen stays up, with the next film (after the last, the first) and this one again
+  function endScreen(){$('cards-layer').innerHTML='';setCaption('','','');var s=sceneAt(chapters[ch],0);if(s.key!==curScene||$('tcard').hidden)applyScene(s);
+    $('mapLayer').classList.add('off');$('sceneLayer').classList.add('on','ended');
+    var ids=Array.prototype.map.call(document.querySelectorAll('.playF'),function(b){return b.dataset.film}).filter(function(id){return FILMS[id]}),nx=ids[(ids.indexOf(V.id)+1)%ids.length];
+    $('tcNext').textContent='Watch the next film: '+FILMS[nx].title;$('tcNext').dataset.film=nx;$('tcB').hidden=false}
   function jumpLine(i){if(ch<0)return;clearTimer();li=i;playing=true;paused=false;setPlayBtn();if(phase!=='scene'&&chapters[ch].kind){phase='scene';enterScene(chapters[ch],playLine);return}if(phase!=='scene'){var c=chapters[ch],mr=c.map_round||c.rounds[0];phase='scene';showRound(mr);placeAll(big,ROUNDS[mr]);enterScene(c,playLine)}else playLine()}
   function setPlayBtn(){var b=$('btnPlay');b.innerHTML=(playing&&!paused)?'⏸<span>Pause</span>':'▶<span>Play</span>';b.title=(playing&&!paused)?'Pause':'Play'}
   function updateTime(){var t=$('timeinfo');if(ch<0){t.textContent='Nothing playing.';return}
@@ -560,6 +570,9 @@
   $('btnNext').addEventListener('click',function(){if(ch<0)return;if(ch+1<chapters.length)startChapter(ch+1,true);else stop(true)});
   $('btnPrev').addEventListener('click',function(){if(ch<0)return;startChapter(Math.max(0,ch-1),true)});
   $('btnStop').addEventListener('click',function(){stop(false)});
+  function playRow(id){var b=document.querySelector('.playF[data-film="'+id+'"]');if(!b)return;b.click();$('btnPlay').focus({preventScroll:true})} // as pressing that film's Play in its row
+  $('tcNext').addEventListener('click',function(){var id=this.dataset.film;if(FILMS[location.hash.slice(1)]&&history.replaceState)history.replaceState(null,'','#'+id);playRow(id)});
+  $('tcAgain').addEventListener('click',function(){playRow(V.id)});
   $('btnSnd').addEventListener('click',function(){sound=!sound;$('btnSnd').innerHTML=sound?'🔊<span>Sound on</span>':'🔇<span>Sound off</span>';if(!sound)allSfxOff();else{if(phase==='pass')musicOn();if(ch>=0)prefetch(ch)}if(audio&&!sound){clearTimer();later(function(){li++;playLine()},1500)}});
 
   // at rest
